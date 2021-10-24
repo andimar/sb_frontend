@@ -1,0 +1,35 @@
+/**
+ * Utilizza il grid system flex-grid-lite
+ * 
+ * https://flexgridlite.elliotdahl.com/
+ */
+ 
+@import "variables";
+
+
+body {
+    padding:0;
+    margin: 0;
+    background-color: $white;
+
+    
+    line-height: 1.5em;
+    font-family: $main-font;
+    font-weight: 100;    
+    font-size: $size-normal;
+    width: 100%;
+}
+
+.boxed {
+    width: 90%;
+    max-width: 1200px;
+    margin-left: auto ;
+    margin-right: auto ;
+}
+
+@import "partials/typography";
+@import "partials/header";
+@import "partials/news_section";
+@import "partials/sacramenti/section";
+@import "partials/omelie/section";
+@import "partials/newsletter/section";

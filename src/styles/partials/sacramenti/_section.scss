@@ -1,0 +1,27 @@
+@import "../common/section";
+
+section#sacramenti {
+
+    //height: 60vh;
+    z-index: 1;
+
+    background-color: $gold;
+
+    #sacramenti-list {
+
+        margin-bottom:2em;
+        height: 100%;
+        @import "card";
+    }
+
+    #section-title {
+        color : $white;
+        &::after { border-color: $white; }
+    }
+    
+    
+}
+ 
+
+
+                  

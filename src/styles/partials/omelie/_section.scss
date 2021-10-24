@@ -1,0 +1,52 @@
+@import "../common/section";
+
+#omelie {
+
+    padding-top:50px;
+    z-index: 1;
+    background: radial-gradient(#000000dd, #000000e9, #000000ee, black) no-repeat;
+    background-size: 100% 130%;
+    background-position: center;
+    
+    position: relative;
+
+    #section-title {
+        color : $white;
+        &::after { border-color: $white; }
+    }   
+
+    overflow: hidden;
+    
+    &-content {
+        height: 100%;
+        
+        &-image {
+            height: 350px;
+            background: url(/assets/don-fabio-pieroni.png) no-repeat;
+            background-size: cover;
+            background-position: -70px -20px;
+        }
+    }
+
+
+    &::before { 
+        content: '';
+        width: 100%;
+        height: 40px;
+
+        background-color: #f98a01;        
+        
+        position: absolute;
+        
+        top:0px;
+        transform: skew(0, -1.5deg);
+        transform-origin: top left;
+        
+    }   
+
+
+    
+    @import "card";
+    
+}
+

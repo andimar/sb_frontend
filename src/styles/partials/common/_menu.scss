@@ -1,0 +1,88 @@
+nav {
+
+    padding:10px;
+
+    ul {
+
+        background-color: #000000a0;
+        //border-top: $green 2px solid;
+        
+        
+        padding:0;
+        margin: 0;
+
+        font-size: $size-smaller;
+        font-weight: 300;
+        letter-spacing: 0.5px;
+        //outline-color: #fff;
+
+        li {            
+
+            padding: 3px 0 0 0 ;
+            list-style: none;
+            text-align: center;
+
+
+            transition-duration: 0.5s;
+            position: relative;
+            
+            &:focus-within,
+            &:hover {
+                cursor: pointer;
+                background-color: $green;
+            }
+
+            &:hover > ul,
+            ul:focus,
+            ul:hover {
+                visibility: visible;
+                opacity: 1;
+                display: block;
+                margin-top: 0px;
+            }            
+
+            ul {
+                visibility: hidden;
+                opacity: 0;
+                display: none;
+                animation: fadeIn 1.5s ease;
+                
+
+                margin-top: -400px;
+                
+                width: 100%;
+                position: absolute;
+                transition: margin 1000ms ease-in-out,  all 0.5s ease-in-out;        
+                
+                //left: 0;
+            }
+
+            a {               
+                color:white;
+                text-decoration: none;
+                text-transform: uppercase;
+
+                
+                // border-radius: $radius;
+
+                // &:hover { }                             
+            }
+        }
+        
+
+    }
+
+    
+    /* IE 11 won't get this, but at least the top-level menus will work */
+    ul li:focus-within > ul {
+        visibility: visible;
+        opacity: 1;
+        display: block;
+    }
+
+    a {
+        outline: none;
+    }
+    
+
+}

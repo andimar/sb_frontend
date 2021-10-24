@@ -1,0 +1,78 @@
+
+#home-info-box {
+
+    background-color: $light-grey;
+    width: 90%;
+    //height: 300px;
+    border-radius: 0 0 $radius $radius;
+    box-shadow : 3px 13px 35px 10px #000;
+    border: none;
+    padding-bottom: $radius;
+    
+
+    #logo {
+
+        padding: 35px 35px 25px 35px;
+
+        border-bottom: 2px solid #f0f0f0;
+        background-color : $white;
+        img {
+            width: 100%;
+        }
+    }
+
+    
+    .info-box {
+        
+        padding :20px 25px 10px;
+        width: 100%;
+        margin: 0;
+        
+        &-icon {
+            padding: 2px;
+            img { width: 100%; }
+        }
+
+        &-content {
+
+            h3, p { 
+                margin: 0;
+                font-size: $size-small;
+                line-height: 1.2em;
+            }
+
+            h3,h4 {
+                font-weight: 400;
+            }
+            h4 {
+                display: inline-block;
+                margin: 0.2em 0 0 0;         
+                padding: 0.2em 0.6em 0.1em;
+                
+                color: $white;
+                line-height: 1.2em;
+                font-size: $size-smallest;
+                
+                letter-spacing: 1.1px;
+                background-color: $green;
+                border-radius: $radius;
+
+            }
+
+            p { 
+                font-weight: 350;                    
+            }
+
+        }
+    }
+
+    /// fix dell'icona dell'ufficio parrocchiale
+    #info-ufficio {
+        .info-box-icon{
+            padding-left: 7px !important;
+            padding-right: 7px !important;
+        }
+        
+    }
+    
+}

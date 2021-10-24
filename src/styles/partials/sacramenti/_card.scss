@@ -1,0 +1,44 @@
+.sacramenti-card {
+    
+    margin: 0 5px;    
+    border:1px solid $white;
+    position: relative;
+    aspect-ratio: 1/1;
+
+    div{
+        padding:10px;
+        min-height: 2em;        
+    }
+
+    a {
+        display: block;
+        line-height: 1.2em;
+        text-decoration: none;
+                
+        font-weight: 300;
+        color: $white;
+
+        &:hover {
+            
+            transition: background-color .6s;
+            text-decoration: underline;
+            
+        }
+        
+    }
+
+    &-title {
+        //padding:0 20px;
+        text-align: center;
+        color: $white;
+        font-size: $size-bigger;
+        font-weight: 300;
+        height: 2em;
+    }
+
+
+}
+ 
+
+
+                  

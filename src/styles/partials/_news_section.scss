@@ -1,0 +1,25 @@
+@import "common/section";
+
+section#news {
+
+    //height: 60vh;
+    z-index: 1;
+
+    #news-carousel {
+
+        height: 100%;
+
+        @import "news_card";
+    }
+
+    #section-title {
+        color : $dark-red;
+        &::after { border-color: $dark-red; }
+    }
+    
+    
+}
+ 
+
+
+                  

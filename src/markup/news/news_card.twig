@@ -1,0 +1,10 @@
+<a href="{{ item.link }}" class="news-card">
+    {% if item.img != '' %}
+        <div class="news-card-image" style="background-image:url({{ item.img }})"></div>
+    {% else %}
+        <div class="news-card-no-image"></div>
+    {% endif %}
+    <div class="news-card-category">{{ item.category }}</div>
+    <h3 class="news-card-title">{{ item.title }}</h3>
+    <p class="news-card-excerpt">{{ item.excerpt }}</p>
+</a>

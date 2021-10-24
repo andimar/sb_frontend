@@ -1,0 +1,83 @@
+{
+    "title" : "Parrocchia San Bernardo da Chiaravalle",
+    "sections" : [ "NEWS", "CATECHISMO", "DIECI COMANDAMENTI" ],
+    "menu" : [
+        { "label" : "Sacramenti", "subitems" : [ 
+            { "label" : "Sacramenti", "link" : "#" },
+            { "label" : "Servizi","link" : "#" }
+        ]},
+        { "label" : "Servizi","link" : "#" },
+        { "label" : "Approfondimenti","link" : "#" },
+        { "label" : "Per i giovani","link" : "#" },
+        { "label" : "Vita cristiana", "link" : "#" }
+    ],
+
+    "news" : [
+        {
+            "title"   : "Oratorio, aperte le iscrizioni il 21 settembre",  
+            "link"    : "#",
+            "img"     : "https://www.sanbernardoparrocchia.it/wp-content/uploads/2021/09/oratorio.jpg",
+            "excerpt" : "Iscrizioni in ufficio parrocchiale, dal martedì al venerdì, dalle ore 17:00 alle 18:30",
+            "category": "Oratorio"
+        },
+        {
+            "title"   : "Corso pre-matrimoniale, inizio il 20 ottobre",  
+            "link"    : "#",
+            "img"     : "",
+            "excerpt" : "Presso l'ufficio parrocchiale, dal martedì al venerdì, dalle ore 17:00 alle 18:30.", 
+            "category": "Matrimoni"
+        },
+        {
+            "title"   : "Comunioni e Cresime, aperte le iscrizioni",  
+            "link"    : "#",
+            "img"     : "https://www.sanbernardoparrocchia.it/wp-content/uploads/2021/09/catechismo.jpg",
+            "excerpt" : "Presso l'ufficio parrocchiale, dal martedì al venerdì, dalle ore 17:00 alle 18:30.", 
+            "category": "Comunioni"
+        },
+        {
+            "title"   : "Gruppo scout, aperte le iscrizioni",  
+            "link"    : "#",
+            "img"     : "https://www.sanbernardoparrocchia.it/wp-content/uploads/2021/09/oratorio.jpg",
+            "excerpt" : "Presso l'ufficio parrocchiale, dal martedì al venerdì, dalle ore 17:00 alle 18:30.",
+            "category": "Scout"
+        },
+        {
+            "title"   : "Il 21 Ottobre inizia il corso pre-matrimoniale per i fidanzati",  
+            "link"    : "#",
+            "img"     : "https://www.sanbernardoparrocchia.it/wp-content/uploads/2019/09/rings-300x300-1569156750.jpg",
+            "excerpt" : "Presso l'ufficio parrocchiale, dal martedì al venerdì, dalle ore 17:00 alle 18:30.",
+            "category": "Matrimoni"
+        }
+
+
+
+    ],
+    "sacramenti" : [
+        {
+            "title"   : "Battesimo",  
+            "actions" : [ { "link" : "#battesimi", "label"   : "Come prepararsi al battesimo" } ]
+        },
+        {
+            "title"   : "Prima Comunione",  
+            "actions" : [ { "link" : "#battesimi", "label"   : "Iscrizione alla Prima Comunione" } ]
+        },
+        {
+            "title"   : "Cresima",  
+            "actions" : [ { "link" : "#battesimi", "label"   : "Iscrizione alla Cresima" } ]
+        },
+        {
+            "title"   : "Matrimonio",  
+            "actions" : [
+                { "link" : "#battesimi", "label"   : "Corsi pre-matrimoniali" },
+                { "link" : "#battesimi", "label"   : "Corsi post-matrimoniali" } 
+            ]
+        }
+    ],
+    "omelie" : {
+        "card" : {
+            "link"    : "https://www.sanbernardoparrocchia.it/omelie/se-la-tua-mano-ti-e-motivo-di-scandalo-tagliala/",
+            "title"   : "Se la tua mano ti è motivo di scandalo, tagliala",
+            "excerpt" : "Se vuoi far apparire il Regno dei Cieli devi vivere un trauma, devi attaccare te stesso, devi mortificare certe tue modalità automatiche per entrare in un altro modo di pensare, di agire."
+        }
+    }
+}

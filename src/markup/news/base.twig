@@ -1,0 +1,15 @@
+<script  src="/scripts/lib/swiper-bundle.min.js"></script>
+<section id="news" class="grid">
+    
+    <div id="section-title" class="col col-12">
+        <h2>NOTIZIE</h2>
+    </div>
+    <div class="grid col col-1"></div>
+    <div id="news-carousel" class="grid col col-10">
+        {% for item in news|slice(2) %}
+            <div class="col-4 col-md col-bottom">
+                {% include '/markup/news/news_card.twig' %}
+            </div>
+        {% endfor %}
+    </div>
+</section>
