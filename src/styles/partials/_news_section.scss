@@ -5,6 +5,10 @@ section#news {
     //height: 60vh;
     z-index: 1;
 
+    &.hidden {
+        display: none;
+    }
+
     #news-carousel {
 
         height: 100%;

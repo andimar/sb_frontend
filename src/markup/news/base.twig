@@ -1,5 +1,4 @@
-{% if news|length > 0 %}
-<section id="news" class="grid">
+<section id="news" class="grid {{ (news|length == 0) ? 'hidden':'' }}">
     
     <div id="section-title" class="col col-12">
         <h2>NOTIZIE</h2>
@@ -23,7 +22,6 @@
     </style>
 
 </section>
-{% endif %}
 
 {% block scripts %}
 <script src="{{base_dir}}/scripts/NewsArranger.js"></script>
@@ -65,7 +63,14 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-        const newsArranger = new NewsArranger( isMobile(), activateCarousel );
+        const newsArranger = new NewsArranger( isMobile(), function(){
+            
+            if(newsArranger.cards.length){ 
+                document.getElementById('news').classList.remove('hidden');
+                activateCarousel();
+            } 
+
+        }  );
         console.log('newsArranger',newsArranger);
     });
 
