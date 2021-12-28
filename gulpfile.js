@@ -122,14 +122,24 @@ gulp.task('templates', function() {
 });
 
 
+// Copy Twig templates to dist
+gulp.task('templates-update', function() {
+    return gulp.src('src/**/*.twig') 
+
+        .pipe( inject({ start: '/**--{{path}}--', end: '*/', prefix: __dirname,  removeTags: true}) )
+        .pipe( gulp.dest(buildFolder+'/templates/') ) // output the rendered twig files to the "dist" directory
+        .pipe( connect.reload() );
+});
+
+
 gulp.task('watch', function () {
     
     gulp.watch('src/styles/**/*.scss', gulp.series('sass', 'templates'));
     gulp.watch('src/assets/**/*', gulp.series('assets'));
     gulp.watch('src/scripts/**/*.js', gulp.series('scripts','scripts:lib'));    
-    gulp.watch('src/**/*.twig', gulp.series('templates'));
-    gulp.watch('src/**/*.html', gulp.series('templates'));
-    gulp.watch('src/data/**/*.json', gulp.series('templates'));
+    gulp.watch('src/**/*.twig', gulp.series('templates','templates-update'));
+    gulp.watch('src/**/*.html', gulp.series('templates', 'templates-update'));
+    gulp.watch('src/data/**/*.json', gulp.series('templates', 'templates-update'));
     
 });
 
@@ -151,7 +161,7 @@ gulp.task('browser', function(){
 gulp.task('common-chain',
     gulp.series('clean','sass','assets',
         gulp.parallel('scripts','scripts:lib', 'styles:lib' /* ,'html' */),
-        gulp.series('templates')
+        gulp.series('templates', 'templates-update')
     )
 );
 
