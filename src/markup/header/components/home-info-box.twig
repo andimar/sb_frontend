@@ -6,9 +6,9 @@
         <div class="col col-2 info-box-icon"><img src="{{base_dir}}/assets/eucharist.svg"></div>
         <div class="col col-10 info-box-content">
             <h3>ORARIO DELLE MESSE</h3>
-            <p>08:30 // 10:00 // 11:30 // 18:00</p>
+            <p>{{ hours.masses.festivo }}</p>
             <h4>FERIALE</h4>
-            <p>08:30 // 18:00</p>
+            <p>{{ hours.masses.feriale }}</p>
         </div>
     </div>
 
@@ -16,7 +16,7 @@
         <div class="col col-2 info-box-icon"><img src="{{base_dir}}/assets/rubber-stamp.svg"></div>
         <div class="col col-10 info-box-content">
             <h3 class="info-box-content-title">UFFICIO PARROCCHIALE</h3>
-            <p class="info-box-content-text">Dal martedì al venerdì dalle ore 17:00 alle ore 18:30</p>
+            <p class="info-box-content-text">{{ hours.office }}</p>
         </div>
     </div>
 
