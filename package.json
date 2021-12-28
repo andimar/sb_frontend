@@ -27,6 +27,7 @@
     "sass": "^1.39.2"
   },
   "devDependencies": {
-    "swiper": "^7.0.9"
+    "@babel/preset-env": "^7.16.5",
+    "swiper": "^7.3.4"
   }
 }

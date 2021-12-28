@@ -1,24 +1,27 @@
-<nav id="menu_desktop" role="navigation">
-    <ul class="grid first-level">
+<nav id="menu_mobile" role="navigation">
+    <ul>
         {% for item in menu %}
             {% if item.subitems %}
 
-                <li class="col" aria-haspopup="true">
+                <li aria-haspopup="true">
             
                     <a href="{{ item.link }}">{{ item.label }}</a>
                     
-                    <ul class="dropdown grid" aria-label="submenu">
+                    <ul aria-label="submenu">
                         {% for subitem in item.subitems %}
-                        <li class="col"><a href="{{ subitem.link }}">{{ subitem.label }}</a></li>
+                        <li><a href="{{ subitem.link }}">{{ subitem.label }}</a></li>
                         {% endfor %}    
                     </ul>
                 </li>
 
             {% else %}
 
-                <li class="col"><a href="{{ item.link }}">{{ item.label }}</a></li>
+                <li><a href="{{ item.link }}">{{ item.label }}</a></li>
 
             {% endif %}            
         {% endfor %}
     </ul>
 </nav>
+{% block scripts %}
+<script src="{{ base_dir }}/scripts/menu_mobile.js"></script>
+{% endblock %}

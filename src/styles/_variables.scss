@@ -9,6 +9,10 @@ $light-grey  : #e9e9e9;
 $dark-grey   : #333;
 $gold        : #f98a00; // rgb(235,143,30);
 $green       : #007548;
+//$dark-green  : #016d44;
+//$dark-green  : #02643e;
+$dark-green  : #025c39;
+$dark-azure  : #597081;
 
 
 
@@ -26,6 +30,7 @@ $radius : 8px;
  */
 
 $main-font : 'Yanone Kaffeesatz';
+$sans-font : 'Roboto';
 /*
 $size-smallest : .9rem;
 $size-smaller  : 1rem;   // 1.1rem;
@@ -44,3 +49,4 @@ $size-big      : 1.8rem;
 $size-bigger   : 2rem;
 $size-biggest  : 2.5rem;
 
+$mobile : 1024px;

@@ -1,8 +1,9 @@
-<div id="topbar" class="grid">
+{% include '/markup/header/components/menu-mobile.twig' %}
+<div id="topbar" class="grid grid-end">
     
-    <div class="col col-6 col-md col-middle"></div>
-    <div class="col col-6 col-md col-middle col-align-top">
-        {% include '/markup/header/components/menu.twig' %}       
+    <div class="col col-6 col-md col-middle col-align-top grid-end">
+        {% include '/markup/header/components/menu.twig' %}        
+        {% include '/markup/header/components/hamburger.twig' %}
     </div>
     
 </div>

@@ -1,11 +1,13 @@
 <div id="omelie-home-card">
     
     <h2>{{ omelie.card.title }}</h2>
+    <div class="references">
     <span class="vangelo-rif">Mc 9,38-43.45.47-48</span> <span class="pubdate">26-09-2021</span> <span class="calendario">XXVI domenica del Tempo Ordinario</span>
+    </div>
     <p>{{ omelie.card.excerpt }}</p>
-    <div class="grid">
+    <div class="buttons">
         <button class="omelie-card-cta" href="{{ omelie.card.link }}">Leggi l'omelia</button>
-        <button class="omelie-card-cta-all" href="/omelie/">Tutte le omelie</button>        
+        <button class="omelie-card-cta-all" href="/omelie/">Tutte le omelie</button>
     </div>    
 
 </div>

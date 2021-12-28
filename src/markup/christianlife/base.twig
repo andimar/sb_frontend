@@ -1,0 +1,14 @@
+<section id="christianlife" class="grid grid-center">
+
+	<div id="section-title" class="col col-12">
+		<h2>Percorsi di Vita Cristiana</h2>
+	</div>
+
+	<div id="christianlife-list" class="grid grid-between col-10">
+        {% for item in christianlife %}
+            <div class="col-3 col-lg col-middle">
+                {% include '/markup/christianlife/card.twig' %}
+            </div>
+        {% endfor %}
+    </div>	
+</section>

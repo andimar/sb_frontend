@@ -1,3 +1,9 @@
+{% if base_dir is not defined %}
+    {% set base_dir = '' %}
+{% endif %}
 {% include 'markup/layout/header.twig' %}
 {% block page %}{% endblock %}
+{% block scripts %}
+<script src = "{{ base_dir }}/scripts/is_mobile.js"></script>    
+{% endblock %}
 {% include 'markup/layout/footer.twig' %}

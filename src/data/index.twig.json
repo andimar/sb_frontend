@@ -79,5 +79,23 @@
             "title"   : "Se la tua mano ti è motivo di scandalo, tagliala",
             "excerpt" : "Se vuoi far apparire il Regno dei Cieli devi vivere un trauma, devi attaccare te stesso, devi mortificare certe tue modalità automatiche per entrare in un altro modo di pensare, di agire."
         }
-    }
+    },
+    "christianlife" : [
+        { "label":"I Dieci Comandamenti","link":"https://www.sanbernardoparrocchia.it/i-dieci-comandamenti/"},
+        { "label":"Laboratorio della fede","link":"https://www.sanbernardoparrocchia.it/il-laboratorio-della-fede/"},
+        { "label":"Cammino Neocatecumenale","link":"https://www.sanbernardoparrocchia.it/cammino-neocatecumenale/"},
+        { "label":"Post Matrimoniale","link":"https://www.sanbernardoparrocchia.it/post-matrimoni/"},
+        { "label":"Gruppo Giovani","link":"https://www.sanbernardoparrocchia.it/gruppo-giovani/"},
+        { "label":"Oratorio","link":"https://www.sanbernardoparrocchia.it/oratorio/"},
+        { "label":"Scout","link":"https://www.sanbernardoparrocchia.it/scout/"},
+        { "label":"Caritas, centro d’ascolto","link":"https://www.sanbernardoparrocchia.it/caritas/"},
+        { "label":"Ministri straordinari della comunione","link":"https://www.sanbernardoparrocchia.it/ministri-straordinari-della-comunione/"}
+    ],
+    "ufficio" : { "footer" : "L’ufficio parrocchiale è aperto  dal martedì al venerdì daller ore 17:00 alle 18:30"},
+    "sacerdoti" : [
+        { "name" : "Fabio Pieroni", "title" : "Parroco"},
+        { "name" : "Mauro De Paoli", "title" : "Vicario parrocchiale"},
+        { "name" : "Simone Bellato", "title" : "Vicario parrocchiale"},
+        { "name" : "Jeevan Kamalapuran", "title" : "Collaboratore"}
+    ]
 }

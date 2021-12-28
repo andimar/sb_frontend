@@ -53,7 +53,7 @@ gulp.task('styles:lib', () => {
 
     const libs_src = [
         'src/styles/lib/*.css',
-        
+        'node_modules/swiper/swiper-bundle.min.css'
         //'node_modules/lightgallery.js/dist/css/lightgallery.min.css',
         //'node_modules/lightgallery.js/dist/css/lg-transitions.min.css'
         //'node_modules/.../.../lib.min.css'
@@ -65,7 +65,7 @@ gulp.task('styles:lib', () => {
 });
 
 gulp.task('scripts', function() {
-    return gulp.src('src/scripts/*.js')
+    return gulp.src('src/scripts/**/*.js')
         .pipe( plumber() )
         .pipe( babel({
             presets: ['@babel/preset-env']
