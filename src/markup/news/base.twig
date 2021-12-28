@@ -1,3 +1,4 @@
+{% if news|length > 0 %}
 <section id="news" class="grid">
     
     <div id="section-title" class="col col-12">
@@ -7,7 +8,7 @@
     <div id="news-carousel" class="col col-10 swiper">
         
         <div class="swiper-wrapper">
-            {% for item in news|slice(2) %}
+            {% for item in news %}
                 <div class="col-4 col-md col-bottom swiper-slide">
                     {% include '/markup/news/news_card.twig' %}
                 </div>
@@ -20,8 +21,10 @@
     .swiper-pagination { position:relative;}
     .swiper-slide { height: initial; }
     </style>
-    
+
 </section>
+{% endif %}
+
 {% block scripts %}
 <script src="{{base_dir}}/scripts/NewsArranger.js"></script>
 
