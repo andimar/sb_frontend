@@ -18,6 +18,11 @@
     overflow: hidden;
     
     &-content {
+        
+        @media screen and (max-width: $mobile ) {
+            width: 100%;
+
+        }   
         height: 100%;
         
         &-image {
@@ -26,7 +31,7 @@
             background-size: cover;
             background-position: -70px -20px;
         }
-    }
+    }   
 
 
     &::before { 
@@ -34,8 +39,8 @@
         width: 100%;
         height: 40px;
 
-        background-color: #f98a01;        
-        
+        background-color: $gold; 
+               
         position: absolute;
         
         top:0px;
@@ -43,6 +48,54 @@
         transform-origin: top left;
         
     }   
+
+    input,
+        button {
+
+            padding: 6px 10px 4px 10px;
+            border: none;
+            border-radius: 5px;
+            font-family: $main-font;
+            font-size: $size-normal;
+            font-weight: 300;
+            color: $black;
+            background-color: $white;
+            letter-spacing: 0.3px;
+            outline: none;
+            
+        }
+
+    form { 
+        width: 50%;
+        height: 40px;
+        padding: 30px 0;
+
+        @media screen and (max-width: $mobile ) {
+            width: 100%;
+        }
+
+        position:relative;
+
+        input, button {                
+             position:absolute;
+        }
+        input {
+            width: 100%;
+        }
+        button {
+            right:0;
+            background-color: $dark-azure;
+            color: $white;
+            border-radius: 0 5px 5px 0;
+
+            &:hover{
+                background-color: $gold;
+                color: $white;
+            }
+        }
+
+
+    }
 
 
     

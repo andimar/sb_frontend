@@ -1,5 +1,133 @@
-#omelie-home-card { 
+.newsletter-card { 
 
     color: $white; 
+
+    p {
+        text-align: center;
+        font-size: $size-big;
+        margin:.1em auto 1em auto;
+    }
+    
+    form {
+
+        @media screen and (max-width: $mobile ) {
+            width: 80%;
+            margin:0 auto;
+        }
+
+        a { 
+            color: $white;
+        } 
+        
+        .privacy-container {
+            margin: 10px 0 0 0 ;
+        }
+
+        #privacy {
+            display:none;
+
+            & + label { 
+                position:relative; 
+                margin-left:30px;
+                font-size: $size-normal;
+
+                @media screen and (max-width: $mobile ) {
+                    font-size: $size-smaller;     
+                    font-weight: 300;
+                    letter-spacing: .5px;
+
+                }
+            
+                &::before, &::after {
+                    content:' '; 
+                    box-sizing: content-box;
+                    position:absolute;
+                    border-radius:4px; 
+                    cursor:pointer;
+                    transition: .3s; 
+                }
+
+                &::after{
+                    top:6px; left:-24px;
+                    width:10px; height:10px;
+                    background-color: $green; 
+                    opacity:0
+                }
+
+                &::before {
+                    top:0px; left:-30px; 
+                    width:20px; height:20px;
+                    border : none;
+                    //border:2px solid $white;
+                    background-color: $white; 
+                    box-shadow: inset 1px 1px 4px 0px #000;
+                }
+
+                span {
+                    display: block;
+                    margin: -8px 0 0 30px;                    
+                    font-size: $size-smallest;
+                    text-transform: uppercase;
+                    font-weight: 300;
+                    color: $white;
+                    letter-spacing: 1px;
+                    @media screen and (max-width: $mobile ) {
+                        font-weight: 200;
+                    }
+
+                }
+            } 
+
+            &:checked + label:after { opacity:1; }
+        } 
+        
+        input, button { 
+            font-family: $main-font;
+            font-size: $size-small;            
+            font-weight: 300;                   
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            padding: 8px 10px 7px 10px;
+
+            &::placeholder {
+                color:#000;
+            }
+            
+        }
+        
+        input {         
+            background-color: $white;
+            color: #000000;                        
+            box-shadow: inset 1px 1px 4px 0px #000;
+            width: calc(100% - 20px);  
+
+            // .omelie-card-cta {  }
+            @media screen and (max-width: $mobile ) {
+                width: calc(100% - 20px);  
+            }
+        }
+        
+        .submit-container {
+            text-align: center;
+            height: 3.5em;
+            padding-top: 1em;
+        }
+
+        button {
+
+            background:none;
+            border: 3px solid $white;
+            color: $white;
+            text-transform: uppercase;
+            padding-top: 10px;
+
+            &:hover {
+                border: 3px solid $gold;
+                color:$gold;
+            }
+        }
+        
+    }
 
 }

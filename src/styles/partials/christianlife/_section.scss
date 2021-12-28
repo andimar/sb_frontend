@@ -1,0 +1,34 @@
+@import "../common/section";
+
+section#christianlife {
+
+    text-transform: uppercase;
+
+    #section-title { 
+        h2 {
+            line-height: 1em;             
+        }
+    }
+
+                
+    background: radial-gradient($white, $white, $light-grey) no-repeat;
+    
+
+    #christianlife-list {
+
+        margin-bottom:2em;
+        height: 100%;
+        @import "card";
+    }
+
+    #section-title {
+        color : $red;
+        &::after { border-color: $red; }
+    }
+    
+    
+}
+ 
+
+
+                  

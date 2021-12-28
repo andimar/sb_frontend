@@ -1,0 +1,96 @@
+ #hamburger--icon {
+        
+    display: none;
+
+    width: 44px;
+    height: 44px;
+    margin: auto;
+    margin-right: 5px;
+    position: relative;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+
+    @media screen and (max-width: $mobile) {
+        display: block;
+    }
+
+    
+    transition: background .5s, transform .5s;
+    background-color: rgba(0,0,0,0);
+    transition: transform .5s;
+
+    &.dark {
+        span {
+            background-color: white;
+
+            &::before, &::after {
+                background-color: white;
+            }
+        }                
+    }
+
+    &.light {
+        span {
+            background-color: black;
+
+            &::before, &::after {
+                background-color: black;
+            }
+        }                
+    }
+    
+    
+    &.open {
+    
+        transform: rotate( 180deg);
+        
+        span {
+            background: 0 0;
+
+            &::before, &::after {
+                transform-origin: 50% 50%;
+            }
+            
+            &::before{
+                transform: translateY(0) rotate( 45deg );
+            } 
+            &::after{
+                transform: translateY(0) rotate( -45deg );
+            }
+
+        }
+    }
+    span {                    
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        transition: background .5s,transform .5s;
+        display: block;
+        width: 24px;
+        height: 3px;
+        border-radius: 10px;
+
+        &::before, &::after{
+            content: "";
+            
+            width: 24px;
+            height: 3px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            
+            transition: transform .5s;
+            border-radius: 10px;
+        }
+
+        &::before {
+            transform: translateY(-6px);
+        }
+
+        &::after {
+            transform: translateY(+6px);                
+        }
+    }
+} 

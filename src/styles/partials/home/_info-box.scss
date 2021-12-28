@@ -8,17 +8,45 @@
     box-shadow : 3px 13px 35px 10px #000;
     border: none;
     padding-bottom: $radius;
-    
+
+    @media screen and (max-width: $mobile) {
+        margin:50px 0 0 0;
+        padding: 0;
+        width: 100%;     
+    }
+
 
     #logo {
 
+        text-align: center;
         padding: 35px 35px 25px 35px;
 
         border-bottom: 2px solid #f0f0f0;
         background-color : $white;
+
+        /*.logo-container { 
+            text-align: center;
+        }*/
+/*
+        h1 {            
+            // background: url('/assets/logo.svg') no-repeat center center;
+            
+            height: 100%;
+                
+            background-size: contain;
+            text-indent: -9999px;            
+        }*/
+
         img {
             width: 100%;
+            @media screen and (max-width: $mobile ) {
+                    width: 70%;
+    
+            }
+    
         }
+
+        
     }
 
     

@@ -1,0 +1,70 @@
+.christianlife-card {
+    
+    text-decoration: none;
+                
+    font-weight: 300;
+    color: $red;
+    h3{
+        color: $red;
+        @media screen and (max-width: $mobile) {
+            font-size: $size-normal;
+        }
+    }
+
+    margin: 5px;    
+    border:1px solid $red;
+    position: relative;
+    aspect-ratio: 1/1;
+
+    @media screen and (max-width: $mobile) {
+        aspect-ratio: unset;
+        margin: 5px;
+    }
+
+
+    div{
+        padding:10px;
+        min-height: 2em;       
+    }
+
+    &:hover {
+        transition: background-color .6s;
+        text-decoration: underline;
+        
+    }
+
+    &-title {
+        //padding:0 20px;
+        text-align: center;
+        color: $white;
+        font-size: $size-bigger;
+        font-weight: 300;
+        
+    }
+
+
+}
+ 
+
+
+                  
+
+/*
+display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 200px;
+    flex: 0 0 200px;
+    color: #590000;
+    text-decoration: none;
+    position: relative;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+*/

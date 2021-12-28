@@ -1,5 +1,72 @@
 #omelie-home-card { 
 
     color: $white; 
+    
+    .references { 
 
+        line-height: 1.2em;
+
+        span {
+            font:500 .8rem/.4em $sans-font;
+            padding:2px 4px;
+            background-color: $white;
+            color: $black;    
+            white-space: nowrap;
+        }
+    
+        .vangelo-rif {
+    
+            color: $light-grey;
+            background-color: $dark-azure;
+        }
+
+        
+
+    }
+    p{
+        @media screen and (max-width: $mobile ) {
+            font-weight: 200;
+            font-size: $size-normal;
+            line-height: 1.3em;
+        }   
+    }
+
+    button {
+
+        display: inline-block;
+        text-transform: uppercase;
+        width: calc(70% - 10px);
+
+        // .omelie-card-cta {  }
+        @media screen and (max-width: $mobile ) {
+            width: 50%;
+        }
+
+        &:hover{
+            background-color: $gold;
+            color: $white;
+        }
+
+        &.omelie-card-cta-all {
+
+            width: 30%;
+            color: $white;
+            background-color: $dark-azure;
+
+            &:hover{
+                background-color: $gold;
+            }
+            
+            @media screen and (max-width: $mobile ) {
+                width: 50%;                
+            }   
+        }
+
+    }
+
+
+    
 }
+
+
+

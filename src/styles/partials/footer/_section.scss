@@ -1,0 +1,67 @@
+@import "../common/section";
+
+section#footer {
+
+    max-width: unset;
+    @media screen and (max-width: $mobile) {
+        font-size: $size-small;
+        
+    }
+
+    h2 {
+        line-height: 1em;    
+        text-transform: uppercase;
+        text-align: center;
+    }
+    
+    .ufficio {
+
+        p { 
+            text-align: center; 
+            line-height: 1.2em;
+        }
+        span { 
+            font-size: $size-smaller;
+            letter-spacing: .8px;
+        }
+
+    }
+    
+    .priests {
+        
+        .right { text-align: right; }
+       
+    }
+
+    .priest-name {
+        font-weight: 300;
+        color: white;
+    }
+
+    .priest-title {
+        letter-spacing: -0.2px;
+    }
+
+    .footer-logo {
+        text-align: center;
+        margin:4em auto 1em auto;
+    }
+    
+    .footer-colophon{
+        text-align: center;
+        font-size: $size-small;
+    }
+    
+    background: radial-gradient(#000000eb, #000000ee,#000000f0,#000000f9,#000000f5,  #000000) no-repeat;
+    
+    color : $white;
+    
+    #section-title {        
+        &::after { border-color: $white; }
+    }    
+    
+}
+ 
+
+
+                  

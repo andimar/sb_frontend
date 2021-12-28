@@ -1,0 +1,35 @@
+@import "../common/section";
+
+section#donations {
+
+    #section-title { 
+        h2{
+            line-height: 1em;
+            font-weight: 300;
+        }
+    }
+
+    h3{
+        line-height: 1em;
+        text-align: center;
+        font-weight: 400;
+        font-size: $size-bigger;
+        
+    }
+    
+    background-color: $white;
+
+    p{
+        text-align: center;
+        margin: .5em auto 0 auto;
+    }
+    form {
+        text-align: center;
+    }
+    
+    
+}
+ 
+
+
+                  
