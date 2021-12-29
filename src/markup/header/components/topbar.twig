@@ -1,9 +1,14 @@
 {% include '/markup/header/components/menu-mobile.twig' %}
-<div id="topbar" class="grid grid-end">
-    
-    <div class="col col-6 col-md col-middle col-align-top grid-end">
-        {% include '/markup/header/components/menu.twig' %}        
-        {% include '/markup/header/components/hamburger.twig' %}
-    </div>
-    
+<div id="topbar-mobile">
+<div class="grid">
+    <div class="col col-4 col-middle"><img src="{{base_dir}}/assets/logo.svg"/></div>
+    <div class="col col-8">{% include '/markup/header/components/hamburger.twig' %}</div>
+</div>
+</div>
+<div id="topbar">    
+    <div class="grid grid-end">
+        <div class="col col-6 col-md col-middle col-align-top grid-end">
+            {% include '/markup/header/components/menu.twig' %}            
+        </div>
+    </div>    
 </div>

@@ -12,7 +12,7 @@
         { "label" : "Vita cristiana", "link" : "#" }
     ],
 
-    "news" : [
+    "news_top" : [
         {
             "title"   : "Oratorio, aperte le iscrizioni il 21 settembre",  
             "link"    : "#",
@@ -26,7 +26,8 @@
             "img"     : "",
             "excerpt" : "Presso l'ufficio parrocchiale, dal martedì al venerdì, dalle ore 17:00 alle 18:30.", 
             "category": "Matrimoni"
-        },
+        }],
+    "news" : [
         {
             "title"   : "Comunioni e Cresime, aperte le iscrizioni",  
             "link"    : "#",
@@ -79,6 +80,13 @@
             "title"   : "Se la tua mano ti è motivo di scandalo, tagliala",
             "excerpt" : "Se vuoi far apparire il Regno dei Cieli devi vivere un trauma, devi attaccare te stesso, devi mortificare certe tue modalità automatiche per entrare in un altro modo di pensare, di agire."
         }
+    },
+    "hours" : {
+        "masses" : {
+            "festivo" : "8:30 // 10:30 // 11:30 // 18:30",
+            "feriale" : "8:30 // 18:30"
+        },
+        "office" : "Dal Martedì al venerdì dalle ore 18:00 alle ore 21:00"
     },
     "christianlife" : [
         { "label":"I Dieci Comandamenti","link":"https://www.sanbernardoparrocchia.it/i-dieci-comandamenti/"},
