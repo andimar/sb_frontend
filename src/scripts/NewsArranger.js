@@ -1,7 +1,13 @@
 class NewsArranger {
-    constructor( isMobile, callback  ){
+    constructor( isMobile ){
 
         this.isMobile = isMobile;
+
+        ///  cards è un array di elementi (cards)
+        this.cards = this.getCards();
+    }
+
+    arrange( callback ) {
 
         /// se siamo su un device mobile        
         if( this.isMobile ) {
@@ -9,9 +15,6 @@ class NewsArranger {
             /// prendiamo lo swiperswapper
             this.swiperWrapper = document.querySelector('#news-carousel .swiper-wrapper');
             
-            ///  cards è un array di elementi (cards)
-            this.cards = this.getCards();
-
             /// rimuoviamo tutte le cards delle news
             this.removeCards();
 
@@ -21,9 +24,11 @@ class NewsArranger {
             /// e ci mettiamo tutte le news in ordine
             this.putCards( this.swiperWrapper );
         }
+
         
         /// eseguiamo comunque una callback;
         callback();
+        
     }
 
     getCards() {   

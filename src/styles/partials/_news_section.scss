@@ -9,6 +9,7 @@ section#news {
         display: none;
     }
 
+    
     #news-carousel {
 
         height: 100%;
@@ -21,6 +22,9 @@ section#news {
         &::after { border-color: $dark-red; }
     }
     
+    .swiper-pagination-bullet-active{
+        background-color: $dark-red;
+    }
     
 }
  

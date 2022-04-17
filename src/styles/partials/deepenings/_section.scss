@@ -1,0 +1,46 @@
+@import "../common/section";
+
+section#approfondimenti {
+
+    //height: 60vh;
+    z-index: 1;
+
+    background: radial-gradient($purple, $dark-purple, $dark-purple) no-repeat;
+
+    position: relative;
+    .separator {
+
+        top: -15px;
+        left: 0;
+        overflow: hidden;
+        position: absolute;
+      
+        width: 100%;
+        height: 16px;
+
+        .separator__svg{
+            fill: $dark-purple;
+          
+            width: 100%;
+            height: 100%;
+        }
+        
+    }
+    #sacramenti-list {
+
+        margin-bottom:2em;
+        height: 100%;
+        @import "card";
+    }
+
+    #section-title {
+        color : $white;
+        &::after { border-color: $white; }
+    }
+    
+    
+}
+ 
+
+
+                  

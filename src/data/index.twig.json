@@ -53,6 +53,13 @@
 
 
     ],
+    "video" : {
+        "url" : "https://www.youtube.com/embed/live_stream?channel=UCElYF70vRihTWXdWaabuwMA",
+        "is_live" : true,
+        "day" : "20/04/2022",
+        "time" : "10:00",
+        "subject" : "Messa della domenica"
+    },
     "sacramenti" : [
         {
             "title"   : "Battesimo",  

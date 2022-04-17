@@ -63,14 +63,18 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-        const newsArranger = new NewsArranger( isMobile(), function(){
-            
+        const newsArranger = new NewsArranger( isMobile() );
+    
+
+        newsArranger.arrange(  function(){
+         
             if(newsArranger.cards.length){ 
                 document.getElementById('news').classList.remove('hidden');
                 activateCarousel();
             } 
 
-        }  );
+        }.bind(this ) );
+        
         console.log('newsArranger',newsArranger);
     });
 

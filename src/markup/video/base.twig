@@ -1,0 +1,17 @@
+<section id="video" class="grid {{ video is defined ? '' : 'hidden': '' }}">
+    
+    <div id="section-title" class="col col-12">
+        <h2>VIDEO</h2>
+    </div>
+    <div class="col col-1"></div>
+    <div class="col col-10" >
+        
+            <iframe src="{{ video.url }}" frameborder="0" allowfullscreen="allowfullscreen" data-mce-fragment="1"></iframe>
+    
+    
+        <p class="description">{{video.subject}}<br>
+            <span class="time">{{video.is_live ? video.day ~ 'alle ore ' ~ video.hour : '' }}</span>
+        </p>
+        
+    </div>
+</section>

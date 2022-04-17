@@ -1,0 +1,49 @@
+@import "common/section";
+
+section#video {
+
+    //height: 60vh;
+    z-index: 1;
+
+    &.hidden {
+        display: none;
+    }
+
+
+    #section-title {
+        color : $dark-red;
+        &::after { border-color: $dark-red; }
+    }
+
+    iframe { width: 100%; max-width: 100%;}
+   
+
+    .description {
+            text-align:center;
+            font: 300 26px/1.2em $main-font, sans-serif; 
+            margin-top:15px;padding-bottom:10px;
+    }
+
+    .description .time {
+        display:inline-block;
+        padding-top:10px;
+        font-size:.9em
+    }
+
+
+    .rwd-video iframe, .rwd-video object, .rwd-video embed { 
+        height: 100%; width: 100%; 
+        position: absolute; 
+        top: 0; left: 0; 
+    }
+
+    @media (max-width:640px){
+        .rwd-video {    
+            padding-bottom: 45%;
+            flex-basis:90%;
+        }
+    } 
+
+}
+ 
+
