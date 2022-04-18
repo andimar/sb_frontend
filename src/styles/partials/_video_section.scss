@@ -15,7 +15,7 @@ section#video {
         &::after { border-color: $dark-red; }
     }
 
-    iframe { width: 100%; max-width: 100%;}
+    iframe { width: 100%; max-width: 100%; aspect-ratio: 16/9; height: auto;}
    
 
     .description {
