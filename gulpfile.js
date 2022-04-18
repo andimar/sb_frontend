@@ -5,11 +5,21 @@ var gulp     = require('gulp'),                       // base
     connect  = require('gulp-connect'),               // creates a local server
     open     = require('gulp-open'),                  // to open a browser istance        
     twig     = require('gulp-twig'),
-    data     = require('gulp-data'),    
-    babel    = require('gulp-babel'),
+    data     = require('gulp-data'),        
     cleanCSS = require('gulp-clean-css'),
     plumber  = require('gulp-plumber'),
+    terser   = require('gulp-terser-js'),
     fs       = require('fs'),
+    bump = require('gulp-bump'),
+    git  = require('gulp-git'),
+    filter = require('gulp-filter'),
+    argv = require('yargs')
+        .option('type', {
+            alias: 't',
+            choices: ['patch', 'minor', 'major']
+        }).argv,
+    tag = require('gulp-tag-version'),
+    push = require('gulp-git-push'),
     inject   = require('gulp-inject-partials');// injects a text in a file (used for ATF injection)
 
 
@@ -66,10 +76,12 @@ gulp.task('styles:lib', () => {
 
 gulp.task('scripts', function() {
     return gulp.src('src/scripts/**/*.js')
-        .pipe( plumber() )
-        .pipe( babel({
-            presets: ['@babel/preset-env']
-        }) )
+
+        .pipe( terser({ // reterefnce --> https://terser.org/docs/api-reference#mangle-options
+            
+            mangle: false
+
+        }))
         .pipe( gulp.dest(scriptsBuildFolder) )
         .pipe( connect.reload() );
 });
@@ -87,9 +99,10 @@ gulp.task('scripts:lib', () => {
     .pipe( connect.reload() );
 });
 
-gulp.task('html',   function() { return gulp.src('src/**/*.html')   .pipe(gulp.dest(buildFolder))       
+gulp.task('html',   function() { return gulp.src('src/**/*.html')   .pipe(gulp.dest(buildFolder))
     .pipe( connect.reload() );
 });
+
 gulp.task('assets', function() { return gulp.src('src/assets/**/*') .pipe(gulp.dest(assetsBuildFolder)) 
     .pipe( connect.reload() );
 });
@@ -158,6 +171,44 @@ gulp.task('browser', function(){
 });
 
 
+
+
+/**
+ * Modifica la versione del progetto
+ * prende l'opzione -t per stabilire il tipo di avanzamento 
+ * 'patch' ( default ), 'minor', 'major'
+ */
+ gulp.task( 'bump', function () {
+
+    return gulp.src('package.json')
+           .pipe( bump( { type: argv.type || 'patch' }) )
+           .pipe( gulp.dest('./') );
+           
+});
+
+/**
+ * aggiunge i nuovi file elaborati con git add
+ * e poi fa il commit utilizzando la nuova versione
+ */
+gulp.task( 'commit', function() {
+
+    return gulp.src( [ buildFolder + '*', 'package.json' ] )
+        .pipe( git.add() ) // Run git add
+        .pipe( git.commit( `Bump to version ${ version }` ))        
+        .pipe( filter('package.json')) // filtra il solo package.json        
+        .pipe( tag() )                 // così tag prende solo la versione del package.json
+        .pipe( push({                      
+            repository: 'origin',
+            refspec: 'HEAD'
+        }) );
+}.bind( this ) );
+
+
+
+
+
+
+
 gulp.task('common-chain',
     gulp.series('clean','sass','assets',
         gulp.parallel('scripts','scripts:lib', 'styles:lib' /* ,'html' */),
@@ -170,4 +221,9 @@ gulp.task('default',
 );
 
 gulp.task('build', gulp.series('common-chain'));
+
+
+
+// updates version and saves file in the /static folder
+gulp.task('build-bump',  gulp.series('bump', 'version', 'common-chain', 'commit'));
 
