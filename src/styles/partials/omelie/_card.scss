@@ -31,18 +31,28 @@
         }   
     }
 
-    button {
+    button, a {
 
         display: inline-block;
         text-transform: uppercase;
+        text-decoration: none;
+        
+        color : $dark-grey;
         width: calc(70% - 10px);
-
-        // .omelie-card-cta {  }
+        background-color: $white;
+        border-radius: 5px;
+        font-weight: 300;
+        text-align: center;
+        padding-top: 3px;
+        
+        
         @media screen and (max-width: $mobile ) {
             width: 50%;
         }
 
-        &:hover{
+        &:active { color: $dark-grey }
+
+        &:hover {
             background-color: $gold;
             color: $white;
         }
@@ -52,9 +62,9 @@
             width: 30%;
             color: $white;
             background-color: $dark-azure;
-
+            
             &:hover{
-                background-color: $gold;
+                background-color: $gold;                
             }
             
             @media screen and (max-width: $mobile ) {
