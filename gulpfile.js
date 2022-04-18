@@ -23,9 +23,12 @@ var gulp     = require('gulp'),                       // base
     inject   = require('gulp-inject-partials');// injects a text in a file (used for ATF injection)
 
 
+var version          = '';
+var current_version  = '';  
 
 var buildFolder = 'dist/',
     cssBuildFolder, scriptsBuildFolder, assetsBuildFolder, viewsBuildFolder;
+
 
 const setFolders = (folder = 'static/') => {
     buildFolder = folder;
@@ -170,6 +173,21 @@ gulp.task('browser', function(){
         .pipe(open({uri: 'http://localhost:9080'}));
 });
 
+
+
+/** 
+ * Imposta le variabili di versione attuali leggendole dal package-json
+ */
+ gulp.task('version', () => { 
+
+    // setFolders( staticFolder );
+
+    const pkg = getPackageJson();
+    version         = pkg.version;
+    current_version = pkg.version.replace(/\./g,'_');  // serve trasformare i punti in underscore per l'injection;
+    
+    return gulp.src('src/');
+} );
 
 
 
