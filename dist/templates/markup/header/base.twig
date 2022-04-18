@@ -1,0 +1,21 @@
+<header>    
+    {% include '/markup/header/components/topbar.twig' %}
+    
+    <div id="header-container" class="grid" >
+        <div class="col-1"></div>
+        <div class="col-3 col-md">{% include '/markup/header/components/home-info-box.twig' %}</div>
+        <div class="col-1"></div>
+        
+        {% for item in news_top %}
+        <div class="col-3 col-md col-bottom">
+            {% include '/markup/news/news_card.twig' %}
+        </div>
+        {% endfor %}
+        
+    </div>
+
+</header>
+<style>
+    header { background-image: url('{{base_dir}}/assets/s-bernardo.jpg'); }
+</style>
+

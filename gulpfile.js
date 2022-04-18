@@ -173,6 +173,9 @@ gulp.task('browser', function(){
         .pipe(open({uri: 'http://localhost:9080'}));
 });
 
+var getPackageJson = function () {
+    return JSON.parse( fs.readFileSync('./package.json', 'utf8'));
+};
 
 
 /** 
@@ -211,7 +214,7 @@ gulp.task('browser', function(){
 gulp.task( 'commit', function() {
 
     return gulp.src( [ buildFolder + '*', 'package.json' ] )
-        .pipe( git.add() ) // Run git add
+        .pipe( git.add({args: '-f'}) ) // Run git add
         .pipe( git.commit( `Bump to version ${ version }` ))        
         .pipe( filter('package.json')) // filtra il solo package.json        
         .pipe( tag() )                 // così tag prende solo la versione del package.json

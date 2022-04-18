@@ -1,0 +1,27 @@
+<nav id="menu_mobile" role="navigation">
+    <ul>
+        {% for item in menu %}
+            {% if item.subitems %}
+
+                <li aria-haspopup="true">
+            
+                    <a href="{{ item.link }}">{{ item.label }}</a>
+                    
+                    <ul aria-label="submenu">
+                        {% for subitem in item.subitems %}
+                        <li><a href="{{ subitem.link }}">{{ subitem.label }}</a></li>
+                        {% endfor %}    
+                    </ul>
+                </li>
+
+            {% else %}
+
+                <li><a href="{{ item.link }}">{{ item.label }}</a></li>
+
+            {% endif %}            
+        {% endfor %}
+    </ul>
+</nav>
+{% block scripts %}
+<script src="{{ base_dir }}/scripts/menu_mobile.js"></script>
+{% endblock %}

@@ -1,0 +1,14 @@
+<section id="sacramenti" class="grid grid-center">
+    
+    <div id="section-title" class="col col-12">
+        <h2>SACRAMENTI</h2>
+    </div>
+        
+    <div id="sacramenti-list" class="grid grid-center col-10">
+        {% for item in sacramenti %}
+            <div class="col-3 col-md col-middle">
+                {% include '/markup/sacramenti/card.twig' %}
+            </div>
+        {% endfor %}
+    </div>
+</section>

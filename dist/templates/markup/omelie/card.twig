@@ -1,0 +1,13 @@
+<div id="omelie-home-card">
+    
+    <h2>{{ homily.title }}</h2>
+    <div class="references">
+    <span class="vangelo-rif">{{ homily.ref }}</span> <span class="pubdate">{{ homily.pubdate }}</span> <span class="calendario">{{ homily.calendar }}</span>
+    </div>
+    <p>{{ homily.excerpt }}</p>
+    <div class="buttons">
+        <button class="omelie-card-cta" href="{{ homily.link }}">Leggi l'omelia</button>
+        <button class="omelie-card-cta-all" href="/omelie/">Tutte le omelie</button>
+    </div>    
+
+</div>
