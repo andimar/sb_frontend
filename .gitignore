@@ -1,3 +1,5 @@
+dist/markup/
+dist/markup
+dist/markup/*.*
 
 node_modules
-dist/markup/

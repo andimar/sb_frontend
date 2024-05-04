@@ -30,7 +30,7 @@ var buildFolder = 'dist/',
     cssBuildFolder, scriptsBuildFolder, assetsBuildFolder, viewsBuildFolder;
 
 
-const setFolders = (folder = 'static/') => {
+const setFolders = (folder = 'dist/') => {
     buildFolder = folder;
     cssBuildFolder = buildFolder + 'styles/';
     scriptsBuildFolder = buildFolder + 'scripts/';
