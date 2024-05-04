@@ -77,6 +77,7 @@ gulp.task('styles:lib', () => {
     .pipe( connect.reload() );
 });
 
+
 gulp.task('scripts', function() {
     return gulp.src('src/scripts/**/*.js')
 
@@ -109,16 +110,20 @@ gulp.task('html',   function() { return gulp.src('src/**/*.html')   .pipe(gulp.d
 gulp.task('assets', function() { return gulp.src('src/assets/**/*') .pipe(gulp.dest(assetsBuildFolder)) 
     .pipe( connect.reload() );
 });
-//gulp.task('views',  function() { return gulp.src('src/**/*.twig')   .pipe(gulp.dest(viewsBuildFolder)); });
 
 
-// Compile Twig templates to HTML
-gulp.task('templates', function() {
-    return gulp.src('src/**/*.twig') // run the Twig template parser on all .html files in the "src" directory
-        //.pipe(twig('twig_data.json'))
 
-        // each twig templates has a json that contains
-        // its own sample data
+
+// Compile Twig to HTML pages for live preview
+gulp.task('html-preview', function() {
+
+    let pages = [
+        'src/index.twig'
+    ];
+
+    return gulp.src(pages)
+        
+        // each twig page has a json that contains its own sample data
         .pipe( data(function (file) {
 
             let hasBackslashes = file.path.includes('\\');
@@ -132,14 +137,17 @@ gulp.task('templates', function() {
             return data;
         }) )
         .pipe( twig( { base: __dirname + '/src/' } ) )
+        
+        /// serve per aggiungere gli atf
         .pipe( inject({ start: '/**--{{path}}--', end: '*/', prefix: __dirname,  removeTags: true}) )
-        .pipe( gulp.dest(buildFolder+'/') ) // output the rendered HTML files to the "dist" directory
+
+        .pipe( gulp.dest(`${buildFolder}/`) ) // output the rendered HTML files to the "dist" directory
         .pipe( connect.reload() );
 });
 
 
 // Copy Twig templates to dist
-gulp.task('templates-update', function() {
+gulp.task('templates', function() {
     return gulp.src('src/**/*.twig') 
 
         .pipe( inject({ start: '/**--{{path}}--', end: '*/', prefix: __dirname,  removeTags: true}) )
@@ -150,13 +158,12 @@ gulp.task('templates-update', function() {
 
 gulp.task('watch', function () {
     
-    gulp.watch('src/styles/**/*.scss', gulp.series('sass', 'templates'));
+    gulp.watch('src/styles/**/*.scss', gulp.series('sass', 'html-preview'));
     gulp.watch('src/assets/**/*', gulp.series('assets'));
     gulp.watch('src/scripts/**/*.js', gulp.series('scripts','scripts:lib'));    
-    gulp.watch('src/**/*.twig', gulp.series('templates','templates-update'));
-    gulp.watch('src/**/*.html', gulp.series('templates', 'templates-update'));
-    gulp.watch('src/data/**/*.json', gulp.series('templates', 'templates-update'));
-    
+    gulp.watch('src/**/*.twig', gulp.series('html-preview','templates'));
+    gulp.watch('src/**/*.html', gulp.series('html-preview', 'templates'));
+    gulp.watch('src/data/**/*.json', gulp.series('html-preview', 'templates'));    
 });
 
 
@@ -181,7 +188,7 @@ var getPackageJson = function () {
 /** 
  * Imposta le variabili di versione attuali leggendole dal package-json
  */
- gulp.task('version', () => { 
+gulp.task('version', () => { 
 
     // setFolders( staticFolder );
 
@@ -199,7 +206,7 @@ var getPackageJson = function () {
  * prende l'opzione -t per stabilire il tipo di avanzamento 
  * 'patch' ( default ), 'minor', 'major'
  */
- gulp.task( 'bump', function () {
+gulp.task( 'bump', function () {
 
     return gulp.src('package.json')
            .pipe( bump( { type: argv.type || 'patch' }) )
@@ -230,10 +237,12 @@ gulp.task( 'commit', function() {
 
 
 
+
+
 gulp.task('common-chain',
     gulp.series('clean','sass','assets',
         gulp.parallel('scripts','scripts:lib', 'styles:lib' /* ,'html' */),
-        gulp.series('templates', 'templates-update')
+        gulp.series('html-preview', 'templates')
     )
 );
 
