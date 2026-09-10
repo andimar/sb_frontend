@@ -41,7 +41,7 @@ const setFolders = (folder = 'dist/') => {
 setFolders(buildFolder);
 
 // task to delete each file in the dist directory
-gulp.task('clean', () => del([cssBuildFolder, scriptsBuildFolder, assetsBuildFolder, buildFolder + '*.html']));
+gulp.task('clean', () => del([cssBuildFolder, scriptsBuildFolder, assetsBuildFolder, buildFolder + 'templates/', buildFolder + '*.html']));
 
 
 // task to compile SASS scripts,
@@ -52,7 +52,7 @@ gulp.task('sass', () =>
         includePaths: [],
         outputStyle: 'compressed',
         precision: 9
-    }).on('error', sass.logError))
+    }))
     .pipe(cleanCSS({debug: true}, function(details) {
         console.log(details.name + ': ' + details.stats.originalSize);
         console.log(details.name + ': ' + details.stats.minifiedSize);
@@ -242,12 +242,12 @@ gulp.task( 'commit', function() {
 gulp.task('common-chain',
     gulp.series('clean','sass','assets',
         gulp.parallel('scripts','scripts:lib', 'styles:lib' /* ,'html' */),
-        gulp.series('html-preview', 'templates')
+        gulp.series('templates')
     )
 );
 
 gulp.task('default',
-    gulp.series('common-chain', gulp.parallel('connect', 'watch', 'browser') )
+    gulp.series('common-chain', 'html-preview', gulp.parallel('connect', 'watch', 'browser') )
 );
 
 gulp.task('build', gulp.series('common-chain'));
