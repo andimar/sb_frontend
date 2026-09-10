@@ -1,0 +1,15 @@
+<article class="{{ article.classes }}" id="post-{{ article.id }}">
+    <div class="categorybar">{{ article.categories }} </div>
+    <h1 class="entry-title">{{ article.title }}</h1>
+    <div class="authorbar">
+        <span class="pubdate">{{ article.date }}</span>
+        {% block calendar %}{% endblock %}
+        di <span class="author">{{ article.author }}</span>
+    </div>
+    <div class="entry-content">
+        {% block before_content %}{% endblock %}
+        {{ content.html }}
+        {{ content.page_links }}
+        {{ content.tags }}
+    </div>
+</article>

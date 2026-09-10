@@ -1,0 +1,8 @@
+{% if pagination %}
+<nav id="pagination" aria-label="Paginazione"><ul>
+    {% for page in pagination %}<li>
+        {% if page.current %}<span class="{{ page.class }}" aria-current="page">{{ page.label }}</span>
+        {% else %}<a href="{{ page.url }}" class="{{ page.class }}">{{ page.label }}</a>{% endif %}
+    </li>{% endfor %}
+</ul></nav>
+{% endif %}

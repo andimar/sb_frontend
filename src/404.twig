@@ -1,0 +1,7 @@
+{% extends 'markup/single/layout.twig' %}
+{% block page %}
+<main class="movable"><section class="list section">
+    <h1 class="entry-title">{{ title }}</h1><p>{{ message }}</p>
+    <p><a href="{{ document.home_url }}">{{ home_label }}</a></p>
+</section></main>
+{% endblock %}

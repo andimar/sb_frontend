@@ -1,0 +1,14 @@
+{% extends 'markup/single/article.twig' %}
+
+{% block calendar %}
+    {% if gospel %}<span class="calendario">{{ gospel.calendar }}</span>{% endif %}
+{% endblock %}
+
+{% block before_content %}
+    {% if gospel %}
+    <div class="vangelo">
+        <h4>{{ gospel.reference }}</h4>
+        {{ gospel.text }}
+    </div>
+    {% endif %}
+{% endblock %}

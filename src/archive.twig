@@ -1,0 +1,11 @@
+{% extends 'markup/single/layout.twig' %}
+{% block page %}
+<main class="movable"><section class="list section homilies">
+    <div class="section-title">{{ title }}</div>
+    {% if query is defined and query %}<p class="search-query">“{{ query }}”</p>{% endif %}
+    {% if listing.found %}
+        <div class="homilies-column">{% for item in listing.items %}{% include 'markup/archive/card.twig' %}{% endfor %}</div>
+        {% include 'markup/archive/pagination.twig' %}
+    {% else %}<h2>{{ empty_message }}</h2>{% endif %}
+</section></main>
+{% endblock %}
