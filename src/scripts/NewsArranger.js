@@ -46,7 +46,7 @@ class NewsArranger {
 
             /// creiamo una slide
             const slide = document.createElement('div');
-            slide.className = "col-4 col-md col-bottom swiper-slide";
+            slide.className = "swiper-slide sb-news-slide";
 
             /// ci mettiamo dentro la card
             slide.appendChild(card);

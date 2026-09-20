@@ -1,9 +1,10 @@
 {% if base_dir is not defined %}
     {% set base_dir = '' %}
 {% endif %}
+{% set asset_version = asset_version|default('2.0.3') %}
 {% include 'markup/layout/header.twig' %}
 {% block page %}{% endblock %}
 {% block scripts %}
-<script src = "{{ base_dir }}/scripts/is_mobile.js"></script>    
+<script src="{{ base_dir }}/scripts/is_mobile.js?v={{ asset_version }}"></script>
 {% endblock %}
 {% include 'markup/layout/footer.twig' %}

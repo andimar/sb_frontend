@@ -1,0 +1,1086 @@
+/*
+ * Tailwind entry point for both the homepage and the progressively migrated
+ * WordPress views. Preflight stays disabled so component-level normalization
+ * remains explicit and no broad reset changes the established visual system.
+ */
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@source "../**/*.twig";
+@source "../**/*.js";
+
+@theme static {
+  --color-sb-red: #880000;
+  --color-sb-red-dark: #590000;
+  --color-sb-black: #222222;
+  --color-sb-white: #f7f7f7;
+  --color-sb-gray-light: #e9e9e9;
+  --color-sb-gray-dark: #333333;
+  --color-sb-gold: #f98a00;
+  --color-sb-green: #007548;
+  --color-sb-green-dark: #025c39;
+  --color-sb-azure-dark: #597081;
+  --color-sb-purple: #593987;
+  --color-sb-purple-dark: #4a2e72;
+  --font-sb-display: "Yanone Kaffeesatz", sans-serif;
+  --font-sb-body: "Roboto", sans-serif;
+  --breakpoint-sb-mobile: 64rem;
+  --spacing-sb-gutter: 1.25rem;
+  --container-sb-reading: 48.75rem;
+  --container-sb-page: 75rem;
+}
+
+/* Internal WordPress views migrated from the legacy theme styles. */
+@font-face {
+  font-family: "SB Merriweather";
+  src: url("../../css/fonts/MerriweatherR/Merriweather-Regular_gdi.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SB Merriweather Light";
+  src: url("../../css/fonts/MerriweatherL/MerriweatherLight_gdi.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SB Merriweather Italic";
+  src: url("../../css/fonts/MerriweatherLI/Merriweather-LightIt_gdi.woff") format("woff");
+  font-display: swap;
+}
+
+@layer components {
+  .sb-internal-body { margin: 0; min-height: 100%; }
+  .sb-internal-container { min-height: 100vh; display: flex; flex-direction: column; }
+  .movable, #off-canvas-menu, #off-canvas-menu #hamburger--icon rect, .sb-internal-footer { transition: transform .5s cubic-bezier(.25,.1,0,1), padding .5s cubic-bezier(.25,.1,0,1); }
+  .movable.pushed, .sb-internal-footer.pushed { transform: translate3d(280px,0,0); }
+
+  #off-canvas-menu { position: fixed; z-index: 999; top: 0; left: -280px; display: flex; justify-content: center; width: 280px; height: 100%; margin: 0; padding: 0; background: #ededed; border-right: 1px solid #464443; }
+  #off-canvas-menu.pushed { transform: translate3d(280px,0,0); }
+  #off-canvas-menu .menu-menu-principale-container { width: 240px; height: 100vh; margin-top: 20px; padding-bottom: 100px; overflow-y: auto; }
+  #off-canvas-menu :is(.menu, .sub-menu) { width: 100%; margin: 0; padding: 0; list-style: none; }
+  #off-canvas-menu .menu-item { font: 15px/1.5em Roboto, sans-serif; list-style: none; }
+  #off-canvas-menu .menu-item a { display: block; color: #455; text-decoration: none; }
+  #off-canvas-menu .menu-item a:not([href="#"]) { padding: 5px; border-bottom: 1px solid #ddd; }
+  #off-canvas-menu .menu-item a:not([href="#"]):hover { background: #ddd; }
+  #off-canvas-menu .menu-item a[href="#"] { pointer-events: none; margin: 21px auto 10px; color: var(--color-sb-red-dark); cursor: default; font: 18px/1em "SB Yanone", "Yanone Kaffeesatz", sans-serif; text-align: center; text-transform: uppercase; }
+  #off-canvas-menu .menu-item a[href="#"]::after { display: block; width: 50px; margin: 10px auto; content: ""; border-bottom: 1px solid #8a0101; }
+  #off-canvas-menu #hamburger--icon { position: absolute; z-index: 9999; left: 20px; width: 30px; height: 30px; margin: 20px 0 0 280px; }
+  #off-canvas-menu.pushed #hamburger--icon { left: 5px; }
+  #off-canvas-menu #hamburger--icon rect { transform-origin: center; }
+  #off-canvas-menu #hamburger--icon rect#line-1.pushed { transform: rotate(45deg) translateY(22px); }
+  #off-canvas-menu #hamburger--icon rect#line-2.pushed { transform: scale(0); }
+  #off-canvas-menu #hamburger--icon rect#line-3.pushed { transform: rotate(-45deg) translateY(-37px); }
+  .sb-youtube-subscribe { position: absolute; top: 23px; right: 2rem; display: inline-flex; align-items: center; height: 28px; padding: 0 10px; color: #fff; font: 700 12px/1 Arial, sans-serif; text-decoration: none; text-transform: uppercase; background: #f00; border-radius: 2px; }
+  .sb-youtube-subscribe:hover, .sb-youtube-subscribe:focus-visible { color: #fff; background: #c00; }
+
+  .topbar { position: fixed; z-index: 1; top: 0; display: flex; width: 100%; height: 75px; background: #f5f5f5; border-bottom: 1px solid #eee; }
+  .topbar .logo { display: block; flex: 0 1 70%; margin: 19px auto 16px; text-indent: -9999px; background: url("../assets/logo.svg") center / contain no-repeat; }
+  .sb-internal-main { flex: 1 0 auto; width: 100%; margin-top: 75px; }
+  .sb-internal-footer { flex: 0 0 auto; min-height: 100px; color: #fff; text-align: center; background: #524a4a; border-top: 1px solid #ccc; }
+  .sb-internal-footer small { display: block; padding-top: 2rem; }
+  .sb-internal-main > .section, .sb-internal-main > .list { display: flex; flex-direction: column; width: 100%; }
+  .section-title { margin: 30px auto; font: 50px/1em "Yanone Kaffeesatz", sans-serif; text-align: center; }
+  .section-title::after { display: block; width: 30px; margin: 10px auto; content: ""; border-bottom: 3px solid #777; }
+  .search-query { margin: 0 auto 1.5rem; font-family: "SB Merriweather", serif; }
+
+  .sb-internal-main article { display: flex; flex-direction: column; align-items: center; color: #333; font: 18px/30px "SB Merriweather Light", "SB Merriweather", serif; text-align: justify; }
+  .sb-internal-main article :is(.authorbar, .entry-content, .entry-title) { width: 85%; max-width: 780px; }
+  .entry-title { margin: 10px 0 40px; font: 60px/1.1em "SB Merriweather", serif; text-align: left; }
+  .entry-content p { margin: .9em 0 .6em; }
+  .entry-content :is(em, i) { color: #211; font-family: "SB Merriweather Italic", serif; }
+  .entry-content :is(b, strong) { color: #544; }
+  .entry-content h2 { margin: 1.5em 0 .5em; font: 28px/1.1em "SB Merriweather", serif; text-align: left; }
+  .entry-content h3 { margin: 1.3em 0 .3em; font: 22px/1.1em "SB Merriweather", serif; text-align: left; }
+  .entry-content a { color: #455; font-weight: 700; text-decoration: none; }
+  .entry-content a:hover { border-bottom: 2px solid #455; }
+  .entry-content :is(ul, ol) { margin-left: 5%; text-align: left; }
+  .entry-content ul { list-style: disc; }
+  .entry-content ol { list-style: decimal; }
+  .entry-content img { display: block; max-width: 90%; height: auto; margin: 0 auto; }
+  .entry-content table { width: 100%; margin-top: 1.5em; font-size: 14px; line-height: 24px; text-align: left; }
+  .entry-content tr:nth-child(odd) { color: #464443; background: #eee; }
+  .entry-content :is(td, th) { height: 1em; padding: 5px; font-weight: 700; }
+  .entry-content th { color: #fff; font-size: 13px; line-height: 18px; background: #464443; }
+  .categorybar { width: 90%; max-width: 720px; }
+  .categorybar .post-categories, .categorybar .post-categories li { margin: 0; padding: 0; list-style: none; }
+  .categorybar a { display: inline-block; padding: 5px; color: #fff; font: 12px/1em Roboto, sans-serif; text-decoration: none; background: var(--color-sb-red-dark); }
+  .authorbar { margin-right: 10px; font: 12px/1em Roboto, sans-serif; }
+  .authorbar .pubdate { display: inline-block; padding: 4px; font-weight: 700; background: #eee; border-left: 2px solid #ddd; }
+  .authorbar .calendario { display: inline-block; padding: 4px; }
+  .vangelo { margin: 5%; color: #100; font: 18px/1.8em "SB Merriweather Italic", serif; }
+  .vangelo h4 { display: inline-block; padding: 6px; color: #fff; font: 700 12px/1em Roboto, sans-serif; text-transform: uppercase; background: #455; }
+  .navigation { display: flex; justify-content: space-between; width: 85%; max-width: 780px; margin: 2rem auto; }
+  #related-list { display: flex; flex-flow: row wrap; justify-content: center; width: 90%; margin: 0 auto; }
+  #related-list .related-card { flex: 0 0 270px; padding: 10px; margin: 1px; background: #eee; }
+  #related-list .related-card article { display: block; height: 250px; padding: 15px; overflow: hidden; border: 1px solid #455; }
+
+  .homilies { padding-bottom: 20px; background: #e5ddda; }
+  .homilies-column { display: flex; flex-direction: column; justify-content: center; }
+  .homily-card { display: flex; flex: 0 0 100%; flex-flow: row wrap; justify-content: center; padding: 20px; margin: 35px 0; }
+  .homily-card > a { position: relative; display: flex; flex: 0 1 70%; flex-flow: row wrap; color: #333; text-decoration: none; }
+  .homily-card > a:hover::after { position: absolute; width: 100%; height: 100%; content: ""; background: rgb(255 255 255 / 20%); }
+  .homily-card-header { flex: 1 0 45%; }
+  .homily-card-header :is(.calendario, .pubdate, .vangelo_rif) { display: inline-block; padding: 5px; font: 12px/1em Roboto, sans-serif; }
+  .homily-card-header :is(.pubdate, .calendario) { color: #333; background: #f7f7f7; }
+  .homily-card-header .vangelo_rif { color: #fff; text-transform: uppercase; background: #455; }
+  .homily-card-title { margin: 20px 0; font: 400 25px/1.1em "SB Merriweather", serif; }
+  .homily-card-excerpt { position: relative; flex: 1 0 50%; padding: 15px 15px 15px 45px; margin-left: 5%; font: 400 16px/1.7em "SB Merriweather Italic", serif; background: #fff; }
+  .homilies-search { position: relative; width: 30%; margin: 1em auto 2em; }
+  .homilies-search .search--term { width: 100%; height: 50px; padding: 8px 60px 10px 25px; color: #9aa; font: 400 20px/1em "SB Merriweather Italic", serif; border: 0; border-radius: 50px; }
+  .homilies-search .search--button { position: absolute; z-index: 1; top: 0; right: 0; width: 50px; height: 50px; opacity: 0; }
+
+  @media (max-width: 640px) {
+    .sb-youtube-subscribe { top: 23px; right: .5rem; }
+    .section-title { margin: 20px auto 5px; font-size: 40px; }
+    .sb-internal-main article { font-size: 14px; line-height: 24px; }
+    .entry-title { margin-bottom: 30px; font-size: 35px; }
+    .entry-content h2 { font-size: 22px; }
+    .entry-content h3 { font-size: 18px; }
+    .homily-card > a { flex-basis: 100%; }
+    .homily-card-excerpt { flex-basis: 100%; padding: 45px 15px 15px; margin: 2em 0; }
+    .homilies-search { width: calc(100% - 40px); }
+  }
+}
+
+@layer base {
+  .sb-home-body {
+    @apply m-0 w-full bg-sb-white font-sb-display text-[1.4rem] font-[100] leading-[1.5em];
+  }
+
+  .sb-home-body.menu-open {
+    @apply overflow-hidden;
+  }
+}
+
+@layer components {
+  /* Shared foundations for internal WordPress views. */
+  .sb-internal-shell {
+    @apply mx-auto w-full max-w-sb-page px-sb-gutter;
+  }
+
+  .sb-internal-body {
+    @apply min-h-screen overflow-x-hidden bg-sb-white text-sb-black;
+  }
+
+  .sb-internal-container {
+    @apply min-h-screen;
+  }
+
+  .sb-internal-main {
+    @apply min-h-[60vh];
+  }
+
+  .sb-internal-header,
+  .sb-internal-footer {
+    @apply font-sb-display;
+  }
+
+  .sb-reading-content {
+    @apply mx-auto w-full max-w-sb-reading;
+  }
+
+  .sb-page-heading {
+    @apply m-0 font-sb-display text-4xl font-[300] leading-tight text-sb-black sm:text-5xl;
+  }
+
+  .sb-section-heading {
+    @apply m-0 font-sb-display text-3xl font-[300] leading-tight text-sb-red-dark sm:text-4xl;
+  }
+
+  .sb-prose {
+    @apply font-sb-body text-base leading-7 text-sb-black;
+  }
+
+  .sb-prose > * + * {
+    @apply mt-5;
+  }
+
+  .sb-prose :is(h2, h3, h4) {
+    @apply mt-8 font-sb-display font-[400] leading-tight text-sb-red-dark;
+  }
+
+  .sb-prose h2 {
+    @apply text-3xl;
+  }
+
+  .sb-prose h3 {
+    @apply text-2xl;
+  }
+
+  .sb-prose :is(ul, ol) {
+    @apply my-5 pl-6;
+  }
+
+  .sb-prose ul {
+    @apply list-disc;
+  }
+
+  .sb-prose ol {
+    @apply list-decimal;
+  }
+
+  .sb-prose a {
+    @apply text-sb-red-dark underline decoration-sb-red/50 underline-offset-2 hover:text-sb-red;
+  }
+
+  .sb-prose :is(img, iframe, video) {
+    @apply h-auto max-w-full;
+  }
+
+  .sb-meta-list {
+    @apply flex flex-wrap items-center gap-x-2 gap-y-1 font-sb-body text-sm text-sb-gray-dark;
+  }
+
+  .sb-empty-state {
+    @apply mx-auto max-w-sb-reading py-12 text-center font-sb-body text-lg text-sb-gray-dark;
+  }
+
+  .sb-pagination {
+    @apply mx-auto my-8 flex w-full justify-center px-4;
+  }
+
+  .sb-pagination ul {
+    @apply m-0 flex list-none flex-wrap items-center justify-center gap-2 p-0;
+  }
+
+  .sb-pagination :is(a, span) {
+    @apply flex min-h-10 min-w-10 items-center justify-center rounded-full px-3 font-sb-body text-base no-underline;
+  }
+
+  .sb-pagination a {
+    @apply bg-white text-sb-red-dark shadow-sm transition-colors hover:bg-sb-red-dark hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sb-red-dark;
+  }
+
+  .sb-pagination .current {
+    @apply bg-sb-red-dark font-bold text-white;
+  }
+
+  .sb-pagination .gap {
+    @apply min-w-6 px-1 text-sb-gray-dark;
+  }
+
+  .sb-lightbox {
+    @apply m-auto max-h-[90vh] max-w-[90vw] border-0 bg-transparent p-0 backdrop:bg-black/80;
+  }
+
+  .sb-lightbox-figure {
+    @apply relative m-0 max-h-[90vh] max-w-[90vw];
+  }
+
+  .sb-lightbox-image {
+    @apply block max-h-[90vh] max-w-[90vw] object-contain;
+  }
+
+  .sb-lightbox-caption {
+    @apply absolute right-0 bottom-0 left-0 bg-black/70 px-4 py-3 text-center font-sb-body text-sm text-white;
+  }
+
+  .sb-lightbox-close {
+    @apply absolute top-2 right-2 z-10 grid h-10 w-10 place-items-center rounded-full border-0 bg-black/70 p-0 text-3xl leading-none text-white transition-colors hover:bg-sb-red-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
+  }
+
+  .sb-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--sb-gallery-columns, 3), minmax(0, 1fr));
+    gap: 1rem;
+    margin-block: 1.5rem;
+  }
+
+  .sb-gallery-item,
+  .sb-gallery-slide {
+    margin: 0;
+  }
+
+  .sb-gallery-image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .sb-gallery-item figcaption,
+  .sb-gallery-slide figcaption {
+    padding-block: .5rem;
+    color: #655;
+    font-size: .875rem;
+    text-align: center;
+  }
+
+  .sb-gallery-swiper {
+    width: min(100%, 70rem);
+    margin-block: 1.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .sb-gallery-slide {
+    width: min(80vw, 48rem);
+  }
+
+  @media (max-width: 640px) {
+    .sb-gallery-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .homilies #pagination {
+    @apply mx-auto my-8 flex w-full justify-center px-4;
+  }
+
+  .homilies #pagination ul {
+    @apply m-0 flex list-none flex-wrap items-center justify-center gap-2 p-0;
+  }
+
+  .homilies #pagination a,
+  .homilies #pagination span {
+    @apply flex min-h-10 min-w-10 items-center justify-center rounded-full px-3 font-sb-body text-base no-underline;
+  }
+
+  .homilies #pagination a {
+    @apply bg-white text-sb-red-dark shadow-sm transition-colors hover:bg-sb-red-dark hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sb-red-dark;
+  }
+
+  .homilies #pagination .current {
+    @apply bg-sb-red-dark font-bold text-white;
+  }
+
+  .homilies #pagination .gap {
+    @apply min-w-6 px-1 text-sb-gray-dark;
+  }
+
+  .sb-home,
+  .sb-home *,
+  .sb-home *::before,
+  .sb-home *::after {
+    box-sizing: border-box;
+  }
+
+  .sb-home {
+    @apply min-w-0 bg-sb-white text-sb-black;
+  }
+
+  .sb-section {
+    @apply relative mx-auto w-full max-w-[1200px];
+  }
+
+  .sb-section-content {
+    @apply mx-auto w-10/12;
+  }
+
+  .sb-section-title {
+    @apply relative w-full pb-[30px] text-center text-[2.5rem];
+  }
+
+  .sb-section-title h2 {
+    @apply m-0 pt-[0.75em] pb-[0.25em] text-[1.2em] font-[300] leading-[33.6px];
+  }
+
+  .sb-section-title::after {
+    @apply absolute left-[calc(50%-10px)] w-5 border-t-2 content-[''];
+  }
+
+  .sb-section-title--red {
+    @apply text-sb-red-dark after:border-sb-red-dark;
+  }
+
+  .sb-section-title--light {
+    @apply text-sb-white after:border-sb-white;
+  }
+
+  /* Hero and navigation */
+  .sb-home-header {
+    @apply relative h-[calc(100px+65vh)] overflow-hidden bg-cover bg-center bg-no-repeat;
+  }
+
+  .sb-hero-grid {
+    @apply grid h-full grid-cols-12 gap-x-4;
+  }
+
+  .sb-home-info-column {
+    @apply col-start-2 col-end-5;
+  }
+
+  .sb-hero-news-list {
+    @apply col-start-6 col-end-12 grid grid-cols-2 gap-4 self-end pb-4;
+  }
+
+  .sb-hero-news-item {
+    @apply flex min-w-0 flex-col justify-end;
+  }
+
+  #topbar {
+    @apply absolute top-0 z-10 h-[50px] w-full text-white;
+  }
+
+  #topbar > #menu_desktop {
+    @apply ml-auto w-1/2 p-[10px];
+  }
+
+  #menu_desktop .first-level {
+    @apply m-0 flex list-none bg-black/65 p-0 text-[1.1rem] font-[300] tracking-[0.5px];
+  }
+
+  #menu_desktop li {
+    @apply relative flex-1 list-none pt-[3px] text-center transition-colors duration-500;
+  }
+
+  #menu_desktop li:hover,
+  #menu_desktop li:focus-within {
+    @apply cursor-pointer bg-sb-green;
+  }
+
+  #menu_desktop a {
+    @apply block text-white no-underline outline-none;
+  }
+
+  #menu_desktop .first-level > li > a {
+    @apply uppercase;
+  }
+
+  #menu_desktop .dropdown {
+    @apply invisible absolute left-0 z-20 m-0 hidden w-full list-none bg-black/65 p-0 opacity-0 transition-all duration-500;
+  }
+
+  #menu_desktop li:hover > .dropdown,
+  #menu_desktop li:focus-within > .dropdown,
+  #menu_desktop .dropdown:hover,
+  #menu_desktop .dropdown:focus-within {
+    @apply visible block opacity-100;
+  }
+
+  #topbar-mobile,
+  #menu_mobile,
+  #hamburger--icon {
+    @apply hidden;
+  }
+
+  #home-info-box {
+    @apply w-[90%] rounded-b-lg border-0 bg-[#e1e1e1] pb-2 shadow-[3px_13px_35px_10px_#000];
+  }
+
+  #home-info-box #logo {
+    @apply border-b-2 border-[#f0f0f0] bg-sb-white px-[35px] pt-[35px] pb-[25px] text-center;
+  }
+
+  #home-info-box #logo img {
+    @apply w-full;
+  }
+
+  #home-info-box .info-box {
+    @apply m-0 grid w-full grid-cols-12 px-[25px] pt-5 pb-[10px];
+  }
+
+  #home-info-box .info-box-icon {
+    @apply col-span-2 p-0.5;
+  }
+
+  #home-info-box #info-ufficio .info-box-icon {
+    @apply px-[7px];
+  }
+
+  #home-info-box .info-box-icon img {
+    @apply w-full;
+  }
+
+  #home-info-box .info-box-content {
+    @apply col-span-10 min-w-0 px-2;
+  }
+
+  #home-info-box .info-box-content h3,
+  #home-info-box .info-box-content p {
+    @apply m-0 text-[1.2rem] leading-[1.2em];
+  }
+
+  #home-info-box .info-box-content h3,
+  #home-info-box .info-box-content h4 {
+    @apply font-[400];
+  }
+
+  #home-info-box .info-box-content h4 {
+    @apply mt-[0.2em] mb-0 inline-block rounded-lg bg-sb-green px-[0.6em] pt-[0.2em] pb-[0.1em] text-[0.9rem] leading-[1.2em] tracking-[1.1px] text-sb-white;
+  }
+
+  #home-info-box .info-box-content p {
+    @apply font-[350];
+  }
+
+  /* News and video */
+  .sb-news-section,
+  .sb-video-section {
+    @apply z-[1];
+  }
+
+  .sb-news-section {
+    @apply bg-[#f7f3ef] pb-8;
+  }
+
+  .sb-news-slide {
+    @apply flex h-auto flex-col justify-end px-1;
+  }
+
+  .sb-news-controls {
+    @apply mx-auto mt-5 flex w-[90%] items-center justify-center gap-4;
+  }
+
+  #news .swiper-pagination {
+    @apply relative w-auto text-center;
+    --swiper-pagination-color: var(--color-sb-red-dark);
+    --swiper-pagination-bullet-inactive-color: var(--color-sb-red-dark);
+    position: relative !important;
+    inset: auto !important;
+    width: auto !important;
+  }
+
+  #news .swiper-pagination .swiper-pagination-bullet-active {
+    @apply bg-sb-red-dark;
+  }
+
+  .news-card {
+    @apply relative mx-[5px] block min-h-[150px] rounded-t-lg bg-sb-gray-light no-underline shadow-[0_1px_6px_1px_#888] transition-colors duration-[600ms];
+  }
+
+  .news-card:hover {
+    @apply bg-sb-white;
+  }
+
+  .news-card::after {
+    @apply absolute bottom-0 block h-1 w-[70%] rounded-tr-lg bg-sb-red-dark transition-[width] duration-500 content-[''];
+  }
+
+  .news-card:hover::after {
+    @apply w-[90%];
+  }
+
+  .news-card-no-image {
+    @apply h-[30px] shrink-0;
+  }
+
+  .news-card-image {
+    @apply h-[150px] w-full rounded-t-lg bg-cover bg-center transition-[filter] duration-300 [filter:brightness(110%)_contrast(110%)_saturate(110%)];
+  }
+
+  .news-card:hover .news-card-image {
+    @apply [filter:brightness(110%)_contrast(110%)_saturate(170%)];
+  }
+
+  .news-card-category {
+    @apply absolute top-0 rounded-tl-lg rounded-br-lg bg-sb-red-dark px-[25px] pt-[10px] pb-[5px] text-[0.9rem] leading-none font-[400] tracking-[0.5px] text-white uppercase;
+  }
+
+  .news-card-title,
+  .news-card-excerpt {
+    @apply px-5;
+  }
+
+  .news-card-title {
+    @apply text-center text-sb-black;
+  }
+
+  .news-card-excerpt {
+    @apply bg-transparent text-black font-[300] leading-[1.2];
+  }
+
+  .news-card-excerpt * {
+    @apply bg-transparent;
+  }
+
+  .sb-video-section iframe {
+    @apply aspect-video h-auto w-full max-w-full border-0;
+  }
+
+  .sb-video-section .description {
+    @apply mt-[15px] mb-0 pb-[10px] text-center text-[26px] leading-[1.2em] font-[300];
+  }
+
+  .sb-video-section .description .time {
+    @apply inline-block pt-[10px] text-[0.9em];
+  }
+
+  /* Sacraments */
+  .sb-sacraments-section {
+    @apply z-[1] bg-sb-gold;
+  }
+
+  .sb-card-grid {
+    @apply grid grid-cols-4;
+  }
+
+  .sacramenti-card {
+    @apply relative mx-[5px] flex aspect-square flex-col justify-between border border-sb-white;
+  }
+
+  .sacramenti-card-title {
+    @apply m-0 flex h-[2em] min-h-[2em] items-center justify-center p-[10px] text-center text-[2rem] font-[300] text-sb-white;
+  }
+
+  .sacramenti-card-actions {
+    @apply min-h-[2em] p-[10px];
+  }
+
+  .sacramenti-card a {
+    @apply block text-sb-white no-underline font-[300] leading-[1.2em] hover:underline;
+  }
+
+  /* Homilies */
+  .sb-homilies-section {
+    @apply z-[1] overflow-hidden pt-[50px] text-sb-white;
+    background: radial-gradient(#000000ed, #000000f9, #000000fc, #000) no-repeat center;
+    background-size: 100% 130%;
+  }
+
+  .sb-homilies-section::before {
+    @apply absolute top-0 h-10 w-full origin-top-left -skew-y-[1.5deg] bg-sb-gold content-[''];
+  }
+
+  .sb-homilies-content {
+    @apply grid grid-cols-12;
+  }
+
+  #omelie-content-image {
+    @apply col-span-5 h-[350px] self-end bg-cover bg-[position:-70px_-20px] bg-no-repeat;
+  }
+
+  #omelie-content-card {
+    @apply col-span-7 min-w-0 px-2;
+  }
+
+  #omelie-home-card h2 {
+    @apply mt-0 font-[300] leading-[1.2];
+  }
+
+  #omelie-home-card .references {
+    @apply leading-[1.2em];
+  }
+
+  #omelie-home-card .references span {
+    @apply whitespace-nowrap bg-sb-white px-1 py-0.5 font-sb-body text-[0.8rem] leading-[0.4em] font-[500] text-sb-black;
+  }
+
+  #omelie-home-card .references .vangelo-rif {
+    @apply bg-sb-azure-dark text-sb-gray-light;
+  }
+
+  #omelie-home-card .buttons {
+    @apply flex w-full gap-[10px];
+  }
+
+  #omelie-home-card .buttons a {
+    @apply inline-block rounded-[5px] bg-sb-white pt-[3px] text-center text-sb-gray-dark no-underline uppercase transition-colors hover:bg-sb-gold hover:text-white;
+  }
+
+  #omelie-home-card .omelie-card-cta {
+    @apply w-[calc(70%-10px)];
+  }
+
+  #omelie-home-card .omelie-card-cta-all {
+    @apply w-[30%] bg-sb-azure-dark text-white;
+  }
+
+  #omelie-content-search {
+    @apply relative col-start-4 col-span-6 my-[30px] flex h-10;
+  }
+
+  #omelie-content-search input,
+  #omelie-content-search button {
+    @apply border-0 bg-sb-white px-[10px] pt-1.5 pb-1 font-sb-display text-[1.4rem] font-[300] tracking-[0.3px] text-sb-black outline-none;
+  }
+
+  #omelie-content-search input {
+    @apply min-w-0 flex-1 rounded-l-[5px];
+  }
+
+  #omelie-content-search button {
+    @apply rounded-r-[5px] bg-sb-azure-dark text-white transition-colors hover:bg-sb-gold;
+  }
+
+  /* Newsletter */
+  .sb-newsletter-section {
+    @apply relative mb-[50px] pb-2 text-sb-white;
+    background: radial-gradient(var(--color-sb-green), var(--color-sb-green-dark), var(--color-sb-green-dark)) no-repeat;
+  }
+
+  .sb-newsletter-section::before,
+  .sb-newsletter-section::after {
+    @apply absolute left-0 z-[1] h-5 w-full content-[''];
+    background-position: 0 0;
+    background-size: 20px 100%;
+  }
+
+  .sb-newsletter-section::before {
+    top: -20px;
+    background-image: linear-gradient(45deg, var(--color-sb-green-dark) 25%, transparent 25%), linear-gradient(-45deg, var(--color-sb-green-dark) 25%, transparent 25%);
+  }
+
+  .sb-newsletter-section::after {
+    bottom: -20px;
+    background-image: linear-gradient(135deg, var(--color-sb-green-dark) 25%, transparent 25%), linear-gradient(225deg, var(--color-sb-green-dark) 25%, transparent 25%);
+  }
+
+  .newsletter-card {
+    @apply flex flex-col items-center;
+  }
+
+  .newsletter-card-intro {
+    @apply w-10/12;
+  }
+
+  .newsletter-card p {
+    @apply mx-auto mt-[0.1em] mb-[1em] text-center text-[1.8rem];
+  }
+
+  .newsletter-card-form {
+    @apply w-4/12;
+  }
+
+  .newsletter-card form a {
+    @apply text-white;
+  }
+
+  .newsletter-card input[type='email'] {
+    @apply w-full rounded-[5px] border-0 bg-sb-white px-[10px] pt-2 pb-[7px] font-sb-display text-[1.2rem] font-[300] text-black shadow-[inset_1px_1px_4px_0_#000] outline-none placeholder:text-black;
+  }
+
+  .newsletter-card .privacy-container {
+    @apply mt-[10px] grid grid-cols-[20px_1fr] items-start gap-[10px];
+  }
+
+  .newsletter-card #privacy {
+    @apply mt-0 h-5 w-5 cursor-pointer accent-sb-green;
+  }
+
+  .newsletter-card label {
+    @apply text-[1.4rem] leading-[1.1em];
+  }
+
+  .newsletter-card label span {
+    @apply mt-1 block text-[0.9rem] font-[300] tracking-[1px] text-white uppercase;
+  }
+
+  .newsletter-card .submit-container {
+    @apply h-[3.5em] pt-[1em] text-center;
+  }
+
+  .newsletter-card button {
+    @apply rounded-[5px] border-[3px] border-white bg-transparent px-[10px] pt-[10px] pb-[7px] font-sb-display text-[1.2rem] font-[300] text-white uppercase outline-none transition-colors hover:border-sb-gold hover:text-sb-gold;
+  }
+
+  /* Donations and Christian life */
+  .sb-donations-section {
+    @apply bg-sb-white text-center;
+  }
+
+  .sb-donations-section .sb-section-title h2,
+  .sb-christian-life-section .sb-section-title h2 {
+    @apply font-[300] leading-none;
+  }
+
+  .sb-donations-section p {
+    @apply mx-auto mt-[0.5em] mb-0 text-center;
+  }
+
+  .sb-donations-content {
+    @apply mx-auto w-5/12;
+  }
+
+  .sb-donations-content form {
+    @apply text-center;
+  }
+
+  .sb-donations-content input[type='image'] {
+    @apply h-auto max-w-full;
+  }
+
+  .sb-donations-content h3 {
+    @apply text-center text-[2rem] leading-none font-[400];
+  }
+
+  .sb-christian-life-section {
+    @apply bg-[radial-gradient(var(--color-sb-white),var(--color-sb-white),var(--color-sb-gray-light))] uppercase;
+  }
+
+  .sb-christian-life-grid {
+    @apply grid grid-cols-4 gap-[10px];
+  }
+
+  .christianlife-card {
+    @apply flex aspect-square items-center justify-center border border-sb-red p-[10px] font-[300] text-sb-red no-underline hover:underline;
+  }
+
+  .christianlife-card-title {
+    @apply m-0 text-center text-[2rem] font-[300] text-sb-red;
+  }
+
+  /* Footer */
+  .sb-home-footer {
+    @apply flex w-full flex-col items-center bg-[radial-gradient(#000000eb,#000000ee,#000000f0,#000000f9,#000000f5,#000)] pb-4 text-sb-white;
+  }
+
+  .sb-home-footer h2 {
+    @apply m-0 text-center text-[1.2em] leading-none font-[300] uppercase;
+  }
+
+  .sb-home-footer > div:first-child h2 {
+    @apply pt-4;
+  }
+
+  .sb-home-footer .ufficio {
+    @apply w-1/2;
+  }
+
+  .sb-home-footer .ufficio p {
+    @apply text-center leading-[1.2em];
+  }
+
+  .sb-home-footer .ufficio span {
+    @apply text-[1.1rem] tracking-[0.8px];
+  }
+
+  .sb-priests-section {
+    @apply flex w-full flex-col items-center;
+  }
+
+  .sb-home-footer .priests {
+    @apply grid w-4/12 grid-cols-[5fr_7fr];
+  }
+
+  .sb-home-footer .priests .right {
+    @apply text-right;
+  }
+
+  .sb-home-footer .priest-name {
+    @apply font-[300] text-white;
+  }
+
+  .sb-home-footer .priest-title {
+    @apply tracking-[-0.2px];
+  }
+
+  .sb-home-footer .footer-logo {
+    @apply mx-auto mt-[4em] mb-[1em] text-center;
+  }
+
+  .sb-home-footer .footer-logo img {
+    @apply mx-auto;
+  }
+
+  .sb-home-footer .footer-colophon {
+    @apply text-center text-[1.2rem];
+  }
+
+  .sb-sacraments-section,
+  .sb-christian-life-section {
+    @apply pb-[37px];
+  }
+
+  @media (max-width: 64rem) {
+    .sb-home-header {
+      @apply h-auto w-full overflow-visible p-0;
+    }
+
+    .sb-hero-grid {
+      @apply block;
+    }
+
+    .sb-home-info-column {
+      @apply w-full;
+    }
+
+    .sb-hero-news-list,
+    #topbar,
+    #menu_desktop {
+      @apply hidden;
+    }
+
+    #topbar-mobile {
+      @apply fixed top-0 z-30 flex h-[50px] w-full items-center justify-between bg-sb-white;
+    }
+
+    #topbar-mobile.stick {
+      @apply bg-sb-gray-light;
+    }
+
+    .sb-mobile-logo {
+      @apply ml-[5px] flex h-full w-1/3 items-center;
+    }
+
+    .sb-mobile-logo img {
+      @apply h-4/5 w-auto;
+    }
+
+    #menu_mobile {
+      @apply fixed top-[50px] z-20 block h-[calc(100%-50px)] w-full -translate-x-[10%] overflow-auto bg-[radial-gradient(var(--color-sb-gray-light),var(--color-sb-white),var(--color-sb-white))] p-0 opacity-0 transition-all duration-200 pointer-events-none;
+    }
+
+    #menu_mobile.open {
+      @apply translate-x-0 opacity-100 duration-400 pointer-events-auto;
+    }
+
+    #menu_mobile ul {
+      @apply list-none text-left;
+    }
+
+    #menu_mobile li {
+      @apply py-1.5 text-left font-sb-display text-[1.4rem] font-[300] tracking-[1px] [text-shadow:0_1px_1px_#000];
+    }
+
+    #menu_mobile a {
+      @apply text-sb-black no-underline hover:underline;
+    }
+
+    #hamburger--icon {
+      @apply relative z-40 mr-2 ml-auto block h-11 w-11 cursor-pointer rounded-full border-0 bg-transparent p-0 transition-transform duration-500;
+    }
+
+    #hamburger--icon span,
+    #hamburger--icon span::before,
+    #hamburger--icon span::after {
+      @apply absolute left-1/2 top-1/2 block h-[3px] -translate-x-1/2 -translate-y-1/2 rounded-[10px] bg-black transition-all duration-500 content-[''];
+    }
+
+    #hamburger--icon span { width: 26px; }
+
+    #hamburger--icon span::before {
+      top: calc(50% - 9px);
+      left: calc(50% - 13px);
+      transform: translateY(-50%);
+      width: 18px;
+      margin-left: 0;
+    }
+
+    #hamburger--icon span::after {
+      top: calc(50% + 9px);
+      left: calc(50% - 13px);
+      transform: translateY(-50%);
+      width: 22px;
+      margin-left: 0;
+    }
+
+    #hamburger--icon.open {
+      transform: none;
+    }
+
+    #hamburger--icon.open span {
+      @apply h-[26px] w-[26px] bg-transparent;
+    }
+
+    #hamburger--icon.open span::before {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      width: 26px;
+      margin-left: 0;
+    }
+
+    #hamburger--icon.open span::after {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      width: 26px;
+      margin-left: 0;
+    }
+
+    #home-info-box {
+      @apply mt-[50px] w-full rounded-none p-0 shadow-none;
+    }
+
+    #home-info-box #logo {
+      @apply h-[clamp(105px,20vh,155px)] border-0 bg-[url('../assets/s-bernardo.jpg')] bg-cover bg-center p-0;
+    }
+
+    #home-info-box #logo img {
+      @apply hidden;
+    }
+
+    .sb-news-section {
+      @apply border-t border-[#e5d9d1] pt-1 shadow-none;
+    }
+
+    #news-carousel {
+      @apply ml-1 pl-[5%];
+      width: calc(100% - 8px);
+    }
+
+    .sb-news-slide {
+      @apply px-0;
+    }
+
+    .news-card {
+      @apply mx-0 border border-[#d9d9d9] shadow-[0_2px_8px_rgba(62,38,30,0.16)];
+    }
+
+    .news-card-title,
+    .news-card-excerpt {
+      font-size: calc(100% - 1px);
+    }
+
+    .sb-section-content {
+      @apply w-[90%];
+    }
+
+    .sacramenti-card {
+      @apply aspect-auto;
+    }
+
+    .sb-homilies-content {
+      @apply flex w-full flex-col;
+    }
+
+    #omelie-content-card {
+      @apply order-1 w-full px-[5%];
+    }
+
+    #omelie-home-card p {
+      @apply text-[1.4rem] leading-[1.3em] font-[200];
+    }
+
+    #omelie-home-card .buttons a {
+      @apply w-1/2;
+    }
+
+    #omelie-content-search {
+      @apply order-2 mx-auto w-[90%];
+    }
+
+    #omelie-content-image {
+      @apply order-3 w-full;
+    }
+
+    .newsletter-card-form {
+      @apply w-4/5;
+    }
+
+    .newsletter-card label {
+      @apply text-[1.1rem] font-[300] tracking-[0.5px];
+    }
+
+    .sb-donations-content,
+    .sb-home-footer .ufficio,
+    .sb-home-footer .priests {
+      @apply w-[90%];
+    }
+
+    .sb-home-footer {
+      @apply text-[1.2rem];
+    }
+  }
+
+  @media (max-width: 46.5rem) {
+    .sb-card-grid,
+    .sb-christian-life-grid {
+      @apply grid-cols-1;
+    }
+
+    .sacramenti-card-title {
+      @apply my-[0.6em] h-auto min-h-[0.5em] text-[1.8rem];
+    }
+
+    .christianlife-card {
+      @apply aspect-auto min-h-16;
+    }
+
+    .christianlife-card-title {
+      @apply text-[1.4rem];
+    }
+  }
+}

@@ -1,21 +1,19 @@
-<section id="donations" class="grid grid-center">
+<section id="donations" class="sb-section sb-donations-section" aria-labelledby="donations-title">
 
-	<div id="section-title" class="col col-12">
-		<h2>Donazioni e contributi per la parrocchia</h2>
-	</div>
+	{% include '/markup/common/section-title.twig' with { section_title: 'Donazioni e contributi per la parrocchia', section_title_id: 'donations-title' } %}
 
-	<div class="col col-12">
+	<div>
 		<p>Fai oggi una donazione per le necessità della parrocchia.</p>
 	</div>
-	<div class="col col-5 col-lg">
+	<div class="sb-donations-content">
 		<p>Clicca qui per effettuare una donazione</p>
 
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">						
 			<input type="image" src="https://www.sanbernardoparrocchia.it/wp-content/uploads/2020/08/donazioni.png" 
-			       border="0" name="submit"
+			       name="submit"
 				   title="Fai ora la tua donazione per le necessità della parrocchia"
 				   alt="Fai ora la tua donazione per le necessità della parrocchia">
-			<img alt="" border="0" src="https://www.paypal.com/it_IT/i/scr/pixel.gif" width="1" height="1">
+			<img alt="" src="https://www.paypal.com/it_IT/i/scr/pixel.gif" width="1" height="1">
 			<input type="hidden" name="cmd" value="_s-xclick">
 			<input type="hidden" name="hosted_button_id" value="JK6ENGN39S2ES">
 		</form>

@@ -1,8 +1,5 @@
-<section id="newsletter" class="grid grid-center">
-    
-    <div id="section-title" class="col col-12">
-        <h2>NEWSLETTER</h2>
-    </div>
+<section id="newsletter" class="sb-section sb-newsletter-section" aria-labelledby="newsletter-title">
+    {% include '/markup/common/section-title.twig' with { section_title: 'NEWSLETTER', section_title_id: 'newsletter-title', section_title_class: 'sb-section-title--light' } %}
     {% include '/markup/newsletter/card.twig' %}
     
 </section>

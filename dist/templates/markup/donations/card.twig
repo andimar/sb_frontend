@@ -1,7 +1,7 @@
-<div class="sacramenti-card grid">
-    <h3 class="sacramenti-card-title col-12 col-middle">{{ item.title }}</h3>
+<div class="sacramenti-card">
+    <h3 class="sacramenti-card-title">{{ item.title }}</h3>
 
-    <div class="col-12 col-bottom">
+    <div class="sacramenti-card-actions">
         {% for action in item.actions %}
             <a href="{{ action.link }}">{{ action.label }}</a>
         {% endfor %}

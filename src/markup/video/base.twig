@@ -1,12 +1,8 @@
-<section id="video" class="grid {{ video is defined ? '' : 'hidden' }}">
-    
-    <div id="section-title" class="col col-12">
-        <h2>VIDEO</h2>
-    </div>
-    <div class="col col-1"></div>
-    <div class="col col-10">
+<section id="video" class="sb-section sb-video-section {{ video is defined ? '' : 'hidden' }}" aria-labelledby="video-title">
+    {% include '/markup/common/section-title.twig' with { section_title: 'VIDEO', section_title_id: 'video-title', section_title_class: 'sb-section-title--red' } %}
+    <div class="sb-section-content">
         
-        <iframe src="{{ video.url }}" frameborder="0" allowfullscreen="allowfullscreen" data-mce-fragment="1"></iframe>
+        <iframe src="{{ video.url }}" title="{{ video.subject|default('Video della parrocchia') }}" allowfullscreen data-mce-fragment="1"></iframe>
     
         <p class="description">{{video.subject}}<br>
             <span class="time">{{video.is_live ? video.day ~ 'alle ore ' ~ video.hour : '' }}</span>
@@ -15,5 +11,5 @@
 </section>
 
 {% block scripts %}
-<script src="{{ base_dir }}/scripts/is_video_streaming.js"></script>
+<script src="{{ base_dir }}/scripts/is_video_streaming.js?v={{ asset_version }}"></script>
 {% endblock %}

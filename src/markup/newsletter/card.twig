@@ -1,15 +1,16 @@
-<div class="newsletter-card grid grid-center">
+<div class="newsletter-card">
         
-    <div class="col col-10">
+    <div class="newsletter-card-intro">
         <p>Lascia qui la tua email. Sarà utilizzata per inviarti avvisi e notizie dalla parrocchia.</p>
     </div>
-    <div class="col-4 col-lg">
+    <div class="newsletter-card-form">
         <form method="post" action="https://www.sanbernardoparrocchia.it/?na=s" class="newsletter">
             
-            <input type="email" name="ne" value="" placeholder="mario.rossi@email.it" required="">
+            <label class="sr-only" for="newsletter-email">Indirizzo email</label>
+            <input id="newsletter-email" type="email" name="ne" value="" placeholder="mario.rossi@email.it" required>
             
             <div class="privacy-container">
-                <input type="checkbox" name="ny" id="privacy" required="">
+                <input type="checkbox" name="ny" id="privacy" required>
                 
                 <label for="privacy">
                     Ho letto e accetto l'<a target="_blank" href="/privacy/">informativa sulla privacy</a>
@@ -27,4 +28,3 @@
 
 </div>
 
-    

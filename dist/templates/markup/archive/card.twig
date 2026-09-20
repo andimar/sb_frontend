@@ -1,0 +1,11 @@
+<article class="homily-card {{ item.classes }}" id="post-{{ item.id }}">
+    <a href="{{ item.url }}">
+        <header class="homily-card-header">
+            {% if item.gospel_reference %}<span class="vangelo_rif">{{ item.gospel_reference }}</span>{% endif %}
+            <span class="pubdate">{{ item.date }}</span>
+            {% if item.liturgical_calendar %}<span class="calendario">{{ item.liturgical_calendar }}</span>{% endif %}
+            <h2 class="homily-card-title">{{ item.title }}</h2>
+        </header>
+        <div class="homily-card-excerpt">{{ item.excerpt }}</div>
+    </a>
+</article>
