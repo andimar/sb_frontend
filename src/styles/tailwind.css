@@ -73,7 +73,7 @@
   #off-canvas-menu #hamburger--icon rect#line-1.pushed { transform: rotate(45deg) translateY(22px); }
   #off-canvas-menu #hamburger--icon rect#line-2.pushed { transform: scale(0); }
   #off-canvas-menu #hamburger--icon rect#line-3.pushed { transform: rotate(-45deg) translateY(-37px); }
-  .sb-youtube-subscribe { position: absolute; top: 23px; right: 2rem; display: inline-flex; align-items: center; height: 28px; padding: 0 10px; color: #fff; font: 700 12px/1 Arial, sans-serif; text-decoration: none; text-transform: uppercase; background: #f00; border-radius: 2px; }
+  .sb-youtube-subscribe { display: none; }
   .sb-youtube-subscribe:hover, .sb-youtube-subscribe:focus-visible { color: #fff; background: #c00; }
 
   .topbar { position: fixed; z-index: 1; top: 0; display: flex; width: 100%; height: 75px; background: #f5f5f5; border-bottom: 1px solid #eee; }
@@ -133,7 +133,6 @@
   .homilies-search .search--button { position: absolute; z-index: 1; top: 0; right: 0; width: 50px; height: 50px; opacity: 0; }
 
   @media (max-width: 640px) {
-    .sb-youtube-subscribe { top: 23px; right: .5rem; }
     .section-title { margin: 20px auto 5px; font-size: 40px; }
     .sb-internal-main article { font-size: 14px; line-height: 24px; }
     .entry-title { margin-bottom: 30px; font-size: 35px; }
@@ -142,6 +141,13 @@
     .homily-card > a { flex-basis: 100%; }
     .homily-card-excerpt { flex-basis: 100%; padding: 45px 15px 15px; margin: 2em 0; }
     .homilies-search { width: calc(100% - 40px); }
+  }
+
+  @media (min-width: 641px) {
+    .sb-internal-menu #hamburger--icon { display: block; }
+    .topbar .logo { background-image: url("../../img/logo_extended.svg"); }
+    .sb-youtube-subscribe { position: absolute; top: 25px; left: 88px; display: inline-flex; align-items: center; gap: 5px; height: 30px; padding: 0 10px; color: #fff; font: 700 14px/1 Arial, sans-serif; text-decoration: none; background: #f00; border-radius: 2px; }
+    .sb-youtube-subscribe span { font-size: 12px; }
   }
 }
 
