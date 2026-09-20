@@ -34,6 +34,22 @@
 
 /* Internal WordPress views migrated from the legacy theme styles. */
 @font-face {
+  font-family: "Yanone Kaffeesatz";
+  src: url("../../css/fonts/YanoneKaffeesatz-Thin/YanoneKaffeesatz-Thin_gdi.woff") format("woff");
+  font-weight: 100 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yanone Kaffeesatz";
+  src: url("../../css/fonts/YanoneKaffeesatz-Light/YanoneKaffeesatz-Light_gdi.woff") format("woff");
+  font-weight: 300 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "SB Merriweather";
   src: url("../../css/fonts/MerriweatherR/Merriweather-Regular_gdi.woff") format("woff");
   font-display: swap;
@@ -82,7 +98,7 @@
   .sb-internal-footer { flex: 0 0 auto; min-height: 100px; color: #fff; text-align: center; background: #524a4a; border-top: 1px solid #ccc; }
   .sb-internal-footer small { display: block; padding-top: 2rem; }
   .sb-internal-main > .section, .sb-internal-main > .list { display: flex; flex-direction: column; width: 100%; }
-  .section-title { margin: 30px auto; font: 50px/1em "Yanone Kaffeesatz", sans-serif; text-align: center; }
+  .section-title { margin: 30px auto; font: 300 50px/1em "Yanone Kaffeesatz", sans-serif; text-align: center; }
   .section-title::after { display: block; width: 30px; margin: 10px auto; content: ""; border-bottom: 3px solid #777; }
   .search-query { margin: 0 auto 1.5rem; font-family: "SB Merriweather", serif; }
 
@@ -118,9 +134,13 @@
   #related-list .related-card article { display: block; height: 250px; padding: 15px; overflow: hidden; border: 1px solid #455; }
 
   .homilies { padding-bottom: 20px; background: #e5ddda; }
-  .homilies-column { display: flex; flex-direction: column; justify-content: center; }
-  .homily-card { display: flex; flex: 0 0 100%; flex-flow: row wrap; justify-content: center; padding: 20px; margin: 35px 0; }
-  .homily-card > a { position: relative; display: flex; flex: 0 1 70%; flex-flow: row wrap; color: #333; text-decoration: none; }
+  .homilies-column { display: flex; flex-direction: column; justify-content: center; width: 100%; }
+  .homily-card,
+  .homily-card > a,
+  .homily-card-header,
+  .homily-card-excerpt { box-sizing: border-box; min-width: 0; }
+  .homily-card { display: flex; flex: 0 0 100%; width: 100%; flex-flow: row wrap; justify-content: center; padding: 20px; margin: 35px 0; }
+  .homily-card > a { position: relative; display: flex; flex: 0 1 70%; flex-flow: row wrap; width: 100%; color: #333; text-decoration: none; }
   .homily-card > a:hover::after { position: absolute; width: 100%; height: 100%; content: ""; background: rgb(255 255 255 / 20%); }
   .homily-card-header { flex: 1 0 45%; }
   .homily-card-header :is(.calendario, .pubdate, .vangelo_rif) { display: inline-block; padding: 5px; font: 12px/1em Roboto, sans-serif; }
@@ -139,7 +159,7 @@
     .entry-content h2 { font-size: 22px; }
     .entry-content h3 { font-size: 18px; }
     .homily-card > a { flex-basis: 100%; }
-    .homily-card-excerpt { flex-basis: 100%; padding: 45px 15px 15px; margin: 2em 0; }
+    .homily-card-excerpt { flex-basis: 100%; width: 100%; padding: 45px 15px 15px; margin: 2em 0; }
     .homilies-search { width: calc(100% - 40px); }
   }
 
