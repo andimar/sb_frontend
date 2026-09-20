@@ -1,0 +1,11 @@
+<img
+    class="sb-gallery-image"
+    src="{{ item.src }}"
+    {% if item.srcset %}srcset="{{ item.srcset }}"{% endif %}
+    {% if item.sizes %}sizes="{{ item.sizes }}"{% endif %}
+    width="{{ item.width }}"
+    height="{{ item.height }}"
+    alt="{{ item.alt }}"
+    loading="lazy"
+    decoding="async"
+>

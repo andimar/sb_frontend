@@ -1,0 +1,15 @@
+<div id="{{ gallery.id }}" class="sb-gallery-swiper swiper" aria-label="Galleria immagini">
+    <div class="swiper-wrapper">
+        {% for item in gallery.items %}
+            <figure class="sb-gallery-slide swiper-slide">
+                <a href="{{ item.full_url }}" data-sb-lightbox="image" data-sb-lightbox-caption="{{ item.caption }}">
+                    {% include 'markup/gallery/image.twig' %}
+                </a>
+                {% if item.caption %}<figcaption>{{ item.caption }}</figcaption>{% endif %}
+            </figure>
+        {% endfor %}
+    </div>
+    <div class="swiper-pagination"></div>
+    <button class="swiper-button-prev" type="button" aria-label="Immagine precedente"></button>
+    <button class="swiper-button-next" type="button" aria-label="Immagine successiva"></button>
+</div>

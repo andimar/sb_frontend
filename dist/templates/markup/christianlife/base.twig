@@ -1,12 +1,10 @@
-<section id="christianlife" class="grid grid-center">
+<section id="christianlife" class="sb-section sb-christian-life-section" aria-labelledby="christian-life-title">
 
-	<div id="section-title" class="col col-12">
-		<h2>Percorsi di Vita Cristiana</h2>
-	</div>
+	{% include '/markup/common/section-title.twig' with { section_title: 'Percorsi di Vita Cristiana', section_title_id: 'christian-life-title', section_title_class: 'sb-section-title--red' } %}
 
-	<div id="christianlife-list" class="grid grid-between col-10">
+	<div id="christianlife-list" class="sb-christian-life-grid sb-section-content">
         {% for item in christianlife %}
-            <div class="col-3 col-lg col-middle">
+            <div>
                 {% include '/markup/christianlife/card.twig' %}
             </div>
         {% endfor %}

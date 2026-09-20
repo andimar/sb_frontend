@@ -1,0 +1,11 @@
+{% extends 'markup/single/layout.twig' %}
+
+{% block page %}
+<main class="sb-internal-main movable">
+    {% block article %}{% include 'markup/single/article.twig' %}{% endblock %}
+    <div class="navigation">
+        <div class="next-posts">{{ navigation.next }}</div>
+        <div class="prev-posts">{{ navigation.previous }}</div>
+    </div>
+</main>
+{% endblock %}

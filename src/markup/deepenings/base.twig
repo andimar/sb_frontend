@@ -1,17 +1,17 @@
-<section id="approfondimenti" class="grid grid-center">
+<section id="approfondimenti" class="sb-section relative z-[1] bg-[radial-gradient(var(--color-sb-purple),var(--color-sb-purple-dark),var(--color-sb-purple-dark))] pb-8">
     <div class="separator">
         <svg class="separator__svg" viewBox="0 0 100 100" preserveAspectRatio="none"  version="1.1" xmlns="http://www.w3.org/2000/svg">
             <path d="M 100 100 V 0 L -100 100"/>
         </svg>
     </div><!-- end Separator -->
    
-    <div id="section-title" class="col col-12">
+    <div id="section-title" class="sb-section-title sb-section-title--light">
         <h2>APPROFONDIMENTI</h2>
     </div>
         
-    <div id="approfondimenti-list" class="grid grid-center col-10">
+    <div id="approfondimenti-list" class="sb-section-content grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {% for item in deepenings %}
-            <div class="col-3 col-md col-middle">
+            <div>
                 {% include '/markup/deepenings/card.twig' %}
             </div>
         {% endfor %}

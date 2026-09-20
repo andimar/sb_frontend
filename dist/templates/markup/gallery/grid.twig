@@ -1,0 +1,22 @@
+<div
+    id="{{ gallery.id }}"
+    class="sb-gallery-grid"
+    style="--sb-gallery-columns: {{ gallery.columns }}"
+    role="list"
+>
+    {% for item in gallery.items %}
+        <figure class="sb-gallery-item" role="listitem">
+            {% if item.target_url %}
+                <a
+                    href="{{ item.target_url }}"
+                    {% if item.lightbox %}data-sb-lightbox="image" data-sb-lightbox-caption="{{ item.caption }}"{% endif %}
+                >
+                    {% include 'markup/gallery/image.twig' %}
+                </a>
+            {% else %}
+                {% include 'markup/gallery/image.twig' %}
+            {% endif %}
+            {% if item.caption %}<figcaption>{{ item.caption }}</figcaption>{% endif %}
+        </figure>
+    {% endfor %}
+</div>

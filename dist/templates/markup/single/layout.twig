@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js" {{ document.language_attributes }}>
+<head>
+    <meta charset="{{ document.charset }}">
+    <title>{{ document.title }}</title>
+    <meta name="Copyright" content="Copyright © {{ document.name }} {{ document.year }}. All Rights Reserved.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+    {% if document.external_services %}
+    <script data-ad-client="ca-pub-4486592461412993" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    {% endif %}
+    {{ wp_head }}
+</head>
+<body class="sb-internal-body {{ document.body_classes }}">
+    {{ wp_body_open }}
+    <aside id="off-canvas-menu" class="sb-internal-menu movable">
+        <div id="hamburger--icon">
+            <a href="#">
+                <svg width="100%" height="100%" viewBox="0 0 100 100">
+                    <rect id="line-1" x="10" y="20" width="80" height="15"/>
+                    <rect id="line-2" x="10" y="50" width="80" height="15"/>
+                    <rect id="line-3" x="10" y="80" width="80" height="15"/>
+                </svg>
+            </a>
+            <div id="youtube_button">
+                {% if document.external_services %}<script src="https://apis.google.com/js/platform.js"></script>{% endif %}
+                <div class="g-ytsubscribe" data-channelid="UCElYF70vRihTWXdWaabuwMA" data-layout="default" data-count="default"></div>
+            </div>
+            <style>
+                #youtube_button {position: absolute; left: 50px; top: 6px;}
+                @media screen and (max-width: 480px) { #youtube_button {left: 0px; top: 60px;} }
+            </style>
+        </div>
+        {{ primary_menu }}
+    </aside>
+    <div id="container" class="sb-internal-container">
+        <header class="topbar header sb-internal-header movable">
+            <a class="logo" href="{{ document.home_url }}" title="{{ document.name }}" rel="home">{{ document.name }}</a>
+        </header>
+        {% block page %}{% endblock %}
+        {# No legacy dynamic_sidebar: site components replace widgets. #}
+        <footer id="footer" class="sb-internal-footer movable source-org vcard copyright" role="contentinfo">
+            <small>©{{ document.year }} {{ document.name }}</small>
+        </footer>
+    </div>
+    {% if document.external_services %}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3452513-9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-3452513-9');
+    </script>
+    {% endif %}
+    {{ wp_footer }}
+</body>
+</html>
