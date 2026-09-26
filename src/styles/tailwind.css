@@ -130,9 +130,6 @@
   .vangelo { margin: 5%; color: #100; font: 18px/1.8em "SB Merriweather Italic", serif; }
   .vangelo h4 { display: inline-block; padding: 6px; color: #fff; font: 700 12px/1em Roboto, sans-serif; text-transform: uppercase; background: #455; }
   .navigation { display: flex; justify-content: space-between; width: 85%; max-width: 780px; margin: 2rem auto; }
-  #related-list { display: flex; flex-flow: row wrap; justify-content: center; width: 90%; margin: 0 auto; }
-  #related-list .related-card { flex: 0 0 270px; padding: 10px; margin: 1px; background: #eee; }
-  #related-list .related-card article { display: block; height: 250px; padding: 15px; overflow: hidden; border: 1px solid #455; }
 
   .homilies { padding-bottom: 20px; background: #e5ddda; }
   .homilies-column { display: flex; flex-direction: column; justify-content: center; width: 100%; }

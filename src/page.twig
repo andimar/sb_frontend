@@ -10,16 +10,6 @@
             {% if show_tags %}{{ content.tags }}{% endif %}
         </div>
     </article>
-    {% if related.items is defined and related.items %}
-        <div class="section-title">Articoli</div>
-        <div id="related-list">
-            {% for item in related.items %}
-                <a class="related-card" href="{{ item.url }}">
-                    <article><h4>{{ item.title }}</h4><p>{{ item.excerpt }}</p></article>
-                </a>
-            {% endfor %}
-        </div>
-    {% endif %}
     {% if show_navigation %}
         <div class="navigation">
             <div class="next-posts">{{ navigation.next }}</div>
