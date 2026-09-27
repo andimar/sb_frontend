@@ -24,7 +24,7 @@
                     <p>Cerca nel titolo, nell’omelia e nel testo del Vangelo.</p>
                 </div>
 
-                <details class="homilies-advanced"{% if filters.selected_gospels or filters.date_from or filters.date_to or filters.order == 'meno-recenti' %} open{% endif %}>
+                <details class="homilies-advanced"{% if filters.selected_gospels or filters.liturgical_season or filters.date_from or filters.date_to or filters.order == 'meno-recenti' %} open{% endif %}>
                     <summary>
                         <svg class="homilies-filter-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M3 5h18M6 12h12M10 19h4"/></svg>
                         <span>Filtri avanzati</span>
@@ -41,6 +41,15 @@
                                 {% endfor %}
                             </div>
                         </fieldset>
+                        <div class="homilies-field homilies-field--season">
+                            <label for="omelie-tempo">Tempo liturgico</label>
+                            <select id="omelie-tempo" name="tempo_liturgico">
+                                <option value="">Tutti i tempi</option>
+                                {% for season in filters.liturgical_seasons %}
+                                <option value="{{ season.slug }}"{% if filters.liturgical_season == season.slug %} selected{% endif %}>{{ season.name }} ({{ season.count }})</option>
+                                {% endfor %}
+                            </select>
+                        </div>
                         <fieldset class="homilies-date-range">
                             <legend>Periodo</legend>
                             <div class="homilies-date-range-fields">
@@ -99,6 +108,7 @@
                 <ol>
                     <li><strong>Parole o frasi</strong><span>Cerca un tema come “perdono” oppure una frase come “beati i misericordiosi”.</span></li>
                     <li><strong>Vangelo</strong><span>Puoi selezionare uno o più evangelisti. Per cercare parole del brano, inseriscile invece nella barra principale.</span></li>
+                    <li><strong>Tempo liturgico</strong><span>Riduci l’archivio a un periodo o a una celebrazione, come Avvento, Quaresima o Pasqua.</span></li>
                     <li><strong>Periodo</strong><span>Scegli una data iniziale, finale oppure entrambe, poi seleziona “Applica filtri”.</span></li>
                     <li><strong>Ordinamento</strong><span>Il pulsante alterna risultati più recenti e meno recenti: conferma con “Applica filtri”.</span></li>
                 </ol>
