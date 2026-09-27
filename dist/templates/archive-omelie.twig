@@ -42,9 +42,9 @@
                             </div>
                         </fieldset>
                         <div class="homilies-field homilies-field--season">
-                            <label for="omelie-tempo">Tempo liturgico</label>
+                            <label for="omelie-tempo">Tempo o celebrazione liturgica</label>
                             <select id="omelie-tempo" name="tempo_liturgico">
-                                <option value="">Tutti i tempi</option>
+                                <option value="">Tutti</option>
                                 {% for season in filters.liturgical_seasons %}
                                 <option value="{{ season.slug }}"{% if filters.liturgical_season == season.slug %} selected{% endif %}>{{ season.name }} ({{ season.count }})</option>
                                 {% endfor %}
@@ -108,7 +108,7 @@
                 <ol>
                     <li><strong>Parole o frasi</strong><span>Cerca un tema come “perdono” oppure una frase come “beati i misericordiosi”.</span></li>
                     <li><strong>Vangelo</strong><span>Puoi selezionare uno o più evangelisti. Per cercare parole del brano, inseriscile invece nella barra principale.</span></li>
-                    <li><strong>Tempo liturgico</strong><span>Riduci l’archivio a un periodo o a una celebrazione, come Avvento, Quaresima o Pasqua.</span></li>
+                    <li><strong>Tempo o celebrazione liturgica</strong><span>Riduci l’archivio a un tempo liturgico, come Avvento o Quaresima, oppure a una celebrazione, come Natale o Pasqua.</span></li>
                     <li><strong>Periodo</strong><span>Scegli una data iniziale, finale oppure entrambe, poi seleziona “Applica filtri”.</span></li>
                     <li><strong>Ordinamento</strong><span>Il pulsante alterna risultati più recenti e meno recenti: conferma con “Applica filtri”.</span></li>
                 </ol>
