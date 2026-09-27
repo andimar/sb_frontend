@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="profile" href="https://gmpg.org/xfn/11">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     {% if document.external_services %}
     <script data-ad-client="ca-pub-4486592461412993" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     {% endif %}
@@ -23,20 +26,15 @@
                     <rect id="line-3" x="10" y="80" width="80" height="15"/>
                 </svg>
             </a>
-            <div id="youtube_button">
-                {% if document.external_services %}<script src="https://apis.google.com/js/platform.js"></script>{% endif %}
-                <div class="g-ytsubscribe" data-channelid="UCElYF70vRihTWXdWaabuwMA" data-layout="default" data-count="default"></div>
-            </div>
-            <style>
-                #youtube_button {position: absolute; left: 50px; top: 6px;}
-                @media screen and (max-width: 480px) { #youtube_button {left: 0px; top: 60px;} }
-            </style>
         </div>
         {{ primary_menu }}
     </aside>
     <div id="container" class="sb-internal-container">
         <header class="topbar header sb-internal-header movable">
             <a class="logo" href="{{ document.home_url }}" title="{{ document.name }}" rel="home">{{ document.name }}</a>
+            <a id="youtube_button" class="sb-youtube-subscribe" href="https://www.youtube.com/channel/UCElYF70vRihTWXdWaabuwMA?sub_confirmation=1" target="_blank" rel="noopener noreferrer">
+                <span aria-hidden="true">▶</span> YouTube
+            </a>
         </header>
         {% block page %}{% endblock %}
         {# No legacy dynamic_sidebar: site components replace widgets. #}

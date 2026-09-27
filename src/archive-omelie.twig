@@ -1,1 +1,113 @@
-{% extends 'archive.twig' %}
+{% extends 'markup/single/layout.twig' %}
+{% block page %}
+<main class="sb-internal-main movable">
+    <section class="homilies homilies-archive" aria-labelledby="homilies-heading">
+        <header class="homilies-hero">
+            <div class="sb-internal-shell">
+                <p class="homilies-eyebrow">Archivio</p>
+                <h1 id="homilies-heading" class="section-title">{{ title }}</h1>
+                <p class="homilies-subtitle">{{ subtitle }}</p>
+            </div>
+        </header>
+
+        <div class="sb-internal-shell homilies-layout">
+            <form class="homilies-filter" action="{{ archive_url }}" method="get" role="search">
+                <div class="homilies-filter-primary">
+                    <div class="homilies-search-label">
+                        <label for="omelie-q">Cosa vuoi cercare?</label>
+                        <button class="homilies-help-trigger" type="button" data-homilies-help-open aria-label="Come usare la ricerca" aria-haspopup="dialog">?</button>
+                    </div>
+                    <div class="homilies-search-control">
+                        <input type="search" id="omelie-q" name="omelie_q" value="{{ filters.query }}" placeholder="Es. perdono, speranza, beati i misericordiosi…">
+                        <button type="submit">Cerca</button>
+                    </div>
+                    <p>Cerca nel titolo, nell’omelia e nel testo del Vangelo.</p>
+                </div>
+
+                <details class="homilies-advanced"{% if filters.selected_gospels or filters.date_from or filters.date_to or filters.order == 'meno-recenti' %} open{% endif %}>
+                    <summary>
+                        <svg class="homilies-filter-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M3 5h18M6 12h12M10 19h4"/></svg>
+                        <span>Filtri avanzati</span>
+                    </summary>
+                    <div class="homilies-filter-grid">
+                        <fieldset class="homilies-field homilies-field--gospel">
+                            <legend>Vangelo</legend>
+                            <div class="homilies-gospel-options">
+                                {% for code, name in filters.gospels %}
+                                <label class="homilies-gospel-option">
+                                    <input type="checkbox" name="vangelo[]" value="{{ code }}"{% if code in filters.selected_gospels %} checked{% endif %}>
+                                    <span>{{ name }}</span>
+                                </label>
+                                {% endfor %}
+                            </div>
+                        </fieldset>
+                        <fieldset class="homilies-date-range">
+                            <legend>Periodo</legend>
+                            <div class="homilies-date-range-fields">
+                                <label for="omelie-dal"><span>Da</span><input type="date" id="omelie-dal" name="dal" value="{{ filters.date_from }}"></label>
+                                <span class="homilies-date-range-separator" aria-hidden="true">—</span>
+                                <label for="omelie-al"><span>A</span><input type="date" id="omelie-al" name="al" value="{{ filters.date_to }}"></label>
+                            </div>
+                        </fieldset>
+                        <div class="homilies-field homilies-field--order">
+                            <span class="homilies-field-label">Ordina</span>
+                            <button class="homilies-order-toggle{% if filters.order == 'meno-recenti' %} is-oldest{% endif %}" type="button" data-homilies-order-toggle aria-pressed="{{ filters.order == 'meno-recenti' ? 'true' : 'false' }}">
+                                <svg class="homilies-order-icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 4v16m0-16-4 4m4-4 4 4"/></svg>
+                                <span data-homilies-order-label>{% if filters.order == 'meno-recenti' %}Meno recenti{% else %}Più recenti{% endif %}</span>
+                            </button>
+                            <input type="hidden" name="ordine" value="{{ filters.order }}" data-homilies-order-value>
+                        </div>
+                    </div>
+                    <div class="homilies-filter-actions">
+                        <button class="homilies-apply-filters" type="submit" data-homilies-apply-filters><span>Applica filtri</span></button>
+                        {% if filters.has_filters %}
+                        <a class="homilies-reset-filters" href="{{ archive_url }}">Azzera filtri</a>
+                        {% else %}
+                        <span class="homilies-reset-filters is-disabled" aria-disabled="true">Azzera filtri</span>
+                        {% endif %}
+                    </div>
+                </details>
+            </form>
+
+            <div class="homilies-results" aria-live="polite">
+                <div class="homilies-results-heading">
+                    <p><strong>{{ result_count }}</strong> {% if result_count == 1 %}omelia trovata{% else %}omelie trovate{% endif %}</p>
+                </div>
+                {% if listing.found %}
+                    <div class="homilies-column">{% for item in listing.items %}{% include 'markup/archive/card.twig' %}{% endfor %}</div>
+                    {% include 'markup/archive/pagination.twig' %}
+                {% else %}
+                    <div class="homilies-empty">
+                        <h2>{{ empty_message }}</h2>
+                        <p>Prova ad ampliare le date o a usare meno parole.</p>
+                        <a href="{{ archive_url }}">Torna a tutte le omelie</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <dialog class="homilies-help" data-homilies-help aria-labelledby="homilies-help-title">
+            <div class="homilies-help-header">
+                <div>
+                    <p class="homilies-eyebrow">Guida alla ricerca</p>
+                    <h2 id="homilies-help-title">Come trovare un’omelia</h2>
+                </div>
+                <button class="homilies-help-close" type="button" data-homilies-help-close aria-label="Chiudi la guida">×</button>
+            </div>
+            <div class="homilies-help-content">
+                <p class="homilies-help-intro">Non devi scrivere tutto nella barra: inserisci lì soltanto il tema o la frase che ricordi, poi usa i filtri avanzati per restringere i risultati.</p>
+                <ol>
+                    <li><strong>Parole o frasi</strong><span>Cerca un tema come “perdono” oppure una frase come “beati i misericordiosi”.</span></li>
+                    <li><strong>Vangelo</strong><span>Puoi selezionare uno o più evangelisti. Per cercare parole del brano, inseriscile invece nella barra principale.</span></li>
+                    <li><strong>Periodo</strong><span>Scegli una data iniziale, finale oppure entrambe, poi seleziona “Applica filtri”.</span></li>
+                    <li><strong>Ordinamento</strong><span>Il pulsante alterna risultati più recenti e meno recenti: conferma con “Applica filtri”.</span></li>
+                </ol>
+                <div class="homilies-help-example">
+                    <span>Esempio</span>
+                    <p><strong>Ricerca:</strong> perdono · <strong>Vangelo:</strong> Matteo · <strong>Dal:</strong> 2022 · <strong>Al:</strong> 2024</p>
+                </div>
+            </div>
+        </dialog>
+    </section>
+</main>
+{% endblock %}

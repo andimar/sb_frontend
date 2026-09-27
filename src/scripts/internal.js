@@ -96,6 +96,57 @@
       searchTerm.addEventListener('focus', () => searchForm.classList.add('fixedbox'));
       searchTerm.addEventListener('blur', () => searchForm.classList.remove('fixedbox'));
     }
+
+    const homiliesFilter = document.querySelector('.homilies-filter');
+    if (homiliesFilter) {
+      const orderToggle = homiliesFilter.querySelector('[data-homilies-order-toggle]');
+      const orderValue = homiliesFilter.querySelector('[data-homilies-order-value]');
+      const orderLabel = homiliesFilter.querySelector('[data-homilies-order-label]');
+      const applyButton = homiliesFilter.querySelector('[data-homilies-apply-filters]');
+      const appliedFilters = new URLSearchParams(new FormData(homiliesFilter)).toString();
+      const updateApplyButton = () => {
+        if (!applyButton) return;
+        const hasChanges = new URLSearchParams(new FormData(homiliesFilter)).toString() !== appliedFilters;
+        applyButton.disabled = !hasChanges;
+        applyButton.setAttribute('aria-disabled', String(!hasChanges));
+      };
+
+      updateApplyButton();
+      homiliesFilter.addEventListener('input', updateApplyButton);
+      homiliesFilter.addEventListener('change', updateApplyButton);
+
+      if (orderToggle && orderValue && orderLabel) {
+        orderToggle.addEventListener('click', () => {
+          const oldestFirst = orderValue.value !== 'meno-recenti';
+          orderValue.value = oldestFirst ? 'meno-recenti' : 'piu-recenti';
+          orderLabel.textContent = oldestFirst ? 'Meno recenti' : 'Più recenti';
+          orderToggle.classList.toggle('is-oldest', oldestFirst);
+          orderToggle.setAttribute('aria-pressed', String(oldestFirst));
+          updateApplyButton();
+        });
+      }
+
+      homiliesFilter.addEventListener('submit', (event) => {
+        if (!applyButton || event.submitter !== applyButton) return;
+        homiliesFilter.setAttribute('aria-busy', 'true');
+        applyButton.disabled = true;
+        applyButton.querySelector('span').textContent = 'Aggiorno…';
+      });
+    }
+
+    const homiliesHelp = document.querySelector('[data-homilies-help]');
+    const homiliesHelpOpen = document.querySelector('[data-homilies-help-open]');
+    if (homiliesHelp && homiliesHelpOpen) {
+      const closeHelp = () => {
+        if (homiliesHelp.open) homiliesHelp.close();
+      };
+      homiliesHelpOpen.addEventListener('click', () => homiliesHelp.showModal());
+      const homiliesHelpClose = homiliesHelp.querySelector('[data-homilies-help-close]');
+      if (homiliesHelpClose) homiliesHelpClose.addEventListener('click', closeHelp);
+      homiliesHelp.addEventListener('click', (event) => {
+        if (event.target === homiliesHelp) closeHelp();
+      });
+    }
   };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initialise, { once: true });

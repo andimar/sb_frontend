@@ -151,6 +151,99 @@
   .homilies-search .search--term { width: 100%; height: 50px; padding: 8px 60px 10px 25px; color: #9aa; font: 400 20px/1em "SB Merriweather Italic", serif; border: 0; border-radius: 50px; }
   .homilies-search .search--button { position: absolute; z-index: 1; top: 0; right: 0; width: 50px; height: 50px; opacity: 0; }
 
+  /* Search-led homily archive. Scoped so the homepage homily section keeps its layout. */
+  .homilies-archive { min-height: 70vh; padding-bottom: 4rem; background: #f3efed; }
+  .homilies-hero { padding: 3.5rem 0 8rem; color: #fff; background-color: #590000; background-image: linear-gradient(90deg, rgba(89, 0, 0, .98) 0%, rgba(89, 0, 0, .9) 52%, rgba(89, 0, 0, .38) 100%), linear-gradient(125deg, rgba(89, 0, 0, .9) 0%, rgba(123, 21, 21, .55) 65%, rgba(141, 63, 44, .3) 100%), url("../assets/background-don-fabio-pieroni.jpg"); background-position: center, center, right 12% center; background-repeat: no-repeat; background-size: cover, cover, auto 132%; }
+  .homilies-hero .sb-internal-shell { max-width: 960px; }
+  .homilies-hero .section-title { margin: 0; color: #fff; font-size: clamp(3.4rem, 8vw, 6rem); text-align: left; }
+  .homilies-hero .section-title::after { width: 42px; margin: .75rem 0 0; border-color: #f3b263; }
+  .homilies-eyebrow { margin: 0 0 .35rem; font: 700 .75rem/1 Roboto, sans-serif; letter-spacing: .18em; text-transform: uppercase; opacity: .72; }
+  .homilies-subtitle { max-width: 620px; margin: 1.25rem 0 0; font: 1rem/1.65 Roboto, sans-serif; opacity: .88; }
+  .homilies-layout { max-width: 960px; margin-top: -4.5rem; }
+  .homilies-filter { position: relative; z-index: 2; overflow: hidden; background: #fff; border: 1px solid rgb(89 0 0 / 9%); border-radius: 18px; box-shadow: 0 20px 50px rgb(65 34 30 / 14%); }
+  .homilies-filter-primary { padding: 1rem 1.25rem .9rem; }
+  .homilies-search-label { display: flex; align-items: center; gap: .4rem; margin-bottom: .35rem; }
+  .homilies-search-label label { margin: 0; }
+  .homilies-filter .homilies-help-trigger { display: inline-grid; place-items: center; width: 20px; min-height: 20px; padding: 0; color: #680606; font: 700 .72rem/1 Roboto, sans-serif; background: #f4e9e6; border: 1px solid #d8bdb7; border-radius: 50%; transform: translateY(-2px); }
+  .homilies-filter .homilies-help-trigger:hover { color: #fff; background: #680606; }
+  .homilies-filter label { display: block; margin: 0 0 .5rem; color: #3e3331; font: 700 .8rem/1.2 Roboto, sans-serif; letter-spacing: .04em; }
+  .homilies-search-control { display: grid; grid-template-columns: 1fr auto; gap: .5rem; }
+  .homilies-filter :is(input, select) { box-sizing: border-box; width: 100%; min-height: 42px; padding: .55rem .75rem; color: #302725; font: .94rem/1.2 Roboto, sans-serif; background: #fbfaf9; border: 1px solid #d8cfcb; border-radius: 8px; }
+  .homilies-filter :is(input, select):focus { outline: 3px solid rgb(136 0 0 / 15%); border-color: #880000; }
+  .homilies-filter button { min-height: 42px; padding: .55rem 1.1rem; color: #fff; font: 700 .82rem/1 Roboto, sans-serif; background: #680606; border: 0; border-radius: 8px; cursor: pointer; }
+  .homilies-filter button:hover { background: #880000; }
+  .homilies-filter-primary > p { margin: .45rem 0 0; color: #756b68; font: .72rem/1.35 Roboto, sans-serif; }
+  .homilies-advanced { border-top: 1px solid #eee8e5; }
+  .homilies-advanced summary { display: flex; align-items: center; gap: .45rem; padding: .8rem 1.25rem; color: #590000; font: 700 .78rem/1.2 Roboto, sans-serif; cursor: pointer; list-style: none; }
+  .homilies-advanced summary::-webkit-details-marker { display: none; }
+  .homilies-filter-icon { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 1.8; }
+  .homilies-advanced summary::after { margin-left: auto; font-size: 1rem; font-weight: 400; content: "+"; }
+  .homilies-advanced[open] summary::after { content: "−"; }
+  .homilies-advanced[open] summary { background: #fbf8f7; border-bottom: 1px solid #eee8e5; }
+  .homilies-filter-grid { display: grid; grid-template-columns: 1.4fr 1.55fr 1fr; align-items: start; gap: .8rem; padding: 1rem 1.25rem; }
+  .homilies-filter :is(.homilies-field, .homilies-date-range) { min-width: 0; padding: 0; margin: 0; border: 0; }
+  .homilies-filter :is(.homilies-field legend, .homilies-date-range legend, .homilies-field-label) { display: block; padding: 0; margin: 0 0 .45rem; color: #3e3331; font: 700 .75rem/1.2 Roboto, sans-serif; letter-spacing: .04em; }
+  .homilies-gospel-options { display: flex; flex-wrap: nowrap; gap: .35rem; }
+  .homilies-gospel-option { position: relative; margin: 0 !important; cursor: pointer; }
+  .homilies-gospel-option input { position: absolute; width: 1px !important; min-height: 1px !important; padding: 0 !important; opacity: 0; }
+  .homilies-gospel-option span { display: inline-flex; align-items: center; min-height: 32px; padding: .35rem .5rem; color: #5b4c49; font: 500 .77rem/1 Roboto, sans-serif; white-space: nowrap; background: #fbfaf9; border: 1px solid #d8cfcb; border-radius: 6px; }
+  .homilies-gospel-option input:checked + span { color: #fff; background: #680606; border-color: #680606; }
+  .homilies-gospel-option input:checked + span small { color: #f4d9d4; }
+  .homilies-gospel-option input:focus-visible + span { outline: 3px solid rgb(136 0 0 / 20%); outline-offset: 2px; }
+  .homilies-date-range-fields { display: flex; align-items: center; min-height: 42px; background: #fbfaf9; border: 1px solid #d8cfcb; border-radius: 8px; }
+  .homilies-date-range-fields label { display: flex; flex: 1 1 0; align-items: center; gap: .25rem; min-width: 0; padding: 0 .45rem; margin: 0 !important; }
+  .homilies-date-range-fields label > span { color: #756b68; font: 500 .72rem/1 Roboto, sans-serif; }
+  .homilies-date-range-fields input[type="date"] { min-width: 0; min-height: 40px; padding: 0; color: #302725; font: .8rem/1 Roboto, sans-serif; background: transparent; border: 0; border-radius: 0; }
+  .homilies-date-range-fields input[type="date"]:focus { outline: 0; }
+  .homilies-date-range-fields:focus-within { outline: 3px solid rgb(136 0 0 / 15%); border-color: #880000; }
+  .homilies-date-range-separator { color: #b7aaa6; }
+  .homilies-filter .homilies-order-toggle { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; width: 100%; min-height: 42px; padding: .55rem .65rem; color: #590000; font-size: .78rem; background: #fbfaf9; border: 1px solid #d8cfcb; border-radius: 8px; }
+  .homilies-filter .homilies-order-toggle:hover { color: #fff; background: #680606; border-color: #680606; }
+  .homilies-order-icon { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 1.8; transition: transform .15s ease; }
+  .homilies-order-toggle.is-oldest .homilies-order-icon { transform: rotate(180deg); }
+  .homilies-filter-actions { display: flex; align-items: center; justify-content: flex-end; gap: .5rem; padding: 0 1.25rem 1rem; }
+  .homilies-filter .homilies-apply-filters { flex: 1 1 auto; width: auto; min-height: 40px; padding: .55rem 1rem; font-size: .8rem; }
+  .homilies-filter .homilies-apply-filters:disabled { color: #8d807c; cursor: not-allowed; background: #e8e1de; }
+  .homilies-filter[aria-busy="true"] .homilies-apply-filters:disabled { cursor: wait; opacity: .72; }
+  .homilies-reset-filters { display: inline-flex; flex: 0 0 auto; align-items: center; min-height: 30px; padding: .3rem .55rem; color: #680606; font: 700 .68rem/1 Roboto, sans-serif; text-decoration: none; white-space: nowrap; background: #f4e9e6; border-radius: 5px; }
+  .homilies-reset-filters:hover { color: #fff; background: #680606; }
+  .homilies-reset-filters.is-disabled { color: #a39894; background: #f1edeb; }
+  .homilies-filter-actions a, .homilies-results-heading a, .homilies-empty a { color: #680606; font: 700 .85rem/1.2 Roboto, sans-serif; text-underline-offset: 3px; }
+  .homilies-results { padding-top: 2.5rem; }
+  .homilies-results-heading { display: flex; align-items: baseline; justify-content: space-between; padding: 0 .25rem 1rem; border-bottom: 1px solid #d9cfcb; }
+  .homilies-results-heading p { margin: 0; color: #675c59; font: .9rem/1.4 Roboto, sans-serif; }
+  .homilies-results-heading strong { color: #590000; font-size: 1.15rem; }
+  .homilies-archive .homily-card { display: block; padding: 0; margin: 0; border-bottom: 1px solid #d9cfcb; }
+  .homilies-archive .homily-card > a { display: grid; grid-template-columns: minmax(0, 5fr) minmax(260px, 4fr); gap: 2.5rem; width: 100%; padding: 2rem .25rem; }
+  .homilies-archive .homily-card > a:hover::after { display: none; }
+  .homilies-archive .homily-card > a:hover .homily-card-title { color: #880000; }
+  .homilies-archive .homily-card-header { align-self: center; }
+  .homilies-archive .homily-card-header :is(.vangelo_rif, .pubdate, .calendario) { margin: 0 .3rem .35rem 0; border-radius: 4px; }
+  .homilies-archive .homily-card-header .vangelo_rif { background: #597081; }
+  .homilies-archive .homily-card-title { margin: .8rem 0 0; color: #352d2b; font: 400 clamp(1.35rem, 3vw, 1.85rem)/1.2 "SB Merriweather", serif; transition: color .15s ease; }
+  .homilies-archive .homily-card-excerpt { align-self: stretch; padding: 1.25rem 1.35rem; margin: 0; color: #544b48; font: 400 .93rem/1.65 "SB Merriweather Italic", serif; background: rgb(255 255 255 / 72%); border-left: 3px solid #d7c5bd; border-radius: 0 8px 8px 0; }
+  .homilies-empty { padding: 4rem 1rem; text-align: center; }
+  .homilies-empty h2 { margin: 0; color: #493d3a; font: 400 1.6rem/1.3 "SB Merriweather", serif; }
+  .homilies-empty p { color: #756b68; font: .95rem/1.5 Roboto, sans-serif; }
+  .homilies-help { box-sizing: border-box; width: min(680px, calc(100% - 2rem)); max-height: min(760px, calc(100vh - 2rem)); padding: 0; color: #352d2b; background: #fff; border: 0; border-radius: 16px; box-shadow: 0 24px 70px rgb(30 10 8 / 35%); }
+  .homilies-help::backdrop { background: rgb(35 19 17 / 68%); backdrop-filter: blur(2px); }
+  .homilies-help-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; padding: 1.5rem 1.5rem 1.25rem; color: #fff; background: #680606; }
+  .homilies-help-header .homilies-eyebrow { margin-bottom: .4rem; }
+  .homilies-help-header h2 { margin: 0; font: 300 2rem/1.1 "Yanone Kaffeesatz", sans-serif; }
+  .homilies-help-close { display: grid; flex: 0 0 auto; place-items: center; width: 38px; height: 38px; padding: 0; color: #fff; font: 300 1.8rem/1 Roboto, sans-serif; background: rgb(255 255 255 / 12%); border: 1px solid rgb(255 255 255 / 35%); border-radius: 50%; cursor: pointer; }
+  .homilies-help-close:hover { background: rgb(255 255 255 / 24%); }
+  .homilies-help-content { padding: 1.5rem; font-family: Roboto, sans-serif; }
+  .homilies-help-intro { margin: 0 0 1.25rem; color: #514744; font: 1rem/1.6 "SB Merriweather", serif; }
+  .homilies-help ol { display: grid; gap: 1rem; margin: 0; padding: 0; list-style: none; counter-reset: homilies-help; }
+  .homilies-help li { position: relative; min-height: 34px; padding-left: 3rem; counter-increment: homilies-help; }
+  .homilies-help li::before { position: absolute; top: 0; left: 0; display: grid; place-items: center; width: 32px; height: 32px; color: #680606; font-size: .8rem; font-weight: 700; content: counter(homilies-help); background: #f4e9e6; border-radius: 50%; }
+  .homilies-help li strong, .homilies-help li span { display: block; }
+  .homilies-help li strong { margin-bottom: .15rem; color: #3c302e; font-size: .9rem; }
+  .homilies-help li span { color: #706663; font-size: .85rem; line-height: 1.5; }
+  .homilies-help-example { padding: 1rem; margin-top: 1.4rem; background: #f5f1ef; border-left: 3px solid #880000; border-radius: 0 8px 8px 0; }
+  .homilies-help-example > span { color: #680606; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+  .homilies-help-example p { margin: .35rem 0 0; color: #554a47; font-size: .82rem; line-height: 1.5; }
+
   @media (max-width: 640px) {
     .section-title { margin: 20px auto 5px; font-size: 40px; }
     .sb-internal-main article { font-size: 14px; line-height: 24px; }
@@ -160,6 +253,20 @@
     .homily-card > a { flex-basis: 100%; }
     .homily-card-excerpt { flex-basis: 100%; width: 100%; padding: 45px 15px 15px; margin: 2em 0; }
     .homilies-search { width: calc(100% - 40px); }
+    .homilies-hero { padding: 2.5rem 0 6.5rem; }
+    .homilies-layout { margin-top: -4rem; }
+    .homilies-filter-primary { padding: .9rem; }
+    .homilies-search-control { grid-template-columns: 1fr; }
+    .homilies-filter button { width: 100%; }
+    .homilies-advanced summary { padding: .7rem .9rem; }
+    .homilies-filter-grid { grid-template-columns: 1fr; gap: .7rem; padding: .9rem; }
+    .homilies-field--gospel { grid-column: auto; }
+    .homilies-filter-actions { padding-inline: .9rem; }
+    .homilies-filter-actions a { text-align: center; }
+    .homilies-archive .homily-card > a { grid-template-columns: 1fr; gap: 1.15rem; padding: 1.5rem .15rem; }
+    .homilies-archive .homily-card-excerpt { padding: 1rem; margin: 0; }
+    .homilies-help-header, .homilies-help-content { padding: 1.15rem; }
+    .homilies-help-header h2 { font-size: 1.7rem; }
   }
 
   @media (min-width: 641px) {
@@ -183,7 +290,7 @@
 @layer components {
   /* Shared foundations for internal WordPress views. */
   .sb-internal-shell {
-    @apply mx-auto w-full max-w-sb-page px-sb-gutter;
+    @apply box-border mx-auto w-full max-w-sb-page px-sb-gutter;
   }
 
   .sb-internal-body {
