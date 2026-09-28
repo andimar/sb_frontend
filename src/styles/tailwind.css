@@ -103,10 +103,11 @@
   .section-title::after { display: block; width: 30px; margin: 10px auto; content: ""; border-bottom: 3px solid #777; }
   .search-query { margin: 0 auto 1.5rem; font-family: "SB Merriweather", serif; }
 
-  .sb-internal-main article { display: flex; flex-direction: column; align-items: center; color: #333; font: 18px/30px "SB Merriweather Light", "SB Merriweather", serif; text-align: justify; }
+  .sb-internal-main article { display: flex; flex-direction: column; align-items: center; color: #333; font: 18px/30px "SB Merriweather", serif; text-align: justify; }
   .sb-internal-main article :is(.authorbar, .entry-content, .entry-title) { width: 85%; max-width: 780px; }
   .entry-title { margin: 10px 0 40px; font: 60px/1.1em "SB Merriweather", serif; text-align: left; }
   .entry-content { display: flow-root; }
+  .entry-content :is(p, blockquote) { -webkit-hyphens: auto; hyphens: auto; }
   .entry-content p { margin: .9em 0 .6em; }
   .entry-content :is(em, i) { color: #211; font-family: "SB Merriweather Italic", serif; }
   .entry-content :is(b, strong) { color: #544; }
@@ -246,7 +247,7 @@
 
   @media (max-width: 640px) {
     .section-title { margin: 20px auto 5px; font-size: 40px; }
-    .sb-internal-main article { font-size: 14px; line-height: 24px; }
+    .sb-internal-main article { font-size: 17px; line-height: 28px; }
     .entry-title { margin-bottom: 30px; font-size: 35px; }
     .entry-content h2 { font-size: 22px; }
     .entry-content h3 { font-size: 18px; }
