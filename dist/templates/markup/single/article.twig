@@ -1,6 +1,6 @@
 <article class="{{ article.classes }} flex flex-col items-center text-justify" id="post-{{ article.id }}">
-    <div class="categorybar">
-        {% if categories %}
+    {% if categories %}
+        <div class="categorybar">
             <ul class="post-categories">
                 {% for category in categories %}
                     <li class="{{ category.classes }}">
@@ -8,8 +8,8 @@
                     </li>
                 {% endfor %}
             </ul>
-        {% endif %}
-    </div>
+        </div>
+    {% endif %}
     <h1 class="entry-title w-[85%] max-w-[780px] text-left">{{ article.title }}</h1>
     <div class="authorbar">
         <span class="pubdate">{{ article.date }}</span>
