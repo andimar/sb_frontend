@@ -39,7 +39,10 @@
         {% block page %}{% endblock %}
         {# No legacy dynamic_sidebar: site components replace widgets. #}
         <footer id="footer" class="sb-internal-footer movable source-org vcard copyright" role="contentinfo">
-            <small>©{{ document.year }} {{ document.name }}</small>
+            <a class="footer-logo" href="{{ document.home_url }}" rel="home">
+                <img src="{{ document.theme_url }}/frontend/assets/logo_white.svg" width="158" height="57" alt="{{ document.name }}">
+            </a>
+            <small class="footer-colophon">©{{ document.year }} {{ document.name }}</small>
         </footer>
     </div>
     {% if document.external_services %}

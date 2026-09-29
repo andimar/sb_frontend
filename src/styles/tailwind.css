@@ -96,8 +96,11 @@
   .topbar { position: fixed; z-index: 1; top: 0; display: flex; width: 100%; height: 75px; background: #f5f5f5; border-bottom: 1px solid #eee; }
   .topbar .logo { display: block; flex: 0 1 70%; margin: 19px auto 16px; text-indent: -9999px; background: url("../assets/logo.svg") center / contain no-repeat; }
   .sb-internal-main { flex: 1 0 auto; width: 100%; margin-top: 75px; }
-  .sb-internal-footer { flex: 0 0 auto; min-height: 100px; color: #fff; text-align: center; background: #524a4a; border-top: 1px solid #ccc; }
-  .sb-internal-footer small { display: block; padding-top: 2rem; }
+  .sb-internal-footer { box-sizing: border-box; display: flex; flex: 0 0 auto; flex-direction: column; align-items: center; gap: 1.25rem; padding: 2.5rem 1.25rem 1.75rem; color: #f7f7f7; text-align: center; }
+  .sb-internal-footer .footer-logo { display: block; max-width: 100%; }
+  .sb-internal-footer .footer-logo img { display: block; width: 190px; max-width: 100%; height: auto; }
+  .sb-internal-footer .footer-logo:focus-visible { outline: 2px solid currentColor; outline-offset: 6px; }
+  .sb-internal-footer .footer-colophon { font: 400 13px/1.6 Roboto, sans-serif; }
   .sb-internal-main > .section, .sb-internal-main > .list { display: flex; flex-direction: column; width: 100%; }
   .section-title { margin: 30px auto; font: 300 50px/1em "Yanone Kaffeesatz", sans-serif; text-align: center; }
   .section-title::after { display: block; width: 30px; margin: 10px auto; content: ""; border-bottom: 3px solid #777; }
@@ -945,8 +948,13 @@
   }
 
   /* Footer */
+  .sb-home-footer,
+  .sb-internal-footer {
+    @apply bg-[radial-gradient(#000000eb,#000000ee,#000000f0,#000000f9,#000000f5,#000)];
+  }
+
   .sb-home-footer {
-    @apply flex w-full flex-col items-center bg-[radial-gradient(#000000eb,#000000ee,#000000f0,#000000f9,#000000f5,#000)] pb-4 text-sb-white;
+    @apply flex w-full flex-col items-center pb-4 text-sb-white;
   }
 
   .sb-home-footer h2 {
