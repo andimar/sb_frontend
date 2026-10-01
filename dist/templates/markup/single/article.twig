@@ -1,4 +1,5 @@
 <article class="{{ article.classes }} flex flex-col items-center text-justify" id="post-{{ article.id }}">
+    {% block archive_navigation %}{% endblock %}
     {% if categories %}
         <div class="categorybar">
             <ul class="post-categories">

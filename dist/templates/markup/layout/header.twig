@@ -12,8 +12,9 @@
         <link rel="stylesheet" href="{{base_dir}}/styles/tailwind.css?v={{ asset_version }}" type="text/css" >
         
         
-        <!-- Favicon –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-        <link rel="icon" type="image/png" href="dist/images/favicon.png">
+        {# The selected site logo also controls the favicon. #}
+        {% if logo.favicon_svg %}<link rel="icon" type="image/svg+xml" href="{{ logo.favicon_svg }}">{% endif %}
+        <link rel="icon" type="image/x-icon" href="{{ logo.favicon_ico }}">
 
         {#  SCRIPTS E STYLES CHE DOVRANNO DIVENTARE DINAMICI #}
 
@@ -23,5 +24,5 @@
         {#  / SCRIPTS E STYLES CHE DOVRANNO DIVENTARE DINAMICI #}
         {{ wp_head }}
     </head>
-    <body class="sb-home-body">
+    <body class="sb-home-body sb-logo-{{ logo.variant }}">
         {{ wp_body_open }}

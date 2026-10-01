@@ -95,6 +95,8 @@
 
   .topbar { position: fixed; z-index: 1; top: 0; display: flex; width: 100%; height: 75px; background: #f5f5f5; border-bottom: 1px solid #eee; }
   .topbar .logo { display: block; flex: 0 1 70%; margin: 19px auto 16px; text-indent: -9999px; background: url("../assets/logo.svg") center / contain no-repeat; }
+  .sb-logo-vector .topbar .logo { background-image: url("../assets/logo_new.svg"); }
+  .sb-logo-vector-halo .topbar .logo { background-image: url("../assets/logo_vector_halo.svg"); }
   .sb-internal-main { flex: 1 0 auto; width: 100%; margin-top: 75px; }
   .sb-internal-footer { box-sizing: border-box; display: flex; flex: 0 0 auto; flex-direction: column; align-items: center; gap: 1.25rem; padding: 2.5rem 1.25rem 1.75rem; color: #f7f7f7; text-align: center; }
   .sb-internal-footer .footer-logo { display: block; max-width: 100%; }
@@ -108,6 +110,10 @@
 
   .sb-internal-main article { display: flex; flex-direction: column; align-items: center; color: #333; font: 18px/30px "SB Merriweather", serif; text-align: justify; }
   .sb-internal-main article :is(.authorbar, .entry-content, .entry-title) { width: 85%; max-width: 780px; }
+  .sb-omelia-archive-link { width: 85%; max-width: 780px; margin: 1rem 0 .5rem; text-align: left; font: 500 14px/1.5 Roboto, sans-serif; }
+  .sb-omelia-archive-link a { display: inline-flex; align-items: center; gap: .5rem; padding: .35rem 0; color: #590000; text-decoration: none; }
+  .sb-omelia-archive-link a:hover { text-decoration: underline; }
+  .sb-omelia-archive-link a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
   .entry-title { margin: 10px 0 40px; font: 60px/1.1em "SB Merriweather", serif; text-align: left; }
   .entry-content { display: flow-root; }
   .entry-content :is(p, blockquote) { -webkit-hyphens: auto; hyphens: auto; }
@@ -156,8 +162,8 @@
   .homilies-search .search--button { position: absolute; z-index: 1; top: 0; right: 0; width: 50px; height: 50px; opacity: 0; }
 
   /* Search-led homily archive. Scoped so the homepage homily section keeps its layout. */
-  .homilies-archive { min-height: 70vh; padding-bottom: 4rem; background: #f3efed; }
-  .homilies-hero { padding: 3.5rem 0 8rem; color: #fff; background-color: #590000; background-image: linear-gradient(90deg, rgba(89, 0, 0, .98) 0%, rgba(89, 0, 0, .9) 52%, rgba(89, 0, 0, .38) 100%), linear-gradient(125deg, rgba(89, 0, 0, .9) 0%, rgba(123, 21, 21, .55) 65%, rgba(141, 63, 44, .3) 100%), url("../assets/background-don-fabio-pieroni.jpg"); background-position: center, center, right 12% center; background-repeat: no-repeat; background-size: cover, cover, auto 132%; }
+  .homilies-archive { min-height: 70vh; padding-bottom: 4rem; background: #f0f1f2; }
+  .homilies-hero { padding: 3.5rem 0 8rem; color: #fff; background-color: #000; background-image: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, .96) 38%, rgba(0, 0, 0, .76) 65%, rgba(0, 0, 0, .4) 100%), linear-gradient(0deg, rgba(0, 0, 0, .8) 0%, rgba(0, 0, 0, .15) 60%, rgba(0, 0, 0, .35) 100%), url("../assets/background-don-fabio-pieroni.jpg"); background-position: center, center, right 12% center; background-repeat: no-repeat; background-size: cover, cover, auto 132%; }
   .homilies-hero .sb-internal-shell { max-width: 960px; }
   .homilies-hero .section-title { margin: 0; color: #fff; font-size: clamp(3.4rem, 8vw, 6rem); text-align: left; }
   .homilies-hero .section-title::after { width: 42px; margin: .75rem 0 0; border-color: #f3b263; }
@@ -178,7 +184,7 @@
   .homilies-filter button:hover { background: #880000; }
   .homilies-filter-primary > p { margin: .45rem 0 0; color: #756b68; font: .72rem/1.35 Roboto, sans-serif; }
   .homilies-advanced { border-top: 1px solid #eee8e5; }
-  .homilies-advanced summary { display: flex; align-items: center; gap: .45rem; padding: .8rem 1.25rem; color: #590000; font: 700 .78rem/1.2 Roboto, sans-serif; cursor: pointer; list-style: none; }
+  .homilies-advanced summary { display: flex; align-items: center; gap: .45rem; padding: .8rem 1.25rem; color: #544b48; font: 700 .78rem/1.2 Roboto, sans-serif; cursor: pointer; list-style: none; }
   .homilies-advanced summary::-webkit-details-marker { display: none; }
   .homilies-filter-icon { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 1.8; }
   .homilies-advanced summary::after { margin-left: auto; font-size: 1rem; font-weight: 400; content: "+"; }
@@ -191,7 +197,7 @@
   .homilies-gospel-option { position: relative; margin: 0 !important; cursor: pointer; }
   .homilies-gospel-option input { position: absolute; width: 1px !important; min-height: 1px !important; padding: 0 !important; opacity: 0; }
   .homilies-gospel-option span { display: inline-flex; align-items: center; min-height: 32px; padding: .35rem .5rem; color: #5b4c49; font: 500 .77rem/1 Roboto, sans-serif; white-space: nowrap; background: #fbfaf9; border: 1px solid #d8cfcb; border-radius: 6px; }
-  .homilies-gospel-option input:checked + span { color: #fff; background: #680606; border-color: #680606; }
+  .homilies-gospel-option input:checked + span { color: #fff; background: #52615d; border-color: #52615d; }
   .homilies-gospel-option input:checked + span small { color: #f4d9d4; }
   .homilies-gospel-option input:focus-visible + span { outline: 3px solid rgb(136 0 0 / 20%); outline-offset: 2px; }
   .homilies-date-range-fields { display: flex; align-items: center; min-height: 42px; background: #fbfaf9; border: 1px solid #d8cfcb; border-radius: 8px; }
@@ -201,8 +207,8 @@
   .homilies-date-range-fields input[type="date"]:focus { outline: 0; }
   .homilies-date-range-fields:focus-within { outline: 3px solid rgb(136 0 0 / 15%); border-color: #880000; }
   .homilies-date-range-separator { color: #b7aaa6; }
-  .homilies-filter .homilies-order-toggle { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; width: 100%; min-height: 42px; padding: .55rem .65rem; color: #590000; font-size: .78rem; background: #fbfaf9; border: 1px solid #d8cfcb; border-radius: 8px; }
-  .homilies-filter .homilies-order-toggle:hover { color: #fff; background: #680606; border-color: #680606; }
+  .homilies-filter .homilies-order-toggle { display: inline-flex; align-items: center; justify-content: center; gap: .45rem; width: 100%; min-height: 42px; padding: .55rem .65rem; color: #544b48; font-size: .78rem; background: #fbfaf9; border: 1px solid #d8cfcb; border-radius: 8px; }
+  .homilies-filter .homilies-order-toggle:hover { color: #fff; background: #52615d; border-color: #52615d; }
   .homilies-order-icon { width: 1rem; height: 1rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 1.8; transition: transform .15s ease; }
   .homilies-order-toggle.is-oldest .homilies-order-icon { transform: rotate(180deg); }
   .homilies-filter-actions { display: flex; align-items: center; justify-content: flex-end; gap: .5rem; padding: 0 1.25rem 1rem; }
@@ -216,16 +222,25 @@
   .homilies-results { padding-top: 2.5rem; }
   .homilies-results-heading { display: flex; align-items: baseline; justify-content: space-between; padding: 0 .25rem 1rem; border-bottom: 1px solid #d9cfcb; }
   .homilies-results-heading p { margin: 0; color: #675c59; font: .9rem/1.4 Roboto, sans-serif; }
-  .homilies-results-heading strong { color: #590000; font-size: 1.15rem; }
-  .homilies-archive .homily-card { display: block; padding: 0; margin: 0; border-bottom: 1px solid #d9cfcb; }
-  .homilies-archive .homily-card > a { display: grid; grid-template-columns: minmax(0, 5fr) minmax(260px, 4fr); gap: 2.5rem; width: 100%; padding: 2rem .25rem; }
+  .homilies-results-heading strong { color: #352d2b; font-size: 1.15rem; }
+  .homilies-archive .homilies-column { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+  .homilies-archive .homily-card { display: block; width: 100%; min-width: 0; padding: 0; margin: 0; border: 0; }
+  .homilies-archive .homily-card > a { display: block; width: 100%; height: 100%; padding: 1.75rem 1.875rem; margin: 0; background: #fff; border-top: 3px solid #b2b5b8; border-radius: 0 0 8px 8px; }
+  .homilies-archive .homily-card > a:focus-visible { outline: 2px solid #680606; outline-offset: 4px; }
   .homilies-archive .homily-card > a:hover::after { display: none; }
-  .homilies-archive .homily-card > a:hover .homily-card-title { color: #880000; }
-  .homilies-archive .homily-card-header { align-self: center; }
-  .homilies-archive .homily-card-header :is(.vangelo_rif, .pubdate, .calendario) { margin: 0 .3rem .35rem 0; border-radius: 4px; }
-  .homilies-archive .homily-card-header .vangelo_rif { background: #597081; }
+  .homilies-archive .homily-card > a:hover .homily-card-title { color: #52615d; }
+  .homilies-archive .homily-card-header { width: 100%; }
+  .homilies-archive .homily-card-header :is(.vangelo_rif, .pubdate, .calendario) { padding: 0; margin: 0 .8rem 0 0; font: 400 13px/1.5 Roboto, sans-serif; background: transparent; border-radius: 0; }
+  .homilies-archive .homily-card-header .pubdate { color: #685c56; }
+  .homilies-archive .homily-card-header .calendario { color: #52615d; font-weight: 500; }
+  .homilies-archive .homily-card-header .vangelo_rif { color: #685c56; font-weight: 700; text-transform: uppercase; background: transparent; }
+  .homilies-archive .homily-card-gospel { margin-top: .7rem; }
   .homilies-archive .homily-card-title { margin: .8rem 0 0; color: #352d2b; font: 400 clamp(1.35rem, 3vw, 1.85rem)/1.2 "SB Merriweather", serif; transition: color .15s ease; }
-  .homilies-archive .homily-card-excerpt { align-self: stretch; padding: 1.25rem 1.35rem; margin: 0; color: #544b48; font: 400 .93rem/1.65 "SB Merriweather Italic", serif; background: rgb(255 255 255 / 72%); border-left: 3px solid #d7c5bd; border-radius: 0 8px 8px 0; }
+  .homilies-archive .homily-card-excerpt { position: relative; padding: 1.25rem 1.5rem 1.35rem; margin: 1.5rem 0 0; color: #353535; font: 400 1rem/1.8 "SB Merriweather Italic", serif; text-align: justify; background: #f0f1f2; border-left: 2px solid #b8bcc0; border-radius: 0 8px 8px 0; }
+  .homilies-archive .homily-card-excerpt p { margin: .55rem 0 0; }
+  .homilies-archive .homily-card-quote-mark { display: block; height: 1rem; color: #73797e; font: 400 2.1rem/1 "SB Merriweather", serif; }
+  .homily-card-action { display: none; }
+  .homilies-archive .homily-card-action { display: inline-flex; align-items: center; gap: .6rem; margin-top: 1.5rem; color: #52615d; font: 500 13px/1.4 Roboto, sans-serif; }
   .homilies-empty { padding: 4rem 1rem; text-align: center; }
   .homilies-empty h2 { margin: 0; color: #493d3a; font: 400 1.6rem/1.3 "SB Merriweather", serif; }
   .homilies-empty p { color: #756b68; font: .95rem/1.5 Roboto, sans-serif; }
@@ -248,6 +263,10 @@
   .homilies-help-example > span { color: #680606; font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
   .homilies-help-example p { margin: .35rem 0 0; color: #554a47; font-size: .82rem; line-height: 1.5; }
 
+  @media (min-width: 900px) {
+    .homilies-archive .homilies-column { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
   @media (max-width: 640px) {
     .section-title { margin: 20px auto 5px; font-size: 40px; }
     .sb-internal-main article { font-size: 17px; line-height: 28px; }
@@ -267,8 +286,8 @@
     .homilies-field--gospel { grid-column: auto; }
     .homilies-filter-actions { padding-inline: .9rem; }
     .homilies-filter-actions a { text-align: center; }
-    .homilies-archive .homily-card > a { grid-template-columns: 1fr; gap: 1.15rem; padding: 1.5rem .15rem; }
-    .homilies-archive .homily-card-excerpt { padding: 1rem; margin: 0; }
+    .homilies-archive .homily-card > a { padding: 1.375rem 1.125rem; }
+    .homilies-archive .homily-card-excerpt { padding: 1rem 1.1rem 1.15rem; margin-top: 1.25rem; font-size: .95rem; line-height: 1.8; }
     .homilies-help-header, .homilies-help-content { padding: 1.15rem; }
     .homilies-help-header h2 { font-size: 1.7rem; }
   }
@@ -276,6 +295,8 @@
   @media (min-width: 641px) {
     .sb-internal-menu #hamburger--icon { display: block; }
     .topbar .logo { background-image: url("../../img/logo_extended.svg"); }
+    .sb-logo-vector .topbar .logo { background-image: url("../assets/logo_extended_vector.svg"); }
+    .sb-logo-vector-halo .topbar .logo { background-image: url("../assets/logo_extended_vector_halo.svg"); }
     .sb-youtube-subscribe { position: absolute; top: 25px; left: 88px; display: inline-flex; align-items: center; gap: 5px; height: 30px; padding: 0 10px; color: #fff; font: 700 14px/1 Arial, sans-serif; text-decoration: none; background: #f00; border-radius: 2px; }
     .sb-youtube-subscribe span { font-size: 12px; }
   }

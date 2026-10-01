@@ -1,5 +1,13 @@
 {% extends 'markup/single/article.twig' %}
 
+{% block archive_navigation %}
+    {% if archive_url %}
+    <nav class="sb-omelia-archive-link" aria-label="Archivio omelie">
+        <a href="{{ archive_url }}"><span aria-hidden="true">←</span> Tutte le omelie</a>
+    </nav>
+    {% endif %}
+{% endblock %}
+
 {% block calendar %}
     {% if gospel %}<span class="calendario">{{ gospel.calendar }}</span>{% endif %}
 {% endblock %}

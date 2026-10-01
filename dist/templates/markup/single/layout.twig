@@ -6,6 +6,8 @@
     <meta name="Copyright" content="Copyright © {{ document.name }} {{ document.year }}. All Rights Reserved.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="mobile-web-app-capable" content="yes">
+    {% if document.logo.favicon_svg %}<link rel="icon" type="image/svg+xml" href="{{ document.logo.favicon_svg }}">{% endif %}
+    <link rel="icon" type="image/x-icon" href="{{ document.logo.favicon_ico }}">
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +17,7 @@
     {% endif %}
     {{ wp_head }}
 </head>
-<body class="sb-internal-body {{ document.body_classes }}">
+<body class="sb-internal-body sb-logo-{{ document.logo.variant }} {{ document.body_classes }}">
     {{ wp_body_open }}
     <aside id="off-canvas-menu" class="sb-internal-menu movable">
         <div id="hamburger--icon">
@@ -40,7 +42,7 @@
         {# No legacy dynamic_sidebar: site components replace widgets. #}
         <footer id="footer" class="sb-internal-footer movable source-org vcard copyright" role="contentinfo">
             <a class="footer-logo" href="{{ document.home_url }}" rel="home">
-                <img src="{{ document.theme_url }}/frontend/assets/logo_white.svg" width="158" height="57" alt="{{ document.name }}">
+                <img src="{{ document.logo.footer }}" width="158" height="57" alt="{{ document.name }}">
             </a>
             <small class="footer-colophon">©{{ document.year }} {{ document.name }}</small>
         </footer>
