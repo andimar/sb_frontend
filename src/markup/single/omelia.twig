@@ -1,5 +1,7 @@
 {% extends 'markup/single/article.twig' %}
 
+{% block date %}<span class="pubdate">{% if gospel.date %}{{ gospel.date }}{% else %}Data dell’omelia da verificare{% endif %}</span>{% endblock %}
+
 {% block archive_navigation %}
     {% if archive_url %}
     <nav class="sb-omelia-archive-link" aria-label="Archivio omelie">
