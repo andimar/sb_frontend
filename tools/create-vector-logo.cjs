@@ -46,8 +46,6 @@ const headClip = 'M57 0 C79 0 96 19 94 39 C102 44 94 61 91 71 C90 88 79 106 66 1
 const head = `<defs><clipPath id="head"><path d="${headClip}"/></clipPath></defs><g clip-path="url(#head)">${portrait}</g>`;
 // A tall, warm halo surrounds the upper head, with space above the crown.
 // It remains an independent vector element, so the original drawing is unaltered.
-const halo = '<ellipse cx="51" cy="38" rx="50" ry="51" stroke="#C29A35" stroke-width="1.8" opacity=".65"/>';
-const haloPortrait = `${halo}<g clip-path="url(#head)">${portrait}</g>`;
 const white = content => content.replace(/\sfill="[^"]+"/g, ' fill="#F7F7F7"');
 // Preserve the portrait's shading while removing colour from each vector fill.
 const grayscale = content => content.replace(/fill="#([0-9a-f]{6})"/gi, (_, hex) => {
@@ -55,26 +53,18 @@ const grayscale = content => content.replace(/fill="#([0-9a-f]{6})"/gi, (_, hex)
   const level = Math.round(.2126 * channels[0] + .7152 * channels[1] + .0722 * channels[2]);
   return `fill="#${level.toString(16).padStart(2, '0').repeat(3)}"`;
 });
-const whiteHalo = halo.replace('#C29A35', '#F7F7F7');
 const files = {
   'logo_vector.svg': svg('0 0 382 138', `${portrait}${paths.slice(0, 34).join('\n')}`, 'Parrocchia San Bernardo da Chiaravalle'),
   'saint-head.svg': svg('-10 -5 128 128', head, 'San Bernardo — testa vettoriale'),
-  'saint-head-halo.svg': svg('-10 -18 128 141', `<defs><clipPath id="head"><path d="${headClip}"/></clipPath></defs>${haloPortrait}`, 'San Bernardo — testa vettoriale con aureola'),
   'saint-head-white.svg': svg('-10 -5 128 128', grayscale(head), 'San Bernardo — testa in scala di grigi'),
-  'saint-head-halo-white.svg': svg('-10 -18 128 141', `<defs><clipPath id="head"><path d="${headClip}"/></clipPath></defs>${whiteHalo}<g clip-path="url(#head)">${grayscale(portrait)}</g>`, 'San Bernardo — testa in scala di grigi con aureola'),
   'favicon-vector.svg': svg('-10 -5 128 128', head, 'San Bernardo'),
-  'favicon-vector-halo.svg': svg('-10 -18 128 141', `<defs><clipPath id="head"><path d="${headClip}"/></clipPath></defs>${haloPortrait}`, 'San Bernardo — con aureola'),
   'logo_vector_white.svg': svg('0 0 382 138', `${grayscale(portrait)}${white(paths.slice(0, 34).join('\n'))}`, 'Parrocchia San Bernardo da Chiaravalle — bianco'),
-  'logo_vector_halo.svg': svg('0 -18 382 156', `${halo}${portrait}${paths.slice(0, 34).join('\n')}`, 'Parrocchia San Bernardo da Chiaravalle — con aureola'),
-  'logo_vector_halo_white.svg': svg('0 -18 382 156', `${whiteHalo}${grayscale(portrait)}${white(paths.slice(0, 34).join('\n'))}`, 'Parrocchia San Bernardo da Chiaravalle — bianco con aureola'),
   'logo_extended_vector.svg': svg('0 0 1442 94', `<defs><clipPath id="portrait"><rect width="107" height="138"/></clipPath></defs><g transform="scale(.68116)" clip-path="url(#portrait)">${portrait}</g><g transform="translate(-441.04187022793417 -224.42986645246788)">${lettering.join('\n')}</g>`, 'Parrocchia San Bernardo da Chiaravalle'),
-  'logo_extended_vector_halo.svg': svg('0 -13 1442 107', `<defs><clipPath id="portrait"><rect y="-18" width="107" height="156"/></clipPath></defs><g transform="scale(.68116)" clip-path="url(#portrait)">${halo}${portrait}</g><g transform="translate(-441.04187022793417 -224.42986645246788)">${lettering.join('\n')}</g>`, 'Parrocchia San Bernardo da Chiaravalle — con aureola'),
   'logo_extended_vector_white.svg': svg('0 0 1442 94', `<defs><clipPath id="portrait"><rect width="107" height="138"/></clipPath></defs><g transform="scale(.68116)" clip-path="url(#portrait)">${grayscale(portrait)}</g><g transform="translate(-441.04187022793417 -224.42986645246788)">${white(lettering.join('\n'))}</g>`, 'Parrocchia San Bernardo da Chiaravalle — bianco'),
-  'logo_extended_vector_halo_white.svg': svg('0 -13 1442 107', `<defs><clipPath id="portrait"><rect y="-18" width="107" height="156"/></clipPath></defs><g transform="scale(.68116)" clip-path="url(#portrait)">${whiteHalo}${grayscale(portrait)}</g><g transform="translate(-441.04187022793417 -224.42986645246788)">${white(lettering.join('\n'))}</g>`, 'Parrocchia San Bernardo da Chiaravalle — bianco con aureola'),
 };
 async function main() {
   // Same artwork and dimensions: only the portrait panel gains a dark backdrop.
-  for (const suffix of ['', '_halo']) {
+  for (const suffix of ['']) {
     const panel = `<rect x="0" y="${suffix ? -18 : 0}" width="107" height="${suffix ? 156 : 138}" rx="6" fill="#0A0D19"/>`;
     for (const prefix of ['logo_vector', 'logo_extended_vector']) {
       const name = `${prefix}${suffix}.svg`;
@@ -89,13 +79,13 @@ async function main() {
     files[`favicon-vector${iconSuffix}-dark.svg`] = files[iconName].replace(portrait, darkPortrait).replace('</title>\n', '</title>\n' + iconPanel);
   }
   // Full simplified bust, never the head clip: square canvases preserve all artwork.
-  for (const variant of ['', '-halo', '-dark', '-halo-dark']) {
+  for (const variant of ['', '-dark']) {
     const hasHalo = variant.includes('halo');
     const top = hasHalo ? -20 : -5;
     const side = hasHalo ? 166 : 148;
     const left = (107 - side) / 2;
     const panel = variant.includes('dark') ? `<rect x="${left}" y="${top}" width="${side}" height="${side}" rx="8" fill="#0A0D19"/>` : '';
-    files[`favicon-vector${variant}.svg`] = svg(`${left} ${top} ${side} ${side}`, `${panel}${hasHalo ? halo : ''}${iconPortrait}`, 'San Bernardo — icona completa semplificata');
+    files[`favicon-vector${variant}.svg`] = svg(`${left} ${top} ${side} ${side}`, `${panel}${iconPortrait}`, 'San Bernardo — icona completa semplificata');
   }
   for (const [name, data] of Object.entries(files)) {
     assert(!/<(?:image|text)\b|data:image/.test(data), `${name} must have no raster images or font dependencies`);
@@ -107,7 +97,7 @@ async function main() {
     await sharp(Buffer.from(pwa), {density: 192}).resize(size, size).png().toFile(path.join(assets, `pwa-icon-maskable-${size}.png`));
     await sharp(Buffer.from(files['favicon-vector.svg']), {density: 384}).resize(size, size, {fit: 'contain', background: {r: 0, g: 0, b: 0, alpha: 0}}).png().toFile(path.join(assets, `pwa-icon-${size}.png`));
   }
-  for (const variant of ['', '-halo', '-dark', '-halo-dark']) {
+  for (const variant of ['', '-dark']) {
   const icon = Buffer.from(files[`favicon-vector${variant}.svg`]);
   for (const size of [16, 32, 48, 180, 192, 512]) {
     await sharp(icon, {density: 384}).resize(size, size, {fit: 'contain', background: {r: 0, g: 0, b: 0, alpha: 0}}).png().toFile(path.join(assets, `saint-icon${variant}-${size}.png`));
