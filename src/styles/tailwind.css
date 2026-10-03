@@ -146,6 +146,7 @@
   .sb-logo-vector-new .topbar .logo { background-image: url("../assets/logo_vector.svg"); }
   .sb-logo-vector-new-dark .topbar .logo { background-image: url("../assets/logo_vector_dark.svg"); }
   .topbar .logo[style] { background-image: var(--sb-logo-compact); }
+  .sb-desktop-logo { display: none; }
   @media (min-width: 641px) {
     .topbar .logo[style] { background-image: var(--sb-logo-extended); }
   }
@@ -1328,5 +1329,26 @@
     .christianlife-card-title {
       @apply text-[1.4rem];
     }
+  }
+  @media (min-width: 64.001rem) {
+    #topbar { height: 60px; }
+    #topbar { display: flex; align-items: center; padding: 0 clamp(28px, 7vw, 100px); background: rgb(20 20 20 / 35%); border-bottom-color: rgb(255 255 255 / 12%); backdrop-filter: blur(3px); }
+    .sb-desktop-logo { display: none; }
+    .sb-desktop-logo img { display: block; width: 170px; max-width: 100%; height: auto; }
+    #topbar > #menu_desktop { flex: 0 1 70%; width: auto; margin-left: auto; padding: 0; }
+    #menu_desktop .first-level { align-items: center; justify-content: flex-end; gap: 3px; padding: 0; background: transparent; border-radius: 0; backdrop-filter: none; font: 400 18px/1.4 "Yanone Kaffeesatz", sans-serif; letter-spacing: .035em; }
+    #menu_desktop .first-level > li { flex: 1 1 auto; padding: 0; white-space: nowrap; }
+    #menu_desktop li:hover, #menu_desktop li:focus-within { background: transparent; }
+    #menu_desktop .first-level > li > a { position: relative; display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 42px; padding: 0 8px; }
+    #menu_desktop .first-level > li > a::before { position: absolute; right: 10px; bottom: 0; left: 10px; height: 2px; background: #d3be84; content: ""; transform: scaleX(0); transition: transform .2s ease; }
+    #menu_desktop .first-level > li:hover > a::before, #menu_desktop .first-level > li:focus-within > a::before { transform: scaleX(1); }
+    #menu_desktop .first-level > li[aria-haspopup] > a::after { width: 5px; height: 5px; margin-top: -3px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; content: ""; transform: rotate(45deg); opacity: .75; }
+    #menu_desktop a:focus-visible { outline: 2px solid #d3be84; outline-offset: -4px; }
+    #menu_desktop .dropdown { top: 100%; left: 0; width: max-content; min-width: 220px; padding: 8px; text-align: left; background: rgb(25 25 25 / 97%); border: 1px solid rgb(255 255 255 / 12%); border-radius: 0 0 6px 6px; box-shadow: 0 12px 25px rgb(0 0 0 / 22%); }
+    #menu_desktop .dropdown li { padding: 0; text-align: left; }
+    #menu_desktop .dropdown a { padding: 12px 14px; white-space: normal; font-size: 16px; font-weight: 400; letter-spacing: 0; border-radius: 3px; }
+    #menu_desktop .dropdown a:hover, #menu_desktop .dropdown a:focus-visible { color: #ead9ac; background: rgb(255 255 255 / 7%); }
+    #menu_desktop .first-level > .menu-youtube { flex: 0 0 auto; margin-left: 8px; padding-left: 12px; border-left: 1px solid rgb(255 255 255 / 35%); }
+    .sb-home-info-column { position: relative; z-index: 20; }
   }
 }
