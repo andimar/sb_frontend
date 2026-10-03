@@ -1,15 +1,15 @@
-<section id="video" class="sb-section sb-video-section {{ video is defined ? '' : 'hidden' }}" aria-labelledby="video-title">
-    {% include '/markup/common/section-title.twig' with { section_title: 'VIDEO', section_title_id: 'video-title', section_title_class: 'sb-section-title--red' } %}
+<section id="video" class="sb-section sb-video-section" aria-labelledby="video-title">
+    {% include '/markup/common/section-title.twig' with { section_title: 'VIDEO E DIRETTE', section_title_id: 'video-title', section_title_class: 'sb-section-title--red' } %}
     <div class="sb-section-content">
-        
-        <iframe src="{{ video.url }}" title="{{ video.subject|default('Video della parrocchia') }}" allowfullscreen data-mce-fragment="1"></iframe>
-    
-        <p class="description">{{video.subject}}<br>
-            <span class="time">{{video.is_live ? video.day ~ 'alle ore ' ~ video.hour : '' }}</span>
-        </p>
+        {% if video.embed_url %}
+            <iframe src="{{ video.embed_url }}" title="{{ video.title }}" allowfullscreen loading="lazy"></iframe>
+        {% endif %}
+        <div class="sb-video-details">
+            <span class="sb-video-label sb-video-label--{{ video.kind }}">{% if video.kind == 'live' %}<span aria-hidden="true">●</span> {% endif %}{{ video.label }}</span>
+            <h3>{{ video.title }}</h3>
+            {% if video.description %}<p>{{ video.description }}</p>{% endif %}
+            <a class="sb-video-link" href="{{ video.youtube_url|default(video.channel_url) }}" target="_blank" rel="noopener noreferrer">{% if video.kind == 'channel' %}Apri il canale YouTube{% else %}Guarda su YouTube{% endif %} <span aria-hidden="true">→</span></a>
+        </div>
+        <a class="sb-youtube-channel-link" href="{{ video.channel_url }}" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">▶</span> Tutti i video sul canale YouTube</a>
     </div>
 </section>
-
-{% block scripts %}
-<script src="{{ base_dir }}/scripts/is_video_streaming.js?v={{ asset_version }}"></script>
-{% endblock %}
