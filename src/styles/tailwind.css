@@ -1060,7 +1060,7 @@
   }
 
   .sb-home-footer .footer-logo img {
-    @apply mx-auto;
+    @apply mx-auto block h-auto w-[200px] max-w-[70vw];
   }
 
   .sb-home-footer .footer-colophon {
