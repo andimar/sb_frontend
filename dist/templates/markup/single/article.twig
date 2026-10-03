@@ -13,7 +13,7 @@
     {% endif %}
     <h1 class="entry-title w-[85%] max-w-[780px] text-left">{{ article.title }}</h1>
     <div class="authorbar">
-        <span class="pubdate">{{ article.date }}</span>
+        {% block date %}<span class="pubdate">{{ article.date }}</span>{% endblock %}
         {% block calendar %}{% endblock %}
         di <span class="author">{{ author }}</span>
     </div>

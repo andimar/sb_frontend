@@ -1,8 +1,27 @@
 # Trial vector logo assets
 
+The portrait is now derived from `tema/icons/img/sbernardo.svg`. The compact
+lettering is retained from `logo_new.svg`, and the extended outlined lettering
+from the classic extended logo. The source palette is converted to explicit SVG
+fills, avoiding CSS class collisions. `logo_vector.svg` is the normal colour logo.
+
+PWA assets: `pwa-icon-{192,512}.png` are transparent standard icons;
+`pwa-icon-maskable-{192,512}.png` use an opaque neutral background and keep the
+head inside the central safe area for launcher cropping. These assets are ready
+for a future manifest; generating them does not enable a PWA.
+
 The backend selector at Appearance → Customize → Identità visiva → Versione del
-logo supports Classica, Vettoriale and Vettoriale con aureola. Classic remains the
+logo supports Classica, Vettoriale precedente, Vettoriale precedente con aureola,
+San Bernardo — nuovo vettoriale, and San Bernardo — nuovo vettoriale con aureola.
+The previous family is preserved in `src/assets/legacy-vector/`; regeneration
+does not overwrite it. The new family uses the assets at the root of `src/assets`.
+The selector also applies to the login logo. Classic remains the
 default. Each vector variant provides coordinated header, footer and site icons.
+
+Two additional choices, San Bernardo — sfondo scuro (with or without halo),
+use the same artwork with a `#0A0D19` portrait panel and subtly rounded corners.
+The `_dark.svg` logos and `-dark` favicon/PNG exports are generated together.
+White footer variants remain unchanged, with grayscale portraits and no panel.
 
 The halo variant uses a thin warm gold ellipse around the upper head. Its white
 versions use white lettering, a grayscale portrait preserving the original
@@ -17,7 +36,7 @@ the halo is not clipped, including in PNG and ICO exports.
 - `saint-icon-halo-{16,32,48,180,192,512}.png`: transparent compatibility and touch icons.
 
 - `src/assets/saint-head.svg`: square transparent canvas, head isolated from
-  `logo_new.svg` using a silhouette clip, with the original coloured paths intact.
+  `sbernardo.svg` using a silhouette clip, with the original coloured paths intact.
 - `src/assets/saint-head-white.svg`: grayscale head for dark surfaces.
 - `src/assets/favicon-vector.svg`: the same head for browsers supporting SVG icons.
 - `src/assets/favicon-vector.ico`: PNG-backed 16, 32 and 48 pixel ICO frames.
