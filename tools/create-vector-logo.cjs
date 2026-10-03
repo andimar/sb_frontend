@@ -19,6 +19,25 @@ const saintArtwork = saintSource.replace(/^[\s\S]*?<svg\b[^>]*>/, '').replace(/<
 });
 const saintScale = 138 / 1441.21;
 const portrait = `<g transform="translate(${(107 - 1090.01 * saintScale) / 2} 0) scale(${saintScale})">${saintArtwork}</g>`;
+// The dark-panel family has its own supplied portrait; other families stay intact.
+const darkSource = fs.readFileSync(path.resolve(__dirname, '../../tema/icons/img/SVG/sbernardo.svg'), 'utf8');
+assert(!/<image\b|<script\b/.test(darkSource), 'The dark portrait must be vector-only');
+const darkPalette = Object.fromEntries([...darkSource.matchAll(/\.(cls-\d+)\s*\{\s*fill:\s*(#[0-9a-f]+);\s*\}/gi)].map(match => [match[1], match[2]]));
+const darkArtwork = darkSource.replace(/^[\s\S]*?<svg\b[^>]*>/, '').replace(/<metadata>[\s\S]*?<\/metadata>/g, '').replace(/<defs>[\s\S]*?<\/defs>/, '').replace(/<\/svg>\s*$/, '').replace(/[ \t]+$/gm, '').trim().replace(/class="(cls-\d+)"/g, (_, name) => {
+  assert(darkPalette[name], `Missing dark portrait colour for ${name}`);
+  return `fill="${darkPalette[name]}"`;
+});
+const darkScale = 138 / 1441.01;
+const darkPortrait = `<g transform="translate(${(107 - 1089.98 * darkScale) / 2} 0) scale(${darkScale})">${darkArtwork}</g>`;
+const iconSource = fs.readFileSync(path.resolve(__dirname, '../../tema/icons/img/SVG/sbernardo-semplificato.svg'), 'utf8');
+assert(!/<image\b|<script\b/.test(iconSource), 'The simplified icon must be vector-only');
+const iconPalette = Object.fromEntries([...iconSource.matchAll(/\.(cls-\d+)\s*\{\s*fill:\s*(#[0-9a-f]+);\s*\}/gi)].map(match => [match[1], match[2]]));
+const iconArtwork = iconSource.replace(/^[\s\S]*?<svg\b[^>]*>/, '').replace(/<metadata>[\s\S]*?<\/metadata>/g, '').replace(/<defs>[\s\S]*?<\/defs>/, '').replace(/<\/svg>\s*$/, '').replace(/[ \t]+$/gm, '').trim().replace(/class="(cls-\d+)"/g, (_, name) => {
+  assert(iconPalette[name], `Missing simplified icon colour for ${name}`);
+  return `fill="${iconPalette[name]}"`;
+});
+const iconScale = 138 / 616.66;
+const iconPortrait = `<g transform="translate(${(107 - 465.1 * iconScale) / 2} 0) scale(${iconScale})">${iconArtwork}</g>`;
 const lettering = (extended.match(/<path\b[^>]*\/>/g) || []).filter(p => /fill="rgb\((89,0,0|138,1,1)\)"/.test(p));
 assert.equal(lettering.length, 34, 'Expected the 34 outlined letters of the extended logo');
 const svg = (box, content, title) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${box}" fill="none"><title>${title}</title>\n${content}\n</svg>\n`;
@@ -59,7 +78,7 @@ async function main() {
     const panel = `<rect x="0" y="${suffix ? -18 : 0}" width="107" height="${suffix ? 156 : 138}" rx="6" fill="#0A0D19"/>`;
     for (const prefix of ['logo_vector', 'logo_extended_vector']) {
       const name = `${prefix}${suffix}.svg`;
-      files[`${prefix}${suffix}_dark.svg`] = files[name].replace(
+      files[`${prefix}${suffix}_dark.svg`] = files[name].replace(portrait, darkPortrait).replace(
         prefix === 'logo_vector' ? '</title>\n' : 'clip-path="url(#portrait)">',
         match => match + panel
       );
@@ -67,14 +86,23 @@ async function main() {
     const iconSuffix = suffix ? '-halo' : '';
     const iconName = `favicon-vector${iconSuffix}.svg`;
     const iconPanel = `<rect x="-10" y="${suffix ? -18 : -5}" width="128" height="${suffix ? 141 : 128}" rx="8" fill="#0A0D19"/>`;
-    files[`favicon-vector${iconSuffix}-dark.svg`] = files[iconName].replace('</title>\n', '</title>\n' + iconPanel);
+    files[`favicon-vector${iconSuffix}-dark.svg`] = files[iconName].replace(portrait, darkPortrait).replace('</title>\n', '</title>\n' + iconPanel);
+  }
+  // Full simplified bust, never the head clip: square canvases preserve all artwork.
+  for (const variant of ['', '-halo', '-dark', '-halo-dark']) {
+    const hasHalo = variant.includes('halo');
+    const top = hasHalo ? -20 : -5;
+    const side = hasHalo ? 166 : 148;
+    const left = (107 - side) / 2;
+    const panel = variant.includes('dark') ? `<rect x="${left}" y="${top}" width="${side}" height="${side}" rx="8" fill="#0A0D19"/>` : '';
+    files[`favicon-vector${variant}.svg`] = svg(`${left} ${top} ${side} ${side}`, `${panel}${hasHalo ? halo : ''}${iconPortrait}`, 'San Bernardo — icona completa semplificata');
   }
   for (const [name, data] of Object.entries(files)) {
     assert(!/<(?:image|text)\b|data:image/.test(data), `${name} must have no raster images or font dependencies`);
     fs.writeFileSync(path.join(assets, name), data);
   }
   for (const size of [192, 512]) {
-    const iconContent = `<rect width="512" height="512" fill="#f0f1f2"/><svg x="61" y="61" width="390" height="390" viewBox="-10 -5 128 128">${head}</svg>`;
+    const iconContent = `<rect width="512" height="512" fill="#f0f1f2"/><svg x="102" y="102" width="308" height="308" viewBox="-20.5 -5 148 148">${iconPortrait}</svg>`;
     const pwa = svg('0 0 512 512', iconContent, 'San Bernardo — icona PWA');
     await sharp(Buffer.from(pwa), {density: 192}).resize(size, size).png().toFile(path.join(assets, `pwa-icon-maskable-${size}.png`));
     await sharp(Buffer.from(files['favicon-vector.svg']), {density: 384}).resize(size, size, {fit: 'contain', background: {r: 0, g: 0, b: 0, alpha: 0}}).png().toFile(path.join(assets, `pwa-icon-${size}.png`));

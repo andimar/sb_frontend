@@ -6,6 +6,8 @@ from the classic extended logo. The source palette is converted to explicit SVG
 fills, avoiding CSS class collisions. `logo_vector.svg` is the normal colour logo.
 
 PWA assets: `pwa-icon-{192,512}.png` are transparent standard icons;
+Favicon and PWA artwork comes from `tema/icons/img/SVG/sbernardo-semplificato.svg`.
+The complete bust is preserved on a square canvas, without isolating the head.
 `pwa-icon-maskable-{192,512}.png` use an opaque neutral background and keep the
 head inside the central safe area for launcher cropping. These assets are ready
 for a future manifest; generating them does not enable a PWA.
@@ -20,6 +22,8 @@ default. Each vector variant provides coordinated header, footer and site icons.
 
 Two additional choices, San Bernardo — sfondo scuro (with or without halo),
 use the same artwork with a `#0A0D19` portrait panel and subtly rounded corners.
+Their portrait source is `tema/icons/img/SVG/sbernardo.svg`, independently of the
+source used by the transparent and white families.
 The `_dark.svg` logos and `-dark` favicon/PNG exports are generated together.
 White footer variants remain unchanged, with grayscale portraits and no panel.
 
