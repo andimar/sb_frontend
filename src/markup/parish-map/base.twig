@@ -1,0 +1,37 @@
+{% if parish_map is defined %}
+<section id="dove-siamo" class="sb-location" aria-labelledby="sb-location-title">
+  <div class="sb-location-heading">
+    <p class="sb-location-eyebrow">Una comunità, nel cuore di Centocelle</p>
+    <h2 id="sb-location-title">Ci troviamo qui.</h2>
+    <p>Vieni a conoscerci. Ti aiutiamo a trovare la strada.</p>
+  </div>
+  <div class="sb-location-grid">
+    <div class="sb-location-info">
+      <span class="sb-location-tag">Dove siamo</span>
+      <h3>{{ parish_map.title }}</h3>
+      <p class="sb-location-address">{{ parish_map.address }}<br><span>All’incrocio con viale Palmiro Togliatti</span></p>
+      <a class="sb-location-primary" href="{{ parish_map.directions_url }}">Apri le indicazioni <span aria-hidden="true">↗</span></a>
+      <div class="sb-location-transport">
+        <h4>Come raggiungerci</h4>
+        <a href="{{ parish_map.directions_url }}&amp;origin=Metro%20Gardenie%2C%20Roma&amp;travelmode=walking"><span class="sb-location-icon" aria-hidden="true">C</span><span><strong>Metro C · Gardenie</strong><small>Circa 1 km a piedi · 14 minuti</small></span><span aria-hidden="true">↗</span></a>
+        <a href="{{ parish_map.directions_url }}&amp;travelmode=transit"><span class="sb-location-icon" aria-hidden="true">M</span><span><strong>Con i mezzi pubblici</strong><small>Calcola il percorso da dove ti trovi</small></span><span aria-hidden="true">↗</span></a>
+        <a href="{{ parish_map.directions_url }}&amp;travelmode=driving"><span class="sb-location-icon" aria-hidden="true">→</span><span><strong>In auto</strong><small>Imposta la parrocchia come destinazione</small></span><span aria-hidden="true">↗</span></a>
+        <a href="{{ parish_map.directions_url }}&amp;travelmode=walking"><span class="sb-location-icon" aria-hidden="true">↟</span><span><strong>A piedi</strong><small>Trova il percorso nel quartiere</small></span><span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="sb-location-note">Orari, linee e variazioni del servizio:<br><a href="https://viaggiacon.atac.roma.it/">consulta Viaggia con ATAC ↗</a></p>
+    </div>
+    <div class="sb-location-map-wrap">
+      {% if parish_map.enabled %}
+      <div class="sb-location-map" data-component="parish-map" data-props="{{ parish_map.json|e('html_attr') }}" role="region" aria-label="Mappa della posizione della parrocchia">
+        <div class="sb-location-fallback"><span aria-hidden="true">⌖</span><p>{{ parish_map.address }}</p><p>La mappa interattiva è in caricamento.</p><a href="{{ parish_map.directions_url }}">Visualizza la posizione ↗</a></div>
+      </div>
+      <button class="sb-location-reset" type="button" data-map-reset hidden>⌖ Torna alla parrocchia</button>
+      <p class="sb-location-status" role="status" data-map-status></p>
+      {% else %}
+      <div class="sb-location-fallback"><p>{{ parish_map.address }}</p><a href="{{ parish_map.directions_url }}">Visualizza la posizione ↗</a></div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="sb-location-bottom"><span>Parrocchia San Bernardo da Chiaravalle · Roma</span><a href="tel:+39062312038">Hai bisogno di aiuto? 06 2312038 ↗</a></div>
+</section>
+{% endif %}

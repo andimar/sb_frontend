@@ -11,6 +11,53 @@
 @source "../**/*.twig";
 @source "../**/*.js";
 
+@layer components {
+  .sb-location { box-sizing: border-box; padding: 70px max(24px, calc((100% - 1140px)/2)) 28px; background: #f4f0e9; color: #332b27; font: 16px/1.6 var(--font-sb-body); }
+  .sb-location *, .sb-location *::before, .sb-location *::after { box-sizing: border-box; }
+  .sb-location-heading { margin-bottom: 32px; }
+  .sb-location-eyebrow { margin: 0 0 8px; color: var(--color-sb-red); font-size: 12px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; }
+  .sb-location-heading h2 { margin: 0; color: var(--color-sb-red-dark); font: 400 clamp(44px, 5vw, 64px)/1.1 var(--font-sb-display); }
+  .sb-location-heading > p:last-child { margin: 12px 0 0; color: #6b625b; }
+  .sb-location-grid { display: grid; grid-template-columns: 390px minmax(0,1fr); overflow: hidden; border: 1px solid #e0d7cc; border-radius: 18px; background: #fffdf9; box-shadow: 0 14px 42px #49351a0a; }
+  .sb-location-info { padding: 34px; }
+  .sb-location-tag { color: var(--color-sb-red); font-size: 11px; letter-spacing: 1.8px; font-weight: 500; text-transform: uppercase; }
+  .sb-location-info h3 { margin: 10px 0 14px; font: 400 34px/1.1 var(--font-sb-display); }
+  .sb-location-address { margin: 0 0 24px; font-size: 15px; }
+  .sb-location-address span { color: #74695e; font-size: 12px; }
+  .sb-location a { color: var(--color-sb-red); text-decoration: none; }
+  .sb-location a:hover { text-decoration: underline; }
+  .sb-location .sb-location-primary { display: flex; justify-content: space-between; padding: 13px 18px; border-radius: 7px; background: var(--color-sb-red); color: white; font-size: 14px; font-weight: 500; }
+  .sb-location-primary:hover { background: var(--color-sb-red-dark); }
+  .sb-location-transport { margin-top: 28px; }
+  .sb-location-transport h4 { margin: 0 0 10px; font-size: 13px; font-weight: 500; }
+  .sb-location-transport a { display: grid; grid-template-columns: 36px 1fr 12px; gap: 12px; align-items: center; padding: 13px 0; border-top: 1px solid #ebe5dd; color: #332b27; }
+  .sb-location-icon { display: flex; align-items: center; justify-content: center; height: 36px; border-radius: 8px; background: #f0e9de; color: var(--color-sb-red); font-weight: 600; }
+  .sb-location-transport strong { display: block; font-size: 14px; font-weight: 500; }
+  .sb-location-transport small { display: block; margin-top: 2px; color: #766b61; font-size: 11px; line-height: 1.5; }
+  .sb-location-note { margin: 20px 0 0; color: #776d62; font-size: 11px; }
+  .sb-location-map-wrap { position: relative; min-width: 0; background: #e8ecdf; }
+  .sb-location-map { height: 100%; min-height: 560px; z-index: 0; font-family: var(--font-sb-body); }
+  .sb-location-fallback { display: flex; min-height: 420px; height: 100%; flex-direction: column; justify-content: center; align-items: center; padding: 30px; text-align: center; }
+  .sb-location-fallback > span { font-size: 64px; color: var(--color-sb-red); }
+  .sb-location-reset { position: absolute; z-index: 2; right: 18px; bottom: 36px; padding: 11px 16px; border: 1px solid #ddd5c8; border-radius: 24px; background: #fffdf9; color: #590000; box-shadow: 0 2px 12px #0002; font: 500 12px var(--font-sb-body); cursor: pointer; }
+  .sb-location-status:empty { display: none; }
+  .sb-location-status { position: absolute; z-index: 2; top: 12px; left: 54px; right: 12px; padding: 12px; background: #fffdf9; border-radius: 8px; font-size: 12px; }
+  .sb-location-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 20px; color: #82766b; font-size: 11px; }
+  .sb-location :is(a,button):focus-visible { outline: 3px solid #b56b22; outline-offset: 4px; }
+  .sb-parish-pin { background: transparent; border: 0; }
+  .sb-parish-pin span { display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border: 3px solid white; border-radius: 50% 50% 50% 4px; transform: rotate(-45deg); background: #880000; color: white; font-size: 28px; box-shadow: 0 4px 14px #59000055; }
+  .sb-parish-pin i { transform: rotate(45deg); font-style: normal; }
+  .sb-parish-label { border: 0; border-radius: 5px; padding: 4px 9px; background: #fffdf9; color: #590000; font-size: 11px; font-weight: 600; box-shadow: 0 2px 8px #0002; }
+  .sb-parish-label::before { display: none; }
+  @media (max-width: 800px) {
+    .sb-location { padding: 44px 20px 24px; }
+    .sb-location-grid { grid-template-columns: 1fr; }
+    .sb-location-info { padding: 26px; }
+    .sb-location-map { height: 360px; min-height: 360px; }
+    .sb-location-heading > p:last-child { font-size: 14px; }
+  }
+}
+
 @theme static {
   --color-sb-red: #880000;
   --color-sb-red-dark: #590000;

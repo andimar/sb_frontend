@@ -35,6 +35,7 @@ gulp.task('tailwind', function tailwind() {
 gulp.task('styles:lib', () => gulp.src([
     'src/styles/lib/*.css',
     'node_modules/swiper/swiper-bundle.min.css',
+    'node_modules/leaflet/dist/leaflet.css',
 ]).pipe(gulp.dest(cssBuildFolder + 'lib')).pipe(connect.reload()));
 
 gulp.task('scripts', () => gulp.src('src/scripts/**/*.js')
@@ -45,6 +46,7 @@ gulp.task('scripts', () => gulp.src('src/scripts/**/*.js')
 gulp.task('scripts:lib', () => gulp.src([
     'src/scripts/lib/*.js',
     'node_modules/swiper/swiper-bundle.min.js',
+    'node_modules/leaflet/dist/leaflet.js',
 ]).pipe(gulp.dest(scriptsBuildFolder + 'lib')).pipe(connect.reload()));
 
 gulp.task('assets', () => gulp.src('src/assets/**/*')
