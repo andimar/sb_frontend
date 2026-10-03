@@ -98,6 +98,10 @@
   .sb-logo-vector .topbar .logo { background-image: url("../assets/legacy-vector/logo_new.svg"); }
   .sb-logo-vector-new .topbar .logo { background-image: url("../assets/logo_vector.svg"); }
   .sb-logo-vector-new-dark .topbar .logo { background-image: url("../assets/logo_vector_dark.svg"); }
+  .topbar .logo[style] { background-image: var(--sb-logo-compact); }
+  @media (min-width: 641px) {
+    .topbar .logo[style] { background-image: var(--sb-logo-extended); }
+  }
   .sb-internal-main { flex: 1 0 auto; width: 100%; margin-top: 75px; }
   .sb-internal-footer { box-sizing: border-box; display: flex; flex: 0 0 auto; flex-direction: column; align-items: center; gap: 1.25rem; padding: 2.5rem 1.25rem 1.75rem; color: #f7f7f7; text-align: center; }
   .sb-internal-footer .footer-logo { display: block; max-width: 100%; }

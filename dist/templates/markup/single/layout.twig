@@ -29,14 +29,12 @@
                 </svg>
             </a>
         </div>
+        <a class="sb-menu-youtube-link" href="https://www.youtube.com/channel/UCElYF70vRihTWXdWaabuwMA" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">▶</span> Canale YouTube</a>
         {{ primary_menu }}
     </aside>
     <div id="container" class="sb-internal-container">
         <header class="topbar header sb-internal-header movable">
-            <a class="logo" href="{{ document.home_url }}" title="{{ document.name }}" rel="home">{{ document.name }}</a>
-            <a id="youtube_button" class="sb-youtube-subscribe" href="https://www.youtube.com/channel/UCElYF70vRihTWXdWaabuwMA?sub_confirmation=1" target="_blank" rel="noopener noreferrer">
-                <span aria-hidden="true">▶</span> YouTube
-            </a>
+            <a class="logo" href="{{ document.home_url }}" title="{{ document.name }}" rel="home" style="--sb-logo-compact: url('{{ document.logo.compact }}'); --sb-logo-extended: url('{{ document.logo.extended }}');">{{ document.name }}</a>
         </header>
         {% block page %}{% endblock %}
         {# No legacy dynamic_sidebar: site components replace widgets. #}
@@ -44,6 +42,7 @@
             <a class="footer-logo" href="{{ document.home_url }}" rel="home">
                 <img src="{{ document.logo.footer }}" width="158" height="57" alt="{{ document.name }}">
             </a>
+            <a class="sb-footer-youtube-link" href="https://www.youtube.com/channel/UCElYF70vRihTWXdWaabuwMA" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">▶</span> Canale YouTube</a>
             <small class="footer-colophon">©{{ document.year }} {{ document.name }}</small>
         </footer>
     </div>

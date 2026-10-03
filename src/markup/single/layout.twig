@@ -34,7 +34,7 @@
     </aside>
     <div id="container" class="sb-internal-container">
         <header class="topbar header sb-internal-header movable">
-            <a class="logo" href="{{ document.home_url }}" title="{{ document.name }}" rel="home">{{ document.name }}</a>
+            <a class="logo" href="{{ document.home_url }}" title="{{ document.name }}" rel="home" style="--sb-logo-compact: url('{{ document.logo.compact }}'); --sb-logo-extended: url('{{ document.logo.extended }}');">{{ document.name }}</a>
         </header>
         {% block page %}{% endblock %}
         {# No legacy dynamic_sidebar: site components replace widgets. #}
