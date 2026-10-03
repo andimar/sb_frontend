@@ -66,7 +66,7 @@ async function main() {
   // Same artwork and dimensions: only the portrait panel gains a dark backdrop.
   for (const suffix of ['']) {
     // Inset the backdrop into the artwork, avoiding dark rails beside the bust.
-    const panel = '<rect x="4" y="0" width="99" height="134" rx="6" fill="#0A0D19"/>';
+    const panel = '<rect x="1.6" y="0" width="103.8" height="137.5" rx="6" fill="#0A0D19"/>';
     for (const prefix of ['logo_vector', 'logo_extended_vector']) {
       const name = `${prefix}${suffix}.svg`;
       files[`${prefix}${suffix}_dark.svg`] = files[name].replace(portrait, darkPortrait).replace(
