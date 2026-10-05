@@ -915,25 +915,12 @@
     @apply w-[calc(70%-10px)];
   }
 
-  #omelie-home-card .omelie-card-cta-all {
-    @apply w-[30%] bg-sb-azure-dark text-white;
+  .omelie-archive-action {
+    @apply col-span-12 my-[30px] flex justify-center;
   }
 
-  #omelie-content-search {
-    @apply relative col-start-4 col-span-6 my-[30px] flex h-10;
-  }
-
-  #omelie-content-search input,
-  #omelie-content-search button {
-    @apply border-0 bg-sb-white px-[10px] pt-1.5 pb-1 font-sb-display text-[1.4rem] font-[300] tracking-[0.3px] text-sb-black outline-none;
-  }
-
-  #omelie-content-search input {
-    @apply min-w-0 flex-1 rounded-l-[5px];
-  }
-
-  #omelie-content-search button {
-    @apply rounded-r-[5px] bg-sb-azure-dark text-white transition-colors hover:bg-sb-gold;
+  .omelie-archive-action a {
+    @apply inline-block rounded-[5px] bg-sb-white px-6 py-2 font-sb-display text-[1.4rem] font-[300] text-sb-gray-dark no-underline uppercase transition-colors hover:bg-sb-gold hover:text-white;
   }
 
   /* Newsletter */
@@ -1285,7 +1272,7 @@
       @apply w-1/2;
     }
 
-    #omelie-content-search {
+    .omelie-archive-action {
       @apply order-2 mx-auto w-[90%];
     }
 
