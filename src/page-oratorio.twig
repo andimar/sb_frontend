@@ -61,7 +61,7 @@
                     <h2 class="sb-section-heading" id="le-cronache" tabindex="-1">Le Cronache dell’Oratorio</h2>
                     {% if chronicles.text %}<p>{{ chronicles.text }}</p>{% endif %}
                     {% if chronicles.url %}
-                        <a class="oratorio-read" href="{{ chronicles.url }}">Leggi le Cronache <span aria-hidden="true">→</span></a>
+                        <a class="oratorio-read" href="{{ chronicles.url }}">{{ chronicles.button_label }} <span aria-hidden="true">→</span></a>
                     {% endif %}
                 </section>
             {% endif %}
