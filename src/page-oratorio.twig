@@ -1,0 +1,72 @@
+{% extends 'page.twig' %}
+
+{% block skip_link %}
+{% if not article.protected %}<a class="oratorio-skip" data-sb-native-anchors href="#oratorio-title">Vai al contenuto</a>{% endif %}
+{% endblock %}
+
+{% block page %}
+{% if article.protected %}
+    {{ parent() }}
+{% else %}
+<main class="sb-internal-main movable sb-oratorio" data-sb-native-anchors>
+    <article class="{{ article.classes }} oratorio-page" id="post-{{ article.id }}" aria-labelledby="oratorio-title">
+        {% set chronicles = oratorio.chronicles %}
+        <header class="oratorio-hero">
+            <div class="sb-internal-shell oratorio-shell oratorio-hero-inner">
+                <h1 id="oratorio-title" tabindex="-1">{{ article.title }}</h1>
+                {% if oratorio.sections or chronicles.text or chronicles.url %}
+                    <nav class="oratorio-index" aria-label="In questa pagina">
+                        <ul>
+                            {% for section in oratorio.sections %}
+                                <li><a href="#{{ section.id }}">{{ section.title }}</a></li>
+                            {% endfor %}
+                            {% if chronicles.text or chronicles.url %}
+                                <li><a href="#le-cronache">Le Cronache</a></li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endif %}
+                {% set photo = oratorio.photo %}
+                <img class="oratorio-photo" src="{{ photo.src }}" width="{{ photo.width }}" height="{{ photo.height }}"
+                     {% if photo.srcset %}srcset="{{ photo.srcset }}" sizes="(max-width: 38rem) 29vw, (max-width: 66rem) 34vw, 22rem"{% endif %}
+                     alt="{{ photo.alt }}" fetchpriority="high" decoding="async">
+            </div>
+        </header>
+
+        <div class="sb-internal-shell oratorio-shell oratorio-body">
+            {% if oratorio.intro %}
+                <div class="oratorio-intro">{% for fragment in oratorio.intro %}{{ fragment }}{% endfor %}</div>
+            {% endif %}
+            {% for section in oratorio.sections %}
+                <section class="oratorio-section" aria-labelledby="{{ section.id }}">
+                    <h2 class="sb-section-heading" id="{{ section.id }}" tabindex="-1">{{ section.heading }}</h2>
+                    {% include 'markup/oratorio/blocks.twig' with {blocks: section.blocks} only %}
+                    {% if section.groups %}
+                        <div class="{{ section.layout == 'per-chi-e-quando' ? 'oratorio-audiences' : 'oratorio-activities' }}">
+                            {% for group in section.groups %}
+                                <div class="oratorio-group">
+                                    <h3{% if group.id %} id="{{ group.id }}"{% endif %}>{{ group.title }}</h3>
+                                    <div class="oratorio-group-body">
+                                        {% include 'markup/oratorio/blocks.twig' with {blocks: group.blocks} only %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </section>
+            {% endfor %}
+            {% if content.page_links|length %}<div class="oratorio-pagination">{{ content.page_links }}</div>{% endif %}
+            {% if chronicles.text or chronicles.url %}
+                <section class="oratorio-chronicles" aria-labelledby="le-cronache">
+                    <h2 class="sb-section-heading" id="le-cronache" tabindex="-1">Le Cronache dell’Oratorio</h2>
+                    {% if chronicles.text %}<p>{{ chronicles.text }}</p>{% endif %}
+                    {% if chronicles.url %}
+                        <a class="oratorio-read" href="{{ chronicles.url }}">Leggi le Cronache <span aria-hidden="true">→</span></a>
+                    {% endif %}
+                </section>
+            {% endif %}
+        </div>
+    </article>
+</main>
+{% endif %}
+{% endblock %}

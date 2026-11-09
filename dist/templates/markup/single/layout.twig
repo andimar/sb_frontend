@@ -19,6 +19,7 @@
 </head>
 <body class="sb-internal-body sb-logo-{{ document.logo.variant }} {{ document.body_classes }}">
     {{ wp_body_open }}
+    {% block skip_link %}{% endblock %}
     <aside id="off-canvas-menu" class="sb-internal-menu movable">
         <div id="hamburger--icon">
             <a href="#">

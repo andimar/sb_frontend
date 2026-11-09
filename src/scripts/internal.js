@@ -82,7 +82,7 @@
       }
 
       const link = event.target.closest('a[href^="#"]');
-      if (!link || link.getAttribute('href') === '#') return;
+      if (!link || link.getAttribute('href') === '#' || link.closest('[data-sb-native-anchors]')) return;
       const target = document.querySelector(link.getAttribute('href'));
       if (!target) return;
       event.preventDefault();

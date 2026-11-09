@@ -401,6 +401,169 @@
     @apply m-0 font-sb-display text-3xl font-[300] leading-tight text-sb-red-dark sm:text-4xl;
   }
 
+  .sb-oratorio {
+    --oratorio-paper: #faf8f4;
+    --oratorio-sand: #efe9df;
+    --oratorio-sage: #e9efeb;
+    --oratorio-green: #40594d;
+    --oratorio-gold: #d3be84;
+    background: var(--oratorio-paper);
+  }
+
+  .oratorio-skip {
+    position: fixed;
+    z-index: 1000;
+    top: .5rem;
+    left: .5rem;
+    padding: .75rem 1rem;
+    color: #fff;
+    background: var(--color-sb-red-dark);
+    font: 500 1rem/1.4 var(--font-sb-body);
+    transform: translateY(calc(-100% - 1rem));
+  }
+  .oratorio-skip:focus { transform: none; outline: 3px solid var(--color-sb-gold); }
+  .sb-oratorio .oratorio-page {
+    display: block;
+    color: var(--color-sb-gray-dark);
+    font: 400 1.0625rem/1.65 var(--font-sb-body);
+    overflow-wrap: anywhere;
+    text-align: left;
+  }
+
+  .oratorio-page *, .oratorio-page *::before, .oratorio-page *::after { box-sizing: border-box; }
+  .oratorio-shell { max-width: 66rem; padding-inline: clamp(1.25rem, 4vw, 3rem); }
+  .oratorio-page :is(h1, h2, h3, h4) { margin: 0; text-wrap: balance; }
+  .oratorio-page p { margin: 0; }
+  .oratorio-page p + p { margin-top: .65em; }
+  .oratorio-page :is(img, iframe, video) { max-width: 100%; }
+  .oratorio-page img { height: auto; }
+  .oratorio-page a { color: var(--color-sb-red); text-underline-offset: .22em; }
+  .oratorio-page :is(a, [tabindex]):focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
+  .oratorio-page :is(h1, h2)[id] { scroll-margin-top: calc(6rem + var(--wp-admin--admin-bar--height, 0px)); }
+
+  .oratorio-hero { color: #fff; background: var(--color-sb-red-dark); }
+  .oratorio-hero-inner {
+    display: grid;
+    grid-template: "title photo" auto "index photo" auto / minmax(0, 1.6fr) minmax(0, 1fr);
+    gap: .5rem clamp(2rem, 5vw, 5rem);
+    padding-block: clamp(1.5rem, 3.2vw, 3rem);
+  }
+  .oratorio-hero h1 {
+    grid-area: title;
+    align-self: end;
+    font: 300 clamp(4rem, 7vw, 6rem)/1 var(--font-sb-display);
+    letter-spacing: -.025em;
+  }
+  .oratorio-intro {
+    max-width: 72ch;
+    margin-bottom: clamp(2rem, 4vw, 3.5rem);
+    padding-inline-start: clamp(1rem, 2.4vw, 1.75rem);
+    border-inline-start: 3px solid var(--oratorio-gold);
+    font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
+  }
+  .oratorio-photo {
+    grid-area: photo;
+    align-self: center;
+    justify-self: end;
+    display: block;
+    width: 100%;
+    max-width: 21rem;
+    aspect-ratio: 1.65;
+    object-fit: cover;
+    object-position: center 10%;
+    border-radius: .5rem;
+  }
+  .oratorio-index { grid-area: index; align-self: start; }
+  .oratorio-index ul { display: flex; flex-wrap: wrap; gap: 0 clamp(1rem, 3vw, 2.25rem); padding: 0; margin: 0; list-style: none; }
+  .oratorio-index li { min-width: 0; }
+  .oratorio-index a {
+    display: flex;
+    align-items: center;
+    min-height: 2.875rem;
+    padding-block: .5rem;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--oratorio-gold);
+    text-decoration-thickness: 2px;
+    touch-action: manipulation;
+  }
+
+  .oratorio-body { padding-block: clamp(2rem, 4vw, 3.75rem); }
+  .oratorio-section + .oratorio-section, .oratorio-chronicles { margin-top: clamp(3rem, 6vw, 5rem); }
+  .oratorio-page .sb-section-heading {
+    color: var(--color-sb-red-dark);
+    font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+    line-height: 1.1;
+  }
+  .oratorio-section > h2 { margin-bottom: 1.25rem; }
+  .oratorio-section > p, .oratorio-group-body > p { max-width: 68ch; }
+  .oratorio-group h3 { font: 400 clamp(2rem, 3vw, 2.5rem)/1.1 var(--font-sb-display); }
+  .oratorio-audiences, .oratorio-meetings { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .oratorio-audiences .oratorio-group { padding: clamp(1.35rem, 3vw, 2rem); background: var(--oratorio-sand); border-radius: .5rem; }
+  .oratorio-audiences .oratorio-group:nth-child(even) { background: var(--oratorio-sage); }
+  .oratorio-audiences h3 { margin-bottom: .7rem; color: var(--color-sb-red-dark); }
+  .oratorio-audiences .oratorio-group:nth-child(even) h3 { color: var(--oratorio-green); }
+  .oratorio-age { font-weight: 700; }
+  .oratorio-page .oratorio-frequency { margin-top: .2rem; }
+  .oratorio-frequency, .oratorio-time { font-variant-numeric: tabular-nums; }
+
+  .oratorio-activities { display: grid; gap: 1.75rem; }
+  .oratorio-activities .oratorio-group { display: grid; grid-template-columns: minmax(8rem, 1fr) minmax(0, 3.4fr); gap: 1.5rem; }
+  .oratorio-activities h3 { color: var(--color-sb-red-dark); }
+  .oratorio-group-body { min-width: 0; }
+  .oratorio-meetings { margin: 1.1rem 0; padding: 0; list-style: none; }
+  .oratorio-meetings li { padding: 1.25rem; border-radius: .5rem; background: #fff; }
+  .oratorio-meetings h4 { color: var(--color-sb-red-dark); font: 400 1.8rem/1.15 var(--font-sb-display); }
+  .oratorio-meetings .oratorio-time { margin-top: .5rem; color: var(--oratorio-green); font-weight: 700; }
+  .oratorio-examples { color: #514b45; }
+
+  .oratorio-chronicles { padding: clamp(1.5rem, 4vw, 3rem); background: var(--oratorio-sand); border-radius: .5rem; }
+  .oratorio-chronicles p { max-width: 60ch; margin-top: .85rem; white-space: pre-line; }
+  .oratorio-page .oratorio-read {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 100%;
+    min-height: 2.875rem;
+    margin-top: 1.25rem;
+    padding: .65rem 1.2rem;
+    color: #fff;
+    background: var(--color-sb-red);
+    border-radius: .375rem;
+    font-weight: 500;
+    text-decoration: none;
+    touch-action: manipulation;
+  }
+  .oratorio-page .oratorio-read:focus-visible { outline-color: var(--color-sb-red-dark); }
+  .oratorio-index a:active { text-decoration-color: currentColor; }
+  .oratorio-page .oratorio-read:active { background: var(--color-sb-red-dark); }
+  @media (hover: hover) {
+    .oratorio-index a:hover { text-decoration-color: currentColor; }
+    .oratorio-page .oratorio-read:hover { background: var(--color-sb-red-dark); }
+  }
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .oratorio-read span { transition: transform 150ms ease-out; }
+    .oratorio-read:hover span { transform: translateX(.2em); }
+  }
+  @media (max-width: 46rem) {
+    .oratorio-activities .oratorio-group { grid-template-columns: minmax(0, 1fr); gap: .55rem; }
+  }
+  @media (max-width: 38rem) {
+    .oratorio-hero-inner {
+      grid-template: "title photo" auto "index index" auto / minmax(0, 1fr) clamp(6rem, 29vw, 9rem);
+      gap: .5rem 1rem;
+      padding-block: 1.25rem .75rem;
+    }
+    .oratorio-hero h1 { align-self: center; }
+    .oratorio-photo { aspect-ratio: 427 / 371; }
+    .oratorio-audiences, .oratorio-meetings { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
+    .oratorio-index ul { column-gap: 1rem; }
+    .oratorio-index a { font-size: .9375rem; }
+  }
+
   .sb-prose {
     @apply font-sb-body text-base leading-7 text-sb-black;
   }

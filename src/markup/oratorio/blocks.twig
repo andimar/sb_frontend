@@ -1,0 +1,19 @@
+{% for block in blocks %}
+    {% if block.meetings is defined %}
+        <ol class="oratorio-meetings" role="list">
+            {% for meeting in block.meetings %}
+                <li>
+                    <h4>{{ loop.first ? 'Primo incontro' : 'Secondo incontro' }}</h4>
+                    <p class="oratorio-time">{{ meeting.time }}</p>
+                    <p>{{ meeting.description }}</p>
+                </li>
+            {% endfor %}
+        </ol>
+        {% if block.examples %}<p class="oratorio-examples">{{ block.examples }}</p>{% endif %}
+    {% elseif block.age is defined %}
+        <p class="oratorio-age">{{ block.age }}</p>
+        <p class="oratorio-frequency">{{ block.when }}</p>
+    {% else %}
+        {{ block.html }}
+    {% endif %}
+{% endfor %}
