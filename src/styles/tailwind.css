@@ -82,16 +82,16 @@
 /* Internal WordPress views migrated from the legacy theme styles. */
 @font-face {
   font-family: "Yanone Kaffeesatz";
-  src: url("../../css/fonts/YanoneKaffeesatz-Thin/YanoneKaffeesatz-Thin_gdi.woff") format("woff");
-  font-weight: 100 200;
+  src: url("../assets/fonts/YanoneKaffeesatz-Variable.ttf") format("truetype");
+  font-weight: 200 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Yanone Kaffeesatz";
-  src: url("../../css/fonts/YanoneKaffeesatz-Light/YanoneKaffeesatz-Light_gdi.woff") format("woff");
-  font-weight: 300 400;
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto-Variable.ttf") format("truetype");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
