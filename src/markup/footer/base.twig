@@ -26,8 +26,11 @@
 	<div class="footer-logo">
 		<img src="{{ logo.footer }}" alt="Parrocchia San Bernardo da Chiaravalle">
 	</div>
-	<div class="footer-colophon">
-		©{{ "now"|date("Y") }} Parrocchia San Bernardo da Chiaravalle
-	</div>
-    <a class="sb-footer-privacy" href="/privacy/">Privacy e dati personali</a>
+    <div class="sb-footer-legal">
+        <div class="footer-colophon">©{{ "now"|date("Y") }} Parrocchia San Bernardo da Chiaravalle</div>
+        <nav class="sb-footer-legal-links" aria-label="Privacy e consensi">
+            <a class="sb-footer-privacy" href="/privacy/">Privacy</a>
+            <button type="button" class="sb-footer-privacy" data-video-preferences-open hidden>Consensi Video</button>
+        </nav>
+    </div>
 </footer>
