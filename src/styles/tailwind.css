@@ -12,6 +12,9 @@
 @source "../**/*.js";
 
 @layer components {
+  .sb-footer-privacy { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 6px 12px; color: #f7f7f7; font: 400 13px/1.6 var(--font-sb-body); text-align: center; text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; border-radius: 3px; }
+  .sb-footer-privacy:hover { color: #fff; background: rgb(255 255 255 / 8%); }
+  .sb-footer-privacy:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
   .sb-location { box-sizing: border-box; padding: 70px max(24px, calc((100% - 1140px)/2)) 28px; background: #f4f0e9; color: #332b27; font: 16px/1.6 var(--font-sb-body); }
   .sb-location *, .sb-location *::before, .sb-location *::after { box-sizing: border-box; }
   .sb-location-heading { margin-bottom: 32px; }

@@ -3,24 +3,24 @@
 	<div>
 		<h2>CONTATTI</h2>
 	</div>
-	
+
 	<div class="ufficio">
 		<p>{{ ufficio.footer }}</p>
 		<p>TEL. 06 2312038<br>EMAIL : sanbernardoparrocchia.gmail.com</p>
 		<p>Via degli Olivi 180, Roma<br><span>INCROCIO VIA P.TOGLIATTI 855</span></p>
-	</div>	
+	</div>
 
 
 	<div class="sb-priests-section">
 		<div>
 			<h2>SACERDOTI</h2>
 		</div>
-	
+
 		<div class="priests">
 			{% for priest in sacerdoti %}
 				<div class="priest-title">{{priest.title}}</div>
 				<div class="right">don <span class="priest-name">{{priest.name}}</span></div>
-			{% endfor %}		
+			{% endfor %}
 		</div>
 	</div>
 	<div class="footer-logo">
@@ -29,4 +29,5 @@
 	<div class="footer-colophon">
 		©{{ "now"|date("Y") }} Parrocchia San Bernardo da Chiaravalle
 	</div>
+    <a class="sb-footer-privacy" href="/privacy/">Privacy e dati personali</a>
 </footer>
